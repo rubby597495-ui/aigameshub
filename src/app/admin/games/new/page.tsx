@@ -13,6 +13,7 @@ import {
   Layers
 } from 'lucide-react';
 import { CATEGORIES, AI_MECHANICS, PLATFORMS } from '@/data/categories';
+import { uploadToR2 } from '@/lib/api-client';
 
 export default function AdminNewGamePage() {
   const router = useRouter();
@@ -54,21 +55,12 @@ export default function AdminNewGamePage() {
     try {
       setIsUploadingCover(true);
       setUploadSuccess(false);
-      const fd = new FormData();
-      fd.append('file', file);
-      fd.append('folder', 'covers');
-
-      const res = await fetch('http://127.0.0.1:8790/api/upload', {
-        method: 'POST',
-        body: fd,
-      });
-
-      if (res.ok) {
-        const json = await res.json();
-        if (json.url) {
-          setFormData((prev) => ({ ...prev, coverUrl: json.url }));
-          setUploadSuccess(true);
-        }
+      const json = await uploadToR2(file, 'covers');
+      if (json.success && json.url) {
+        setFormData((prev) => ({ ...prev, coverUrl: json.url! }));
+        setUploadSuccess(true);
+      } else {
+        alert(json.error || 'Failed to upload image to R2');
       }
     } catch (err) {
       console.error('R2 upload failed:', err);

@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import { CATEGORIES, AI_MECHANICS, PLATFORMS } from '@/data/categories';
 import { Game } from '@/types/game';
+import { uploadToR2 } from '@/lib/api-client';
 
 export default function AdminEditGamePage() {
   const router = useRouter();
@@ -315,18 +316,11 @@ export default function AdminEditGamePage() {
                 onChange={async (e) => {
                   const file = e.target.files?.[0];
                   if (!file) return;
-                  const fd = new FormData();
-                  fd.append('file', file);
-                  fd.append('folder', 'covers');
-                  const res = await fetch('http://127.0.0.1:8790/api/upload', {
-                    method: 'POST',
-                    body: fd,
-                  });
-                  if (res.ok) {
-                    const json = await res.json();
-                    if (json.url) {
-                      setFormData({ ...formData, coverUrl: json.url });
-                    }
+                  const json = await uploadToR2(file, 'covers');
+                  if (json.success && json.url) {
+                    setFormData({ ...formData, coverUrl: json.url });
+                  } else {
+                    alert(json.error || 'Failed to upload image to R2');
                   }
                 }}
                 className="hidden"

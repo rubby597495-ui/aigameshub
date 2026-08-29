@@ -1,0 +1,30 @@
+{
+  "name": "aigameshub-backend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy --minify",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate:local": "wrangler d1 execute aigameshub-db --local --file=./migrations/0000_init.sql",
+    "db:migrate:remote": "wrangler d1 execute aigameshub-db --remote --file=./migrations/0000_init.sql",
+    "db:fts:local": "wrangler d1 execute aigameshub-db --local --file=./src/db/fts.sql",
+    "db:fts:remote": "wrangler d1 execute aigameshub-db --remote --file=./src/db/fts.sql",
+    "db:seed:local": "wrangler d1 execute aigameshub-db --local --file=./seed.sql",
+    "db:seed:remote": "wrangler d1 execute aigameshub-db --remote --file=./seed.sql"
+  },
+  "dependencies": {
+    "better-auth": "^1.1.21",
+    "drizzle-orm": "^0.39.3",
+    "hono": "^4.7.1"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250214.0",
+    "better-sqlite3": "^11.8.1",
+    "dotenv": "^16.4.7",
+    "drizzle-kit": "^0.30.4",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3",
+    "wrangler": "^4.127.0"
+  }
+}

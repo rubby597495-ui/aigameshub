@@ -1,0 +1,148 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum AiType {
+  AI_NATIVE
+  AI_AUGMENTED
+  NOT_AI
+}
+
+enum GameStatus {
+  RELEASED
+  EARLY_ACCESS
+  DEMO_PLAYTEST
+  PROTOTYPE
+  ANNOUNCED_TBA
+  DELISTED
+}
+
+enum Role {
+  USER
+  ADMIN
+  CREATOR
+}
+
+model User {
+  id            String         @id @default(cuid())
+  email         String         @unique
+  name          String?
+  avatar        String?
+  role          Role           @default(USER)
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  votes         GameVote[]
+  bookmarks     GameBookmark[]
+  comments      GameComment[]
+  submissions   Submission[]
+}
+
+model Game {
+  id                Int            @id @default(autoincrement())
+  slug              String         @unique
+  title             String
+  tagline           String
+  description       String         @db.Text
+  descCn            String?        @db.Text
+  aiRoleDescription String         @db.Text
+  tier              String
+  aiType            AiType         @default(AI_NATIVE)
+  genreKey          String
+  genreName         String
+  genreSlug         String
+  mechanicKey       String
+  mechanicName      String
+  mechanicSlug      String
+  releaseYear       String
+  status            String
+  platforms         String[]
+  websiteUrl        String
+  developer         String
+  publisher         String
+  coverUrl          String
+  hasLocalCover     Boolean        @default(true)
+  screenshots       String[]
+  viewCount         Int            @default(0)
+  likeCount         Int            @default(0)
+  bookmarkCount     Int            @default(0)
+  aiScore           Float          @default(9.0)
+  funScore          Float          @default(9.0)
+  isFeatured        Boolean        @default(false)
+  isHot             Boolean        @default(false)
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+  votes             GameVote[]
+  bookmarks         GameBookmark[]
+  comments          GameComment[]
+
+  @@index([slug])
+  @@index([genreSlug])
+  @@index([mechanicSlug])
+  @@index([aiType])
+}
+
+model GameVote {
+  id          String   @id @default(cuid())
+  gameId      Int
+  userId      String?
+  ipAddress   String?
+  aiScore     Float?
+  funScore    Float?
+  isUpvote    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  game        Game     @relation(fields: [gameId], references: [id], onDelete: Cascade)
+  user        User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([gameId])
+}
+
+model GameBookmark {
+  id        String   @id @default(cuid())
+  gameId    Int
+  userId    String
+  createdAt DateTime @default(now())
+  game      Game     @relation(fields: [gameId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, gameId])
+}
+
+model GameComment {
+  id           String   @id @default(cuid())
+  gameId       Int
+  userId       String?
+  authorName   String
+  avatar       String?
+  rating       Int      @default(5)
+  aiDepthScore Float    @default(9.0)
+  content      String   @db.Text
+  createdAt    DateTime @default(now())
+  game         Game     @relation(fields: [gameId], references: [id], onDelete: Cascade)
+  user         User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([gameId])
+}
+
+model Submission {
+  id                String   @id @default(cuid())
+  userId            String?
+  title             String
+  websiteUrl        String
+  developer         String
+  contactEmail      String?
+  tier              String
+  genre             String
+  mechanic          String
+  platforms         String[]
+  tagline           String
+  description       String?  @db.Text
+  aiRoleDescription String   @db.Text
+  status            String   @default("PENDING")
+  createdAt         DateTime @default(now())
+  user              User?    @relation(fields: [userId], references: [id], onDelete: SetNull)
+}

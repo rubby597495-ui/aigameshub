@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  # AiGamesHub Backend / Standalone Service
+  aigameshub-app:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+    container_name: aigameshub_web
+    restart: always
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DATABASE_URL=postgresql://aigames_user:aigames_password@postgres_db:5432/aigameshub?schema=public
+      - NEXT_PUBLIC_SITE_URL=https://aigameshub.io
+    ports:
+      - "127.0.0.1:3000:3000"
+    depends_on:
+      - postgres_db
+    networks:
+      - 1panel-network
+
+  # PostgreSQL 16 Database
+  postgres_db:
+    image: postgres:16-alpine
+    container_name: aigameshub_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: aigames_user
+      POSTGRES_PASSWORD: aigames_password
+      POSTGRES_DB: aigameshub
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - 1panel-network
+
+volumes:
+  postgres_data:
+    driver: local
+
+networks:
+  1panel-network:
+    external: true

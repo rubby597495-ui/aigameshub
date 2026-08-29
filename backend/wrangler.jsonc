@@ -1,0 +1,29 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "aigameshub-api",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-02-14",
+  "compatibility_flags": ["nodejs_compat"],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "aigameshub-db",
+      "database_id": "d45f837a-2143-4241-8263-3b0ccc935a48"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "R2_BUCKET",
+      "bucket_name": "aigameshub-r2"
+    }
+  ],
+  "vars": {
+    "BETTER_AUTH_URL": "http://127.0.0.1:8787",
+    "BETTER_AUTH_SECRET": "aigameshub_super_secret_jwt_key_2026_dev_mode",
+    "CORS_ORIGIN": "http://localhost:3000,https://aigameshub.io,http://127.0.0.1:3000",
+    "PUBLIC_R2_URL": "https://cdn.aigameshub.io"
+  },
+  "observability": {
+    "enabled": true
+  }
+}

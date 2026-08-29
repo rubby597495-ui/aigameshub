@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cleanAgBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F1F5F9"/>
+    </linearGradient>
+
+    <linearGradient id="indigoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#312E81"/>
+      <stop offset="100%" stop-color="#1E1B4B"/>
+    </linearGradient>
+
+    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="100%" stop-color="#0284C7"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Clean Canvas Base -->
+  <rect x="14" y="14" width="484" height="484" rx="100" fill="url(#cleanAgBg)" stroke="#CBD5E1" stroke-width="6"/>
+
+  <!-- 1. Large Stylized Capital "A" (Play Triangle) -->
+  <polygon points="256,76 431,411 356,411 256,221 156,411 81,411" fill="url(#indigoGrad)" stroke="#1E1B4B" stroke-width="2"/>
+
+  <!-- 2. Large Sky Blue Joypad Crossbar -->
+  <rect x="121" y="267" width="270" height="48" rx="12" fill="url(#skyGrad)" stroke="#0369A1" stroke-width="2"/>
+
+  <!-- 3. Large Center Floating Joystick Orb -->
+  <circle cx="256" cy="216" r="45" fill="#FFFFFF" stroke="url(#skyGrad)" stroke-width="8"/>
+
+  <!-- 4. Center AI Star Spark -->
+  <path d="M256,191 Q256,216 231,216 Q256,216 256,241 Q256,216 281,216 Q256,216 256,191 Z" fill="#0284C7"/>
+  <circle cx="256" cy="216" r="5" fill="#1E1B4B"/>
+</svg>

@@ -151,7 +151,7 @@ export function Topbar({ games, onOpenMobileNav }: TopbarProps) {
                     >
                       <div className="flex items-center gap-2">
                         <Bookmark className="h-3.5 w-3.5 text-pink-400" />
-                        <span>我的收藏 (Bookmarks)</span>
+                        <span>My Bookmarks</span>
                       </div>
                       {bookmarks.length > 0 && (
                         <span className="rounded-full bg-pink-500/20 px-1.5 py-0.2 text-[10px] font-bold text-pink-300">
@@ -167,7 +167,7 @@ export function Topbar({ games, onOpenMobileNav }: TopbarProps) {
                     >
                       <div className="flex items-center gap-2">
                         <Gamepad2 className="h-3.5 w-3.5 text-emerald-400" />
-                        <span>已玩进度与个人评分</span>
+                        <span>Play History & Ratings</span>
                       </div>
                       {playedCount > 0 && (
                         <span className="rounded-full bg-emerald-500/20 px-1.5 py-0.2 text-[10px] font-bold text-emerald-300">
@@ -182,7 +182,7 @@ export function Topbar({ games, onOpenMobileNav }: TopbarProps) {
                       className="flex items-center gap-2 rounded-xl px-3 py-2 text-xs text-stone-200 hover:bg-white/[0.06] transition"
                     >
                       <PlusCircle className="h-3.5 w-3.5 text-blue-400" />
-                      <span>提交 AI 游戏</span>
+                      <span>Submit AI Game</span>
                     </Link>
 
                     {user.role === 'admin' && (
@@ -192,7 +192,7 @@ export function Topbar({ games, onOpenMobileNav }: TopbarProps) {
                         className="flex items-center gap-2 rounded-xl px-3 py-2 text-xs text-amber-300 hover:bg-amber-500/10 transition"
                       >
                         <ShieldAlert className="h-3.5 w-3.5" />
-                        <span>管理后台</span>
+                        <span>Admin Dashboard</span>
                       </Link>
                     )}
                   </div>
@@ -207,7 +207,7 @@ export function Topbar({ games, onOpenMobileNav }: TopbarProps) {
                       className="flex w-full items-center gap-2 rounded-xl px-3 py-2 text-xs text-rose-300 hover:bg-rose-500/10 transition"
                     >
                       <LogOut className="h-3.5 w-3.5" />
-                      <span>退出登录</span>
+                      <span>Sign Out</span>
                     </button>
                   </div>
                 </div>
@@ -217,10 +217,10 @@ export function Topbar({ games, onOpenMobileNav }: TopbarProps) {
             <button
               type="button"
               onClick={() => openAuthModal('login')}
-              className="flex items-center gap-1.5 rounded-xl border border-white/10 bg-white/[0.04] px-3.5 py-2 text-xs font-semibold text-stone-200 hover:bg-white/10 hover:text-white transition shadow-sm"
+              className="inline-flex items-center gap-1.5 rounded-xl border border-white/15 bg-white/[0.05] px-3.5 py-2 text-xs font-semibold text-stone-200 hover:bg-white/10 hover:text-white transition shadow-sm"
             >
-              <User className="h-3.5 w-3.5 text-emerald-300" />
-              <span>登录 / 注册</span>
+              <User className="h-3.5 w-3.5 text-emerald-400" />
+              <span>Sign In</span>
             </button>
           )}
         </div>

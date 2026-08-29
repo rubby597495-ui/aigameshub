@@ -19,7 +19,8 @@ export function getSearchIndex(): SearchGameItem[] {
     mechanicName: g.mechanicName,
     developer: g.developer,
     coverUrl: g.coverUrl,
-    aiScore: g.aiScore
+    aiScore: g.aiScore,
+    ratingCount: g.ratingCount || 0
   }));
 }
 

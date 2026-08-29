@@ -35,17 +35,17 @@ export default function BookmarksPage() {
 
   return (
     <div className="space-y-8 max-w-7xl mx-auto">
-      <Breadcrumbs items={[{ name: '我的收藏 (Bookmarks)', url: '/bookmarks' }]} />
+      <Breadcrumbs items={[{ name: 'My Bookmarks', url: '/bookmarks' }]} />
 
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-white/10 pb-6">
         <div>
           <h1 className="text-2xl sm:text-3xl font-extrabold text-stone-100 flex items-center gap-2.5">
             <Heart className="h-7 w-7 text-pink-400 fill-pink-400" />
-            <span>我的收藏清单 ({bookmarks.length})</span>
+            <span>My Bookmarks ({bookmarks.length})</span>
           </h1>
           <p className="mt-1 text-xs sm:text-sm text-stone-400">
-            你关注的 AI 游戏会在此处跨设备实时同步，随时查看与启动游玩。
+            Your saved AI games synced in real time across all your devices.
           </p>
         </div>
 
@@ -56,7 +56,7 @@ export default function BookmarksPage() {
             className="inline-flex items-center gap-2 rounded-xl bg-[#8FAFA3] px-4 py-2.5 text-xs font-bold text-[#101715] hover:bg-[#A2BDB3] transition shadow-md"
           >
             <User className="h-4 w-4" />
-            <span>登录并同步收藏夹</span>
+            <span>Sign in to Sync Bookmarks</span>
           </button>
         ) : (
           <Link
@@ -64,7 +64,7 @@ export default function BookmarksPage() {
             className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2.5 text-xs font-semibold text-stone-200 hover:bg-white/10 transition"
           >
             <Gamepad2 className="h-4 w-4 text-emerald-400" />
-            <span>查看已玩记录与评分 →</span>
+            <span>View Play History & Ratings →</span>
           </Link>
         )}
       </div>
@@ -75,17 +75,17 @@ export default function BookmarksPage() {
             <Heart className="h-8 w-8" />
           </div>
           <h2 className="text-lg font-bold text-stone-100">
-            登录以开启跨设备收藏同步
+            Sign in to Enable Cloud Sync
           </h2>
           <p className="text-xs text-stone-400 leading-relaxed">
-            登录后，你在电脑、平板或手机上收藏的 AI 游戏都会实时保存至你的专属云端清单中。
+            Create an account or sign in to save your favorite AI games and access them seamlessly from any browser or device.
           </p>
           <button
             type="button"
             onClick={() => openAuthModal('login')}
             className="w-full rounded-xl bg-[#8FAFA3] py-2.5 text-xs font-bold text-[#101715] hover:bg-[#A2BDB3] transition shadow-md"
           >
-            立即登录 / 免费注册
+            Sign In / Create Account
           </button>
         </div>
       ) : bookmarkedGames.length === 0 ? (
@@ -94,16 +94,16 @@ export default function BookmarksPage() {
             <Bookmark className="h-8 w-8" />
           </div>
           <h2 className="text-lg font-bold text-stone-100">
-            你的收藏清单还是空的
+            Your Bookmarks List is Empty
           </h2>
           <p className="text-xs text-stone-400 leading-relaxed">
-            在浏览游戏库或游戏详情时，点击右上角的 ❤️ 即可将喜欢的 AI 游戏加入收藏！
+            Browse our curated catalog and tap the heart icon ❤️ on any game card to add it to your personal watchlist!
           </p>
           <Link
             href="/games"
             className="inline-flex items-center gap-2 rounded-xl bg-[#8FAFA3] px-6 py-2.5 text-xs font-bold text-[#101715] hover:bg-[#A2BDB3] transition shadow-md"
           >
-            <span>探索 90+ 款 AI 游戏</span>
+            <span>Explore 90+ AI Games</span>
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
@@ -113,7 +113,7 @@ export default function BookmarksPage() {
           <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-white/10 bg-[#161B1E] p-4 text-xs">
             <div className="flex items-center gap-1.5 text-stone-400 mr-2">
               <SlidersHorizontal className="h-3.5 w-3.5" />
-              <span>筛选:</span>
+              <span>Filter:</span>
             </div>
 
             <select
@@ -121,7 +121,7 @@ export default function BookmarksPage() {
               onChange={(e) => setSelectedTier(e.target.value)}
               className="h-9 rounded-xl border border-white/10 bg-[#121619] px-3 text-xs text-stone-200 focus:border-emerald-400/50 focus:outline-none"
             >
-              <option value="ALL">全部 AI 等级 (All Tiers)</option>
+              <option value="ALL">All AI Tiers</option>
               <option value="AI-Native">AI-Native</option>
               <option value="AI-Augmented">AI-Augmented</option>
               <option value="AI-Boundary">AI-Boundary</option>
@@ -132,7 +132,7 @@ export default function BookmarksPage() {
               onChange={(e) => setSelectedGenre(e.target.value)}
               className="h-9 rounded-xl border border-white/10 bg-[#121619] px-3 text-xs text-stone-200 focus:border-emerald-400/50 focus:outline-none"
             >
-              <option value="ALL">全部游戏分类 (All Genres)</option>
+              <option value="ALL">All Genres</option>
               {CATEGORIES.map((c) => (
                 <option key={c.slug} value={c.slug}>{c.name}</option>
               ))}

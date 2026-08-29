@@ -11,6 +11,7 @@ import {
   Trophy, 
   Heart,
   User,
+  ThumbsUp,
   Share2
 } from 'lucide-react';
 import { Game } from '@/types/game';
@@ -28,36 +29,38 @@ export function PlayTrackerWidget({ game }: PlayTrackerWidgetProps) {
     toggleBookmark, 
     getPlayActivity, 
     setPlayStatus, 
+    rateGame,
+    getUserRating,
+    hasLiked,
+    toggleLike,
     openAuthModal 
   } = useUserAuth();
 
   const activity = getPlayActivity(game.id);
   const bookmarked = isBookmarked(game.id);
+  const userScore = getUserRating(game.id);
+  const isLiked = hasLiked(game.id);
 
   const [hoverRating, setHoverRating] = useState<number | null>(null);
   const [justSaved, setJustSaved] = useState(false);
+  const [localRatingOffset, setLocalRatingOffset] = useState<number | null>(null);
 
   const currentStatus = activity?.status;
-  const currentRating = activity?.rating;
+  const activeRating = userScore || localRatingOffset || (game.aiScore > 0 ? game.aiScore : undefined);
+
+  // Compute live rating count
+  const baseCount = game.ratingCount || (game.aiScore > 0 ? 1 : 0);
+  const totalRatingsCount = baseCount + (userScore || localRatingOffset ? 1 : 0);
 
   const handleStatusClick = (status: 'want_to_play' | 'playing' | 'played') => {
-    if (!user) {
-      openAuthModal('login');
-      return;
-    }
-
     const nextStatus = currentStatus === status ? 'want_to_play' : status;
     setPlayStatus(game.id, nextStatus);
     triggerSavedFeedback();
   };
 
   const handleRatingClick = (ratingVal: number) => {
-    if (!user) {
-      openAuthModal('login');
-      return;
-    }
-
-    setPlayStatus(game.id, currentStatus || 'played', ratingVal);
+    rateGame(game.id, ratingVal);
+    setLocalRatingOffset(ratingVal);
     triggerSavedFeedback();
   };
 
@@ -69,46 +72,114 @@ export function PlayTrackerWidget({ game }: PlayTrackerWidgetProps) {
   return (
     <div className="archive-surface rounded-2xl border border-white/10 bg-white/[0.03] p-5 sm:p-6 space-y-5 shadow-lg">
       {/* Header */}
-      <div className="flex items-center justify-between border-b border-white/10 pb-3.5">
-        <div className="flex items-center gap-2">
-          <div className="grid h-8 w-8 place-items-center rounded-xl bg-emerald-400/10 border border-emerald-400/20 text-emerald-400">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-3.5">
+        <div className="flex items-center gap-2.5">
+          <div className="grid h-9 w-9 place-items-center rounded-xl bg-emerald-400/10 border border-emerald-400/20 text-emerald-400 shadow-inner">
             <Gamepad2 className="h-4 w-4" />
           </div>
           <div>
             <h3 className="text-sm font-bold text-stone-100 flex items-center gap-2">
-              <span>我的游戏进度与评分</span>
+              <span>Community Rating & Tracker</span>
               {justSaved && (
                 <span className="flex items-center gap-1 text-[10px] font-semibold text-emerald-400 animate-fadeIn">
-                  <CheckCircle2 className="h-3 w-3" /> 已同步
+                  <CheckCircle2 className="h-3 w-3" /> Saved!
                 </span>
               )}
             </h3>
             <p className="text-[11px] text-stone-400">
-              {user ? `玩家: ${user.name}` : '登录后即可跨设备记录进度与评分'}
+              {totalRatingsCount > 0
+                ? `Based on ${totalRatingsCount} verified community evaluation${totalRatingsCount > 1 ? 's' : ''}`
+                : 'No ratings yet — be the first to evaluate this AI game!'}
             </p>
           </div>
         </div>
 
-        {/* Bookmark Quick Toggle */}
-        <button
-          type="button"
-          onClick={() => toggleBookmark(game.id)}
-          className={cn(
-            "flex items-center gap-1.5 rounded-xl border px-3 py-1.5 text-xs font-semibold transition shadow-sm",
-            bookmarked
-              ? "border-rose-500/50 bg-rose-500/20 text-rose-300"
-              : "border-white/10 bg-white/[0.04] text-stone-300 hover:bg-white/[0.08]"
-          )}
-        >
-          <Heart className={cn("h-3.5 w-3.5", bookmarked && "fill-rose-400 text-rose-400")} />
-          <span>{bookmarked ? '已收藏' : '收藏此游戏'}</span>
-        </button>
+        <div className="flex items-center gap-2">
+          {/* Quick Like Button (Open for guests) */}
+          <button
+            type="button"
+            onClick={() => toggleLike(game.id)}
+            className={cn(
+              "flex items-center gap-1.5 rounded-xl border px-3 py-1.5 text-xs font-semibold transition shadow-sm",
+              isLiked
+                ? "border-rose-500/50 bg-rose-500/20 text-rose-300"
+                : "border-white/10 bg-white/[0.04] text-stone-300 hover:bg-white/[0.08]"
+            )}
+          >
+            <ThumbsUp className={cn("h-3.5 w-3.5", isLiked && "fill-rose-400 text-rose-400")} />
+            <span>{isLiked ? 'Upvoted' : 'Upvote'}</span>
+          </button>
+
+          {/* Bookmark Button */}
+          <button
+            type="button"
+            onClick={() => toggleBookmark(game.id)}
+            className={cn(
+              "flex items-center gap-1.5 rounded-xl border px-3 py-1.5 text-xs font-semibold transition shadow-sm",
+              bookmarked
+                ? "border-pink-500/50 bg-pink-500/20 text-pink-300"
+                : "border-white/10 bg-white/[0.04] text-stone-300 hover:bg-white/[0.08]"
+            )}
+          >
+            <Heart className={cn("h-3.5 w-3.5", bookmarked && "fill-pink-400 text-pink-400")} />
+            <span>{bookmarked ? 'Saved' : 'Save'}</span>
+          </button>
+        </div>
       </div>
 
-      {/* 1. Play Status Tabs */}
-      <div className="space-y-2">
-        <label className="block text-[11px] font-semibold text-stone-300">
-          游玩状态 (Play Status)
+      {/* 1. Rating Selector (1 to 10) */}
+      <div className="space-y-2.5">
+        <div className="flex items-center justify-between">
+          <div>
+            <label className="block text-xs font-semibold text-stone-200">
+              Rate AI Depth & Gameplay (1 - 10 Score)
+            </label>
+            <span className="text-[10px] text-stone-400">
+              Click a star to submit your rating (Open to all visitors)
+            </span>
+          </div>
+          <div className="text-right">
+            <span className="text-sm font-bold text-amber-300 font-mono">
+              {hoverRating ? `${hoverRating}.0 / 10` : activeRating ? `${activeRating.toFixed(1)} / 10` : 'Unrated'}
+            </span>
+            <p className="text-[10px] text-stone-400 font-mono">
+              {totalRatingsCount} total rating{totalRatingsCount === 1 ? '' : 's'}
+            </p>
+          </div>
+        </div>
+
+        {/* 10-point Interactive Star Grid */}
+        <div className="flex items-center justify-between gap-1 rounded-2xl border border-white/10 bg-[#121619] p-3 shadow-inner">
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((starVal) => {
+            const active = (hoverRating || activeRating || 0) >= starVal;
+            return (
+              <button
+                key={starVal}
+                type="button"
+                onMouseEnter={() => setHoverRating(starVal)}
+                onMouseLeave={() => setHoverRating(null)}
+                onClick={() => handleRatingClick(starVal)}
+                className="grid h-8 w-8 place-items-center rounded-xl hover:bg-white/10 transition group"
+                title={`Rate ${starVal} out of 10`}
+              >
+                <Star
+                  className={cn(
+                    "h-5 w-5 transition",
+                    active
+                      ? "fill-amber-400 text-amber-400 scale-110"
+                      : "text-stone-600 group-hover:text-stone-400"
+                  )}
+                />
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* 2. Play Status Tabs */}
+      <div className="space-y-2 pt-2 border-t border-white/10">
+        <label className="block text-xs font-semibold text-stone-200">
+          Your Play Progress (Optional)
         </label>
         <div className="grid grid-cols-3 gap-2">
           <button
@@ -122,7 +193,7 @@ export function PlayTrackerWidget({ game }: PlayTrackerWidgetProps) {
             )}
           >
             <Clock className="h-4 w-4 text-blue-400" />
-            <span>想玩 (Plan to Play)</span>
+            <span>Plan to Play</span>
           </button>
 
           <button
@@ -136,7 +207,7 @@ export function PlayTrackerWidget({ game }: PlayTrackerWidgetProps) {
             )}
           >
             <Gamepad2 className="h-4 w-4 text-amber-400" />
-            <span>在玩 (Playing)</span>
+            <span>Playing</span>
           </button>
 
           <button
@@ -150,58 +221,20 @@ export function PlayTrackerWidget({ game }: PlayTrackerWidgetProps) {
             )}
           >
             <Trophy className="h-4 w-4 text-emerald-400" />
-            <span>已通关/已玩 (Played)</span>
+            <span>Played / Done</span>
           </button>
         </div>
       </div>
 
-      {/* 2. Personal Rating */}
-      <div className="space-y-2 pt-1 border-t border-white/10">
-        <div className="flex items-center justify-between">
-          <label className="block text-[11px] font-semibold text-stone-300">
-            我的个人评分 (Personal AI Rating)
-          </label>
-          <span className="text-xs font-bold text-emerald-300 font-mono">
-            {hoverRating ? `${hoverRating}.0 / 10.0` : currentRating ? `${currentRating}.0 / 10.0` : '未评分'}
-          </span>
-        </div>
-
-        {/* 10-point Star Grid / Slider */}
-        <div className="flex items-center justify-between gap-1 rounded-xl border border-white/10 bg-[#121619] p-2.5">
-          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((starVal) => {
-            const active = (hoverRating || currentRating || 0) >= starVal;
-            return (
-              <button
-                key={starVal}
-                type="button"
-                onMouseEnter={() => setHoverRating(starVal)}
-                onMouseLeave={() => setHoverRating(null)}
-                onClick={() => handleRatingClick(starVal)}
-                className="grid h-7 w-7 place-items-center rounded-lg hover:bg-white/10 transition"
-                title={`${starVal} 分`}
-              >
-                <Star
-                  className={cn(
-                    "h-4 w-4 transition",
-                    active
-                      ? "fill-amber-400 text-amber-400 scale-110"
-                      : "text-stone-600 hover:text-stone-400"
-                  )}
-                />
-              </button>
-            );
-          })}
-        </div>
-      </div>
-
       {!user && (
-        <div className="rounded-xl border border-emerald-400/20 bg-emerald-950/20 p-3 text-center">
+        <div className="rounded-xl border border-white/10 bg-white/[0.02] p-3 text-center text-[11px] text-stone-400">
+          <span>Guest ratings are saved instantly. </span>
           <button
             type="button"
             onClick={() => openAuthModal('login')}
-            className="text-xs font-bold text-emerald-300 hover:underline"
+            className="text-emerald-400 hover:underline font-semibold ml-1"
           >
-            👉 点击登录账号，免费开启进度同步与私人评测库
+            Sign in to sync your library across devices →
           </button>
         </div>
       )}

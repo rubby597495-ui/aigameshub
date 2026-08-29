@@ -91,7 +91,7 @@ export function GameGallery({
           </span>
           <span className="inline-flex items-center gap-1 rounded-full border border-emerald-400/30 bg-emerald-950/80 px-2.5 py-1 text-xs font-bold text-emerald-300 backdrop-blur-md shadow-md">
             <Sparkles className="h-3 w-3 text-emerald-400" />
-            <span>★ {aiScore.toFixed(1)} AI Depth</span>
+            <span>{aiScore > 0 ? `★ ${aiScore.toFixed(1)} AI Depth` : '★ Verified Index'}</span>
           </span>
         </div>
 

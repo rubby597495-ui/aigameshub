@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Heart, Flame, ExternalLink, Sparkles, Eye, ThumbsUp } from 'lucide-react';
+import { Heart, Flame, ExternalLink, Sparkles, Eye, ThumbsUp, Star } from 'lucide-react';
 import { Game } from '@/types/game';
 import { formatNumber, cn, getTierBadgeStyle } from '@/lib/utils';
 import { useUserAuth } from '@/contexts/UserAuthContext';
@@ -15,10 +15,20 @@ interface GameCardProps {
 }
 
 export function GameCard({ game, priority = false, compact = false }: GameCardProps) {
-  const { isBookmarked, toggleBookmark: toggleUserBookmark } = useUserAuth();
+  const { 
+    isBookmarked, 
+    toggleBookmark: toggleUserBookmark,
+    hasLiked: checkHasLiked,
+    toggleLike: triggerUserLike,
+    getUserRating
+  } = useUserAuth();
+
   const bookmarked = isBookmarked(game.id);
-  const [likes, setLikes] = useState(game.likeCount);
-  const [hasLiked, setHasLiked] = useState(false);
+  const isLiked = checkHasLiked(game.id);
+  const userScore = getUserRating(game.id);
+
+  // Compute live like count with local interaction
+  const [localLikeOffset, setLocalLikeOffset] = useState(0);
 
   const handleToggleBookmark = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -26,17 +36,16 @@ export function GameCard({ game, priority = false, compact = false }: GameCardPr
     toggleUserBookmark(game.id);
   };
 
-  const toggleLike = (e: React.MouseEvent) => {
+  const handleToggleLike = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    if (!hasLiked) {
-      setLikes(likes + 1);
-      setHasLiked(true);
-    } else {
-      setLikes(likes - 1);
-      setHasLiked(false);
-    }
+    const isNowLiked = triggerUserLike(game.id);
+    setLocalLikeOffset((prev) => (isNowLiked ? prev + 1 : prev - 1));
   };
+
+  const totalLikes = Math.max(0, game.likeCount + localLikeOffset);
+  const effectiveScore = userScore || game.aiScore;
+  const effectiveRatingsCount = (game.ratingCount || 0) + (userScore && game.aiScore === 0 ? 1 : 0);
 
   return (
     <article className="archive-surface group relative flex flex-col h-full overflow-hidden rounded-xl border border-white/10 bg-white/[0.035] transition duration-200 hover:-translate-y-1 hover:border-white/20 hover:shadow-xl hover:shadow-black/40">
@@ -92,10 +101,16 @@ export function GameCard({ game, priority = false, compact = false }: GameCardPr
           ))}
         </div>
 
-        {/* AI Score Badge */}
-        <div className="absolute bottom-2 right-2.5 flex items-center gap-1 rounded bg-emerald-950/80 border border-emerald-500/30 px-1.5 py-0.5 text-[10px] font-bold text-emerald-300 backdrop-blur">
-          <Sparkles className="h-2.5 w-2.5 text-emerald-400" />
-          <span>{game.aiScore.toFixed(1)}</span>
+        {/* AI Score & Ratings Count Badge */}
+        <div className="absolute bottom-2 right-2.5 flex items-center gap-1 rounded bg-emerald-950/85 border border-emerald-500/30 px-2 py-0.5 text-[10px] font-bold text-emerald-300 backdrop-blur shadow">
+          <Star className="h-3 w-3 text-amber-400 fill-amber-400" />
+          <span>
+            {effectiveScore > 0 ? (
+              `${effectiveScore.toFixed(1)} (${effectiveRatingsCount})`
+            ) : (
+              'Unrated (0)'
+            )}
+          </span>
         </div>
       </Link>
 
@@ -142,15 +157,15 @@ export function GameCard({ game, priority = false, compact = false }: GameCardPr
             </span>
             <button
               type="button"
-              onClick={toggleLike}
+              onClick={handleToggleLike}
               className={cn(
                 "inline-flex items-center gap-1 hover:text-stone-200 transition",
-                hasLiked && "text-rose-400 font-semibold"
+                isLiked && "text-rose-400 font-semibold"
               )}
               title="Upvote game"
             >
-              <ThumbsUp className={cn("h-3 w-3", hasLiked && "fill-rose-400 text-rose-400")} />
-              <span>{formatNumber(likes)}</span>
+              <ThumbsUp className={cn("h-3 w-3", isLiked && "fill-rose-400 text-rose-400")} />
+              <span>{formatNumber(totalLikes)}</span>
             </button>
           </div>
 

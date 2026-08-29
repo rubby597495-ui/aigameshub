@@ -58,23 +58,23 @@ export function ImageUploadManager({
 
     const remainingSlots = maxImages - images.length;
     if (remainingSlots <= 0) {
-      showNotification('error', `已达到最大图片数量限制 (最多 ${maxImages} 张)`);
+      showNotification('error', `Maximum image limit reached (up to ${maxImages} images).`);
       return;
     }
 
     const filesToUpload = files.slice(0, remainingSlots);
     if (files.length > remainingSlots) {
-      showNotification('error', `已自动选取前 ${remainingSlots} 张，最多允许上传 ${maxImages} 张图片`);
+      showNotification('error', `Only the first ${remainingSlots} images were selected (Limit: ${maxImages}).`);
     }
 
     // Validate size & type
     for (const f of filesToUpload) {
       if (!f.type.startsWith('image/')) {
-        showNotification('error', `文件 "${f.name}" 不是支持的图片格式`);
+        showNotification('error', `File "${f.name}" is not a supported image format.`);
         return;
       }
       if (f.size > maxSizeBytes) {
-        showNotification('error', `图片 "${f.name}" 超过 ${maxFileSizeMB}MB 限制 (${(f.size / 1024 / 1024).toFixed(1)}MB)，请压缩后上传`);
+        showNotification('error', `Image "${f.name}" exceeds the ${maxFileSizeMB}MB limit (${(f.size / 1024 / 1024).toFixed(1)}MB). Please compress before uploading.`);
         return;
       }
     }
@@ -88,17 +88,17 @@ export function ImageUploadManager({
         if (res.success && res.url) {
           uploadedUrls.push(res.url);
         } else {
-          showNotification('error', res.error || `图片 "${file.name}" 上传失败`);
+          showNotification('error', res.error || `Failed to upload "${file.name}"`);
         }
       }
 
       if (uploadedUrls.length > 0) {
         const updated = [...images, ...uploadedUrls];
         onImagesChange(updated);
-        showNotification('success', `成功上传 ${uploadedUrls.length} 张图片至 Cloudflare R2！`);
+        showNotification('success', `Successfully uploaded ${uploadedUrls.length} image(s) to Cloudflare R2!`);
       }
     } catch (err: any) {
-      showNotification('error', err.message || '图片上传异常，请稍后重试');
+      showNotification('error', err.message || 'Image upload error. Please try again.');
     } finally {
       setIsUploading(false);
       if (fileInputRef.current) fileInputRef.current.value = '';
@@ -118,7 +118,7 @@ export function ImageUploadManager({
     const [selected] = updated.splice(index, 1);
     updated.unshift(selected);
     onImagesChange(updated);
-    showNotification('success', '已将该图片设为主封面！');
+    showNotification('success', 'Set as primary cover image!');
   };
 
   // Move left / right
@@ -178,18 +178,18 @@ export function ImageUploadManager({
         <div className="flex items-center gap-2">
           <label className="text-xs font-bold text-stone-200 uppercase tracking-wider flex items-center gap-2">
             <ImageIcon className="h-4 w-4 text-emerald-400" />
-            <span>游戏图片管理 (Media Management)</span>
+            <span>Image Management</span>
           </label>
           <span className="rounded-full bg-emerald-400/10 border border-emerald-400/30 px-2 py-0.5 text-[10px] font-bold text-emerald-300">
-            {images.length} / {maxImages} 张
+            {images.length} / {maxImages} Images
           </span>
         </div>
         <div className="flex items-center gap-2 text-[11px] text-stone-400">
-          <span className="text-emerald-400 font-semibold">★ 最左侧第 1 张自动作为主封面</span>
+          <span className="text-emerald-400 font-semibold">★ 1st leftmost image is the Cover</span>
           <span>·</span>
-          <span>支持拖放排序</span>
+          <span>Drag & Drop to reorder</span>
           <span>·</span>
-          <span>最大 {maxFileSizeMB}MB/张</span>
+          <span>Max {maxFileSizeMB}MB/each</span>
         </div>
       </div>
 
@@ -242,11 +242,11 @@ export function ImageUploadManager({
                   {isCover ? (
                     <span className="flex items-center gap-1 rounded-lg bg-emerald-500 px-2 py-0.5 text-[10px] font-extrabold text-black shadow-md backdrop-blur">
                       <Star className="h-3 w-3 fill-black" />
-                      <span>主封面 (Cover)</span>
+                      <span>Cover</span>
                     </span>
                   ) : (
                     <span className="rounded-md bg-black/75 px-1.5 py-0.5 text-[9px] font-bold text-stone-300 backdrop-blur">
-                      #{idx + 1} 截图
+                      #{idx + 1}
                     </span>
                   )}
                 </div>
@@ -264,7 +264,7 @@ export function ImageUploadManager({
                     handleRemoveImage(idx);
                   }}
                   className="absolute right-2 bottom-2 z-10 grid h-7 w-7 place-items-center rounded-lg bg-rose-600/90 text-white shadow hover:bg-rose-700 transition opacity-0 group-hover:opacity-100"
-                  title="删除图片"
+                  title="Remove image"
                 >
                   <Trash2 className="h-3.5 w-3.5" />
                 </button>
@@ -278,10 +278,10 @@ export function ImageUploadManager({
                     onClick={() => handleSetAsCover(idx)}
                     className="text-emerald-400 hover:text-emerald-300 font-semibold hover:underline"
                   >
-                    ★ 设为主封面
+                    ★ Set as Cover
                   </button>
                 ) : (
-                  <span className="text-emerald-300 font-bold">默认展示封面</span>
+                  <span className="text-emerald-300 font-bold">Default Cover</span>
                 )}
 
                 <div className="flex items-center gap-1">
@@ -290,7 +290,7 @@ export function ImageUploadManager({
                     disabled={idx === 0}
                     onClick={() => handleMove(idx, idx - 1)}
                     className="grid h-5 w-5 place-items-center rounded bg-white/10 text-stone-300 hover:bg-white/20 disabled:opacity-30 disabled:pointer-events-none transition"
-                    title="左移"
+                    title="Move Left"
                   >
                     <ChevronLeft className="h-3 w-3" />
                   </button>
@@ -299,7 +299,7 @@ export function ImageUploadManager({
                     disabled={idx === images.length - 1}
                     onClick={() => handleMove(idx, idx + 1)}
                     className="grid h-5 w-5 place-items-center rounded bg-white/10 text-stone-300 hover:bg-white/20 disabled:opacity-30 disabled:pointer-events-none transition"
-                    title="右移"
+                    title="Move Right"
                   >
                     <ChevronRight className="h-3 w-3" />
                   </button>
@@ -320,7 +320,7 @@ export function ImageUploadManager({
             {isUploading ? (
               <div className="flex flex-col items-center gap-2">
                 <Loader2 className="h-6 w-6 text-emerald-400 animate-spin" />
-                <span className="text-xs text-emerald-300 font-medium">直传 R2 中...</span>
+                <span className="text-xs text-emerald-300 font-medium">Uploading to R2...</span>
               </div>
             ) : (
               <>
@@ -328,10 +328,10 @@ export function ImageUploadManager({
                   <Plus className="h-5 w-5" />
                 </div>
                 <p className="text-xs font-bold text-stone-200">
-                  {images.length === 0 ? '上传封面与截图' : '添加更多图片'}
+                  {images.length === 0 ? 'Upload Images' : 'Add Image'}
                 </p>
                 <p className="text-[10px] text-stone-400 mt-1">
-                  支持多选 · 还可传 {maxImages - images.length} 张
+                  Multi-select · {maxImages - images.length} remaining
                 </p>
               </>
             )}
@@ -341,7 +341,7 @@ export function ImageUploadManager({
 
       {images.length === 0 && (
         <p className="text-[11px] text-amber-300/90 bg-amber-500/10 border border-amber-500/20 rounded-xl p-2.5">
-          💡 提示：请至少上传 1 张图片，第 1 张图片将作为游戏在首页、分类列表和详情页的主封面展示。
+          💡 Note: Please upload at least 1 image. The 1st leftmost image will serve as the primary game cover across cards, search, and detail pages.
         </p>
       )}
     </div>

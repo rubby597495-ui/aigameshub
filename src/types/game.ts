@@ -38,6 +38,7 @@ export interface Game {
   bookmarkCount: number;
   aiScore: number;
   funScore: number;
+  ratingCount?: number;
   isFeatured: boolean;
   isHot: boolean;
   createdAt: string;
@@ -53,6 +54,7 @@ export interface SearchGameItem {
   developer: string;
   coverUrl: string;
   aiScore: number;
+  ratingCount?: number;
 }
 
 export interface Category {

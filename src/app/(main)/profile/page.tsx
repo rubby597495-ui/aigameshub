@@ -19,7 +19,6 @@ import {
   CheckCircle2,
   ArrowRight
 } from 'lucide-react';
-import { formatDate } from '@/lib/utils';
 
 export default function UserProfilePage() {
   const { user, bookmarks, playActivities, logout, openAuthModal } = useUserAuth();
@@ -46,17 +45,17 @@ export default function UserProfilePage() {
             <User className="h-8 w-8" />
           </div>
           <h1 className="text-xl font-bold text-stone-100">
-            登录以访问你的玩家主页
+            Sign in to Access Your Player Profile
           </h1>
           <p className="text-xs text-stone-400 leading-relaxed">
-            登录后即可管理你的已玩游戏库、记录通关评分、同步跨端收藏清单与管理提交的游戏。
+            Manage your played games library, record personal AI ratings, sync bookmarks across devices, and manage your game submissions.
           </p>
           <button
             type="button"
             onClick={() => openAuthModal('login')}
             className="w-full rounded-xl bg-[#8FAFA3] py-2.5 text-xs font-bold text-[#101715] hover:bg-[#A2BDB3] transition shadow-md"
           >
-            立即登录 / 免费注册
+            Sign In / Create Account
           </button>
         </div>
       </div>
@@ -70,7 +69,7 @@ export default function UserProfilePage() {
 
   return (
     <div className="space-y-8 max-w-7xl mx-auto">
-      <Breadcrumbs items={[{ name: '玩家中心 (Profile)', url: '/profile' }]} />
+      <Breadcrumbs items={[{ name: 'Player Profile', url: '/profile' }]} />
 
       {/* User Header Profile Card */}
       <div className="archive-surface rounded-3xl border border-white/10 bg-white/[0.03] p-6 sm:p-8 relative overflow-hidden shadow-xl">
@@ -96,7 +95,7 @@ export default function UserProfilePage() {
               className="inline-flex items-center gap-2 rounded-xl bg-[#8FAFA3] px-4 py-2 text-xs font-bold text-[#101715] hover:bg-[#A2BDB3] transition shadow"
             >
               <PlusCircle className="h-4 w-4" />
-              <span>提交我的 AI 游戏</span>
+              <span>Submit My AI Game</span>
             </Link>
             <button
               type="button"
@@ -104,7 +103,7 @@ export default function UserProfilePage() {
               className="inline-flex items-center gap-1.5 rounded-xl border border-rose-500/30 bg-rose-500/10 px-3 py-2 text-xs font-semibold text-rose-300 hover:bg-rose-500/20 transition"
             >
               <LogOut className="h-3.5 w-3.5" />
-              <span>退出</span>
+              <span>Sign Out</span>
             </button>
           </div>
         </div>
@@ -113,7 +112,7 @@ export default function UserProfilePage() {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-white/10 text-xs">
           <div className="rounded-2xl border border-white/10 bg-[#161B1E] p-3.5 space-y-1">
             <div className="flex items-center justify-between text-stone-400">
-              <span>已通关/已玩</span>
+              <span>Played / Finished</span>
               <Trophy className="h-3.5 w-3.5 text-emerald-400" />
             </div>
             <p className="text-2xl font-extrabold text-stone-100">{playedList.length}</p>
@@ -121,7 +120,7 @@ export default function UserProfilePage() {
 
           <div className="rounded-2xl border border-white/10 bg-[#161B1E] p-3.5 space-y-1">
             <div className="flex items-center justify-between text-stone-400">
-              <span>正在游玩</span>
+              <span>Currently Playing</span>
               <Gamepad2 className="h-3.5 w-3.5 text-amber-400" />
             </div>
             <p className="text-2xl font-extrabold text-stone-100">{playingList.length}</p>
@@ -129,7 +128,7 @@ export default function UserProfilePage() {
 
           <div className="rounded-2xl border border-white/10 bg-[#161B1E] p-3.5 space-y-1">
             <div className="flex items-center justify-between text-stone-400">
-              <span>我的收藏</span>
+              <span>Saved Bookmarks</span>
               <Heart className="h-3.5 w-3.5 text-pink-400" />
             </div>
             <p className="text-2xl font-extrabold text-stone-100">{bookmarks.length}</p>
@@ -137,7 +136,7 @@ export default function UserProfilePage() {
 
           <div className="rounded-2xl border border-white/10 bg-[#161B1E] p-3.5 space-y-1">
             <div className="flex items-center justify-between text-stone-400">
-              <span>平均个人评分</span>
+              <span>Avg Given Rating</span>
               <Star className="h-3.5 w-3.5 text-amber-300 fill-amber-300" />
             </div>
             <p className="text-2xl font-extrabold text-amber-300 font-mono">{avgRating} <span className="text-xs text-stone-400 font-normal">/ 10</span></p>
@@ -146,53 +145,53 @@ export default function UserProfilePage() {
       </div>
 
       {/* Tabs */}
-      <div className="flex items-center gap-2 border-b border-white/10 pb-3 text-xs">
+      <div className="flex items-center gap-2 border-b border-white/10 pb-3 text-xs overflow-x-auto">
         <button
           type="button"
           onClick={() => setActiveTab('played')}
-          className={`rounded-xl px-4 py-2 font-semibold transition ${
+          className={`rounded-xl px-4 py-2 font-semibold whitespace-nowrap transition ${
             activeTab === 'played'
               ? 'bg-[#2A3442] text-[#D8E1EA] shadow'
               : 'text-stone-400 hover:text-stone-200'
           }`}
         >
-          🏆 已通关 / 已玩 ({playedList.length})
+          🏆 Played ({playedList.length})
         </button>
 
         <button
           type="button"
           onClick={() => setActiveTab('playing')}
-          className={`rounded-xl px-4 py-2 font-semibold transition ${
+          className={`rounded-xl px-4 py-2 font-semibold whitespace-nowrap transition ${
             activeTab === 'playing'
               ? 'bg-[#2A3442] text-[#D8E1EA] shadow'
               : 'text-stone-400 hover:text-stone-200'
           }`}
         >
-          🕹️ 正在玩 ({playingList.length})
+          🕹️ Playing ({playingList.length})
         </button>
 
         <button
           type="button"
           onClick={() => setActiveTab('want_to_play')}
-          className={`rounded-xl px-4 py-2 font-semibold transition ${
+          className={`rounded-xl px-4 py-2 font-semibold whitespace-nowrap transition ${
             activeTab === 'want_to_play'
               ? 'bg-[#2A3442] text-[#D8E1EA] shadow'
               : 'text-stone-400 hover:text-stone-200'
           }`}
         >
-          💤 想玩清单 ({wantList.length})
+          💤 Plan to Play ({wantList.length})
         </button>
 
         <button
           type="button"
           onClick={() => setActiveTab('bookmarks')}
-          className={`rounded-xl px-4 py-2 font-semibold transition ${
+          className={`rounded-xl px-4 py-2 font-semibold whitespace-nowrap transition ${
             activeTab === 'bookmarks'
               ? 'bg-[#2A3442] text-[#D8E1EA] shadow'
               : 'text-stone-400 hover:text-stone-200'
           }`}
         >
-          ❤️ 我的收藏 ({bookmarkedList.length})
+          ❤️ Bookmarks ({bookmarkedList.length})
         </button>
       </div>
 
@@ -200,16 +199,16 @@ export default function UserProfilePage() {
       {displayedGames.length === 0 ? (
         <div className="archive-surface rounded-3xl p-10 text-center border border-white/10 bg-white/[0.02] space-y-3 max-w-md mx-auto">
           <p className="text-sm font-semibold text-stone-300">
-            该分类下暂无记录
+            No games in this category yet
           </p>
           <p className="text-xs text-stone-400 leading-relaxed">
-            前往游戏详情页，即可快速标记你的游玩进度与给游戏打分！
+            Visit any game page to log your play status and rate AI innovation!
           </p>
           <Link
             href="/games"
             className="inline-flex items-center gap-2 rounded-xl bg-[#8FAFA3] px-5 py-2 text-xs font-bold text-[#101715] hover:bg-[#A2BDB3] transition shadow"
           >
-            <span>去探索 AI 游戏</span>
+            <span>Explore AI Games</span>
             <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
@@ -220,7 +219,7 @@ export default function UserProfilePage() {
               <GameCard game={game} />
               {playActivities[game.id]?.rating && (
                 <div className="mt-2 flex items-center justify-between rounded-xl border border-amber-400/20 bg-amber-400/5 px-3 py-1.5 text-[11px] text-amber-300">
-                  <span>我的个人评分:</span>
+                  <span>Your Score:</span>
                   <span className="font-bold font-mono text-xs">{playActivities[game.id]?.rating}.0 / 10.0</span>
                 </div>
               )}

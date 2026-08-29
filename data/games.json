@@ -32,14 +32,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2154230/ss_6a0f8260db3d783d23881f2609292ac5bcf6c348.1920x1080.jpg?t=1745915662",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2154230/ss_2149e81218f787640cb61e6e61c6ec1497bb736d.1920x1080.jpg?t=1745915662"
     ],
-    "viewCount": 2000,
-    "likeCount": 135,
-    "bookmarkCount": 68,
-    "aiScore": 8.8,
-    "funScore": 8.4,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": true,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 2,
@@ -74,14 +75,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2726370/ss_8fe55477cfce9234001d130eddf369675fe4c689.1920x1080.jpg?t=1759336476",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2726370/746e3a029049861cdfc3ca465d236e3f1f9f153c/ss_746e3a029049861cdfc3ca465d236e3f1f9f153c.1920x1080.jpg?t=1759336476"
     ],
-    "viewCount": 2573,
-    "likeCount": 163,
-    "bookmarkCount": 82,
-    "aiScore": 9.5,
-    "funScore": 9.5,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": true,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 3,
@@ -110,14 +112,15 @@
     "coverUrl": "/images/placeholders/narrative-adventure.jpg",
     "hasLocalCover": false,
     "screenshots": [],
-    "viewCount": 3146,
-    "likeCount": 192,
-    "bookmarkCount": 96,
-    "aiScore": 9.0,
-    "funScore": 9.1,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 4,
@@ -152,14 +155,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2240920/ss_e89887581aa429c2f2250b48cb3472f3240c8001.1920x1080.jpg?t=1770214371",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2240920/9d50a0040debc8f225839667fca156caeca4af2e/ss_9d50a0040debc8f225839667fca156caeca4af2e.1920x1080.jpg?t=1770214371"
     ],
-    "viewCount": 3719,
-    "likeCount": 220,
-    "bookmarkCount": 110,
-    "aiScore": 9.7,
-    "funScore": 8.7,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": true,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 5,
@@ -188,14 +192,15 @@
     "coverUrl": "/uploads/games/friends-fables.jpg",
     "hasLocalCover": true,
     "screenshots": [],
-    "viewCount": 4292,
-    "likeCount": 249,
-    "bookmarkCount": 125,
-    "aiScore": 9.2,
-    "funScore": 9.8,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": true,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 6,
@@ -224,14 +229,15 @@
     "coverUrl": "/uploads/games/gandalf-by-lakera.jpg",
     "hasLocalCover": true,
     "screenshots": [],
-    "viewCount": 4865,
-    "likeCount": 278,
-    "bookmarkCount": 139,
-    "aiScore": 9.9,
-    "funScore": 9.4,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": true,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 7,
@@ -266,14 +272,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2778690/ss_ba1ae16080ce61cd4939fb0f93f74dfc3f8206f9.1920x1080.jpg?t=1724052042",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2778690/ss_88dd63588cdc1d6fb6141027e1d52caba4586e25.1920x1080.jpg?t=1724052042"
     ],
-    "viewCount": 5438,
-    "likeCount": 306,
-    "bookmarkCount": 153,
-    "aiScore": 9.4,
-    "funScore": 9.0,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 8,
@@ -304,14 +311,15 @@
     "coverUrl": "/uploads/games/yandere-ai-girlfriend-simulator.jpg",
     "hasLocalCover": true,
     "screenshots": [],
-    "viewCount": 6011,
-    "likeCount": 335,
-    "bookmarkCount": 168,
-    "aiScore": 8.9,
-    "funScore": 8.6,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 9,
@@ -342,14 +350,15 @@
     "coverUrl": "/images/placeholders/party-social.jpg",
     "hasLocalCover": false,
     "screenshots": [],
-    "viewCount": 6584,
-    "likeCount": 364,
-    "bookmarkCount": 182,
-    "aiScore": 9.6,
-    "funScore": 9.7,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": true,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 10,
@@ -384,14 +393,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2285280/e754388a1798570e01ca57a2acc047fc3c69c5b3/ss_e754388a1798570e01ca57a2acc047fc3c69c5b3.1920x1080.jpg?t=1746413346",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2285280/5d0d098c6481cd1ac9cf8155ac4537e082e3486a/ss_5d0d098c6481cd1ac9cf8155ac4537e082e3486a.1920x1080.jpg?t=1746413346"
     ],
-    "viewCount": 7157,
-    "likeCount": 392,
-    "bookmarkCount": 196,
-    "aiScore": 9.1,
-    "funScore": 9.3,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 11,
@@ -421,14 +431,15 @@
     "coverUrl": "/uploads/games/onespellfitsall.jpg",
     "hasLocalCover": true,
     "screenshots": [],
-    "viewCount": 7730,
-    "likeCount": 421,
-    "bookmarkCount": 211,
-    "aiScore": 9.8,
-    "funScore": 8.9,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 12,
@@ -463,14 +474,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1889620/7b3e438dd6fce66b611bdb9ca62e872b61b93f82/ss_7b3e438dd6fce66b611bdb9ca62e872b61b93f82.1920x1080.jpg?t=1784938095",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1889620/685ab99f5b42becf44e12b7e46368d38edb5dca5/ss_685ab99f5b42becf44e12b7e46368d38edb5dca5.1920x1080.jpg?t=1784938095"
     ],
-    "viewCount": 8303,
-    "likeCount": 450,
-    "bookmarkCount": 225,
-    "aiScore": 9.3,
-    "funScore": 8.5,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": true,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 13,
@@ -505,14 +517,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1978690/ss_f4f89b69f6c34bc33e95133ec467dd74e1920df8.1920x1080.jpg?t=1719341551",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/1978690/ss_6b2b32ea8753974774ba97ed56d0e4de1eb1e727.1920x1080.jpg?t=1719341551"
     ],
-    "viewCount": 8876,
-    "likeCount": 478,
-    "bookmarkCount": 239,
-    "aiScore": 8.8,
-    "funScore": 9.6,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 14,
@@ -541,14 +554,15 @@
     "coverUrl": "/uploads/games/dejaboom.jpg",
     "hasLocalCover": true,
     "screenshots": [],
-    "viewCount": 9449,
-    "likeCount": 507,
-    "bookmarkCount": 254,
-    "aiScore": 9.5,
-    "funScore": 9.2,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 15,
@@ -578,14 +592,15 @@
     "coverUrl": "/images/placeholders/puzzle.jpg",
     "hasLocalCover": false,
     "screenshots": [],
-    "viewCount": 10022,
-    "likeCount": 536,
-    "bookmarkCount": 268,
-    "aiScore": 9.0,
-    "funScore": 8.8,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 16,
@@ -615,14 +630,15 @@
     "coverUrl": "/images/placeholders/narrative-adventure.jpg",
     "hasLocalCover": false,
     "screenshots": [],
-    "viewCount": 10595,
-    "likeCount": 564,
-    "bookmarkCount": 282,
-    "aiScore": 9.7,
-    "funScore": 8.4,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 17,
@@ -651,14 +667,15 @@
     "coverUrl": "/images/placeholders/sandbox.jpg",
     "hasLocalCover": false,
     "screenshots": [],
-    "viewCount": 11168,
-    "likeCount": 593,
-    "bookmarkCount": 297,
-    "aiScore": 9.2,
-    "funScore": 9.5,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": true,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 18,
@@ -693,14 +710,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3224380/ss_9a375fa5ae466c735d136694f9aad6c3cbfd6b27.1920x1080.jpg?t=1759773757",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3224380/ss_26865a27112feae31215efbe9aaba837a8f792d5.1920x1080.jpg?t=1759773757"
     ],
-    "viewCount": 11741,
-    "likeCount": 622,
-    "bookmarkCount": 311,
-    "aiScore": 9.9,
-    "funScore": 9.1,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": true,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 19,
@@ -735,14 +753,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2795060/b6081512e48c8c43084b57d83302ca1e8999f6ca/ss_b6081512e48c8c43084b57d83302ca1e8999f6ca.1920x1080.jpg?t=1767582304",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2795060/410eb4aaae5e9b092473761e61a291d1aafbdcfa/ss_410eb4aaae5e9b092473761e61a291d1aafbdcfa.1920x1080.jpg?t=1767582304"
     ],
-    "viewCount": 12314,
-    "likeCount": 650,
-    "bookmarkCount": 325,
-    "aiScore": 9.4,
-    "funScore": 8.7,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 20,
@@ -777,14 +796,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2778780/ss_85237d1950672eb0d701664979f30d70642fc729.1920x1080.jpg?t=1711643323",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2778780/ss_47633e460fd9e8183819a74602869c0c88395c69.1920x1080.jpg?t=1711643323"
     ],
-    "viewCount": 12887,
-    "likeCount": 679,
-    "bookmarkCount": 340,
-    "aiScore": 8.9,
-    "funScore": 9.8,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 21,
@@ -819,14 +839,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2844700/ss_a27b317c3a006a3b6cd9e70c880546c91be24b31.1920x1080.jpg?t=1753613928",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2844700/ss_3120a755687f11bc33db45eeca15420bf291b4d7.1920x1080.jpg?t=1753613928"
     ],
-    "viewCount": 13460,
-    "likeCount": 708,
-    "bookmarkCount": 354,
-    "aiScore": 9.6,
-    "funScore": 9.4,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 22,
@@ -861,14 +882,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2492290/ss_b4244ed9a11eea38c899d97581c8053705d5bcf8.1920x1080.jpg?t=1760355284",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2492290/ss_4f3b6f2b45d48bd5f0268209dc7d418e668754b0.1920x1080.jpg?t=1760355284"
     ],
-    "viewCount": 14033,
-    "likeCount": 736,
-    "bookmarkCount": 368,
-    "aiScore": 9.1,
-    "funScore": 9.0,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 23,
@@ -897,14 +919,15 @@
     "coverUrl": "/uploads/games/ai-game-master---dungeon-rpg.jpg",
     "hasLocalCover": true,
     "screenshots": [],
-    "viewCount": 14606,
-    "likeCount": 765,
-    "bookmarkCount": 383,
-    "aiScore": 9.8,
-    "funScore": 8.6,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": true,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 24,
@@ -939,14 +962,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3282930/ss_d34f46bf758a26292468d3553f61d39ebbae0e9b.1920x1080.jpg?t=1746014256",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3282930/ss_7f0b0221511bc39c63f3f0bf6e34601420d16846.1920x1080.jpg?t=1746014256"
     ],
-    "viewCount": 15179,
-    "likeCount": 793,
-    "bookmarkCount": 397,
-    "aiScore": 9.3,
-    "funScore": 9.7,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 25,
@@ -981,14 +1005,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2800150/ss_b6eb9dcb15811c1f421457aeaa2092e0190338f4.1920x1080.jpg?t=1769227836",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2800150/ss_a599ce32b3b2e39a3f34cd33e35aa9218620d390.1920x1080.jpg?t=1769227836"
     ],
-    "viewCount": 15752,
-    "likeCount": 822,
-    "bookmarkCount": 411,
-    "aiScore": 8.8,
-    "funScore": 9.3,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 26,
@@ -1023,14 +1048,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3118900/ss_4c7e65c1ff00303cc5f3ea6a43ce182a2c10aa4e.1920x1080.jpg?t=1734674551",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3118900/ss_69328685139c5f023a89aea4c54046f29eef4b12.1920x1080.jpg?t=1734674551"
     ],
-    "viewCount": 16325,
-    "likeCount": 851,
-    "bookmarkCount": 426,
-    "aiScore": 9.5,
-    "funScore": 8.9,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 27,
@@ -1059,14 +1085,15 @@
     "coverUrl": "/images/placeholders/sandbox.jpg",
     "hasLocalCover": false,
     "screenshots": [],
-    "viewCount": 16898,
-    "likeCount": 879,
-    "bookmarkCount": 440,
-    "aiScore": 9.0,
-    "funScore": 8.5,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 28,
@@ -1095,14 +1122,15 @@
     "coverUrl": "/uploads/games/hidden-door.jpg",
     "hasLocalCover": true,
     "screenshots": [],
-    "viewCount": 17471,
-    "likeCount": 908,
-    "bookmarkCount": 454,
-    "aiScore": 9.7,
-    "funScore": 9.6,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 29,
@@ -1137,14 +1165,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2880730/1cee5b3e3b9fc33498d1a651c4a2ac25ca1a9654/ss_1cee5b3e3b9fc33498d1a651c4a2ac25ca1a9654.1920x1080.jpg?t=1786561233",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2880730/4bf1de2d371022a16fe3fc8a42deb4073500ad6e/ss_4bf1de2d371022a16fe3fc8a42deb4073500ad6e.1920x1080.jpg?t=1786561233"
     ],
-    "viewCount": 18044,
-    "likeCount": 937,
-    "bookmarkCount": 469,
-    "aiScore": 9.2,
-    "funScore": 9.2,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": true,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 30,
@@ -1179,14 +1208,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3730100/2299763a9bbd92f1c9ed842200db90d66d69db68/ss_2299763a9bbd92f1c9ed842200db90d66d69db68.1920x1080.jpg?t=1764897761",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3730100/57f89c8d2bd8df73d94a0b487916a491d255b7e3/ss_57f89c8d2bd8df73d94a0b487916a491d255b7e3.1920x1080.jpg?t=1764897761"
     ],
-    "viewCount": 18617,
-    "likeCount": 965,
-    "bookmarkCount": 483,
-    "aiScore": 9.9,
-    "funScore": 8.8,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 31,
@@ -1221,14 +1251,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3991060/4d0d4bda5654188f1467e1ac0769832740ac4538/ss_4d0d4bda5654188f1467e1ac0769832740ac4538.1920x1080.jpg?t=1765941757",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3991060/96e8ac634b15318f18c411b4397211ed5ae5e390/ss_96e8ac634b15318f18c411b4397211ed5ae5e390.1920x1080.jpg?t=1765941757"
     ],
-    "viewCount": 19190,
-    "likeCount": 994,
-    "bookmarkCount": 497,
-    "aiScore": 9.4,
-    "funScore": 8.4,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 32,
@@ -1263,14 +1294,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3189430/ss_93443d18ecbf79e99b7f6db98befd0a135463ea9.1920x1080.jpg?t=1749060718",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3189430/ss_f607098959f48026044e0682c4d8e0c5ef20650d.1920x1080.jpg?t=1749060718"
     ],
-    "viewCount": 19763,
-    "likeCount": 1023,
-    "bookmarkCount": 512,
-    "aiScore": 8.9,
-    "funScore": 9.5,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 33,
@@ -1300,14 +1332,15 @@
     "coverUrl": "/images/placeholders/narrative-adventure.jpg",
     "hasLocalCover": false,
     "screenshots": [],
-    "viewCount": 20336,
-    "likeCount": 1051,
-    "bookmarkCount": 526,
-    "aiScore": 9.6,
-    "funScore": 9.1,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 34,
@@ -1342,14 +1375,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3808550/652474b87cfedb2514577f83da854a0746a3e815/ss_652474b87cfedb2514577f83da854a0746a3e815.1920x1080.jpg?t=1785621127",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3808550/1bca38cf4ce4f2cbb783a5e2f360f0ca38af7f74/ss_1bca38cf4ce4f2cbb783a5e2f360f0ca38af7f74.1920x1080.jpg?t=1785621127"
     ],
-    "viewCount": 20909,
-    "likeCount": 1080,
-    "bookmarkCount": 540,
-    "aiScore": 9.1,
-    "funScore": 8.7,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 35,
@@ -1384,14 +1418,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3600810/2e65be970e8deb32ac3c18a49b6f85fcf2ffca8f/ss_2e65be970e8deb32ac3c18a49b6f85fcf2ffca8f.1920x1080.jpg?t=1779831883",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3600810/108f01fd371383867673496efb9a38774710b4ae/ss_108f01fd371383867673496efb9a38774710b4ae.1920x1080.jpg?t=1779831883"
     ],
-    "viewCount": 21482,
-    "likeCount": 1109,
-    "bookmarkCount": 555,
-    "aiScore": 9.8,
-    "funScore": 9.8,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 36,
@@ -1426,14 +1461,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3184990/a6cb399cf6f5f40fe550e23f84030433bdc94222/ss_a6cb399cf6f5f40fe550e23f84030433bdc94222.1920x1080.jpg?t=1768359020",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3184990/03f8a5065a3569f4506fb9b3cc9566d79031fae7/ss_03f8a5065a3569f4506fb9b3cc9566d79031fae7.1920x1080.jpg?t=1768359020"
     ],
-    "viewCount": 22055,
-    "likeCount": 1137,
-    "bookmarkCount": 569,
-    "aiScore": 9.3,
-    "funScore": 9.4,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 37,
@@ -1468,14 +1504,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3902690/599a3c7d661289bf9090932dc1821006801dd620/ss_599a3c7d661289bf9090932dc1821006801dd620.1920x1080.jpg?t=1781547199",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3902690/74f52977b6fed07422c09744e3f3dcc26bd04f3d/ss_74f52977b6fed07422c09744e3f3dcc26bd04f3d.1920x1080.jpg?t=1781547199"
     ],
-    "viewCount": 22628,
-    "likeCount": 1166,
-    "bookmarkCount": 583,
-    "aiScore": 8.8,
-    "funScore": 9.0,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 38,
@@ -1510,14 +1547,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3600510/30be86ce43b47477e233d10d76c2165144d9429b/ss_30be86ce43b47477e233d10d76c2165144d9429b.1920x1080.jpg?t=1755849025",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3600510/372e720186b1ebea154dc36362d4781946c5a151/ss_372e720186b1ebea154dc36362d4781946c5a151.1920x1080.jpg?t=1755849025"
     ],
-    "viewCount": 23201,
-    "likeCount": 1195,
-    "bookmarkCount": 598,
-    "aiScore": 9.5,
-    "funScore": 8.6,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 39,
@@ -1546,14 +1584,15 @@
     "coverUrl": "/images/placeholders/puzzle.jpg",
     "hasLocalCover": false,
     "screenshots": [],
-    "viewCount": 23774,
-    "likeCount": 1223,
-    "bookmarkCount": 612,
-    "aiScore": 9.0,
-    "funScore": 9.7,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": true,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 40,
@@ -1588,14 +1627,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4667950/40153bc94ee3b01087916c9ab6f2d72c43af7cd4/ss_40153bc94ee3b01087916c9ab6f2d72c43af7cd4.1920x1080.jpg?t=1781527947",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4667950/52cbcede9206b648dcd0accebc4cd3f686ea57a7/ss_52cbcede9206b648dcd0accebc4cd3f686ea57a7.1920x1080.jpg?t=1781527947"
     ],
-    "viewCount": 24347,
-    "likeCount": 1252,
-    "bookmarkCount": 626,
-    "aiScore": 9.7,
-    "funScore": 9.3,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 41,
@@ -1630,14 +1670,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3105960/a0f5e6c7832cc045d1dac9006b255e5633d072c2/ss_a0f5e6c7832cc045d1dac9006b255e5633d072c2.1920x1080.jpg?t=1786669561",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3105960/684878f969cf2475695f82119444ca82f93565e7/ss_684878f969cf2475695f82119444ca82f93565e7.1920x1080.jpg?t=1786669561"
     ],
-    "viewCount": 24920,
-    "likeCount": 1281,
-    "bookmarkCount": 641,
-    "aiScore": 9.2,
-    "funScore": 8.9,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": true,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 42,
@@ -1672,14 +1713,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4364560/458e54c770a6e5eae56a1d7dd9ae39732dad8174/ss_458e54c770a6e5eae56a1d7dd9ae39732dad8174.1920x1080.jpg?t=1779576635",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4364560/e2a9c2e343cbc9dbbe334c14adc953493e74656a/ss_e2a9c2e343cbc9dbbe334c14adc953493e74656a.1920x1080.jpg?t=1779576635"
     ],
-    "viewCount": 25493,
-    "likeCount": 1309,
-    "bookmarkCount": 655,
-    "aiScore": 9.9,
-    "funScore": 8.5,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 43,
@@ -1714,14 +1756,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3750520/d57a7050a91efa0f56fa14c8750c9dad4e8ea3b1/ss_d57a7050a91efa0f56fa14c8750c9dad4e8ea3b1.1920x1080.jpg?t=1754270133",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3750520/c5f71517e1dc8995ff9f222bd469cc80a8145fdd/ss_c5f71517e1dc8995ff9f222bd469cc80a8145fdd.1920x1080.jpg?t=1754270133"
     ],
-    "viewCount": 26066,
-    "likeCount": 1338,
-    "bookmarkCount": 669,
-    "aiScore": 9.4,
-    "funScore": 9.6,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 44,
@@ -1756,14 +1799,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4210600/5a57139a8a649a05467f19e36d3755828a568c0f/ss_5a57139a8a649a05467f19e36d3755828a568c0f.1920x1080.jpg?t=1779885456",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4210600/5a16a02c897609bb63ad3bb53e9bef5a81550070/ss_5a16a02c897609bb63ad3bb53e9bef5a81550070.1920x1080.jpg?t=1779885456"
     ],
-    "viewCount": 26639,
-    "likeCount": 1366,
-    "bookmarkCount": 683,
-    "aiScore": 8.9,
-    "funScore": 9.2,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 45,
@@ -1798,14 +1842,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4350940/9502bba5881ee94c83c61bce6c57c83391204e5f/ss_9502bba5881ee94c83c61bce6c57c83391204e5f.1920x1080.jpg?t=1777912507",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4350940/dc2e79591201d8896eb371a4d0696017eda9841a/ss_dc2e79591201d8896eb371a4d0696017eda9841a.1920x1080.jpg?t=1777912507"
     ],
-    "viewCount": 27212,
-    "likeCount": 1395,
-    "bookmarkCount": 698,
-    "aiScore": 9.6,
-    "funScore": 8.8,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 46,
@@ -1840,14 +1885,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4306040/61598724d553cc1a9d938d8f497aa76429d7a6d4/ss_61598724d553cc1a9d938d8f497aa76429d7a6d4.1920x1080.jpg?t=1785780206",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4306040/97680d35b995c33eec8cce7b74d1d79df6266855/ss_97680d35b995c33eec8cce7b74d1d79df6266855.1920x1080.jpg?t=1785780206"
     ],
-    "viewCount": 27785,
-    "likeCount": 1424,
-    "bookmarkCount": 712,
-    "aiScore": 9.1,
-    "funScore": 8.4,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 47,
@@ -1882,14 +1928,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4596790/21c84fb03fd5721368c2110ddd5f17e5deeb8df6/ss_21c84fb03fd5721368c2110ddd5f17e5deeb8df6.1920x1080.jpg?t=1781110334",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4596790/df2e94f88ce8230c905724a44597876bd31274da/ss_df2e94f88ce8230c905724a44597876bd31274da.1920x1080.jpg?t=1781110334"
     ],
-    "viewCount": 28358,
-    "likeCount": 1452,
-    "bookmarkCount": 726,
-    "aiScore": 9.8,
-    "funScore": 9.5,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 48,
@@ -1924,14 +1971,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4594070/508c490a700f992eabb89e621a05f99553234bbf/ss_508c490a700f992eabb89e621a05f99553234bbf.1920x1080.jpg?t=1787235116",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4594070/abd82d7116e54faaa1921445f41613d46640ae3f/ss_abd82d7116e54faaa1921445f41613d46640ae3f.1920x1080.jpg?t=1787235116"
     ],
-    "viewCount": 28931,
-    "likeCount": 1481,
-    "bookmarkCount": 741,
-    "aiScore": 9.3,
-    "funScore": 9.1,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 49,
@@ -1966,14 +2014,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4404980/24b2b4bb91a52e0563a727efaf415b63d73357d6/ss_24b2b4bb91a52e0563a727efaf415b63d73357d6.1920x1080.jpg?t=1786397018",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4404980/b5f269cca269763fe1740a7861b7c53fbc3880d0/ss_b5f269cca269763fe1740a7861b7c53fbc3880d0.1920x1080.jpg?t=1786397018"
     ],
-    "viewCount": 29504,
-    "likeCount": 1510,
-    "bookmarkCount": 755,
-    "aiScore": 8.8,
-    "funScore": 8.7,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 50,
@@ -2008,14 +2057,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4275550/02a08df88f9cdd8b514ad177a2f6ec2945398d0e/ss_02a08df88f9cdd8b514ad177a2f6ec2945398d0e.1920x1080.jpg?t=1786554752",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4275550/d34446d265411cf6a97d7cb3cfab6aa11223ee99/ss_d34446d265411cf6a97d7cb3cfab6aa11223ee99.1920x1080.jpg?t=1786554752"
     ],
-    "viewCount": 30077,
-    "likeCount": 1538,
-    "bookmarkCount": 769,
-    "aiScore": 9.5,
-    "funScore": 9.8,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 51,
@@ -2050,14 +2100,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4685310/2fe0e53832f9a7a39a4cc370f433b083d4e04c10/ss_2fe0e53832f9a7a39a4cc370f433b083d4e04c10.1920x1080.jpg?t=1778528366",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4685310/ede0b17a84ba96a0f59f20e484a9eec9798ec9a7/ss_ede0b17a84ba96a0f59f20e484a9eec9798ec9a7.1920x1080.jpg?t=1778528366"
     ],
-    "viewCount": 30650,
-    "likeCount": 1567,
-    "bookmarkCount": 784,
-    "aiScore": 9.0,
-    "funScore": 9.4,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 52,
@@ -2092,14 +2143,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4468180/1232d499a677d177bba2b4a3faa99959ec751681/ss_1232d499a677d177bba2b4a3faa99959ec751681.1920x1080.jpg?t=1782765164",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4468180/e8c1f9ab75753619edb7c5912d2b02180e754fe9/ss_e8c1f9ab75753619edb7c5912d2b02180e754fe9.1920x1080.jpg?t=1782765164"
     ],
-    "viewCount": 31223,
-    "likeCount": 1596,
-    "bookmarkCount": 798,
-    "aiScore": 9.7,
-    "funScore": 9.0,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 53,
@@ -2134,14 +2186,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4541960/5c6d6d3e70940832465187b355c80dd9770b9ece/ss_5c6d6d3e70940832465187b355c80dd9770b9ece.1920x1080.jpg?t=1783647597",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4541960/a213ffd513f8fc9865ed44feff9835e7cc1e3d7c/ss_a213ffd513f8fc9865ed44feff9835e7cc1e3d7c.1920x1080.jpg?t=1783647597"
     ],
-    "viewCount": 31796,
-    "likeCount": 1624,
-    "bookmarkCount": 812,
-    "aiScore": 9.2,
-    "funScore": 8.6,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": true,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 54,
@@ -2176,14 +2229,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4763330/fa1ffe5d8efba8c52f7c17e41ac485b5f0702a67/ss_fa1ffe5d8efba8c52f7c17e41ac485b5f0702a67.1920x1080.jpg?t=1787069215",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4763330/49d68338463d771dbb992d3e4a135efd73916019/ss_49d68338463d771dbb992d3e4a135efd73916019.1920x1080.jpg?t=1787069215"
     ],
-    "viewCount": 32369,
-    "likeCount": 1653,
-    "bookmarkCount": 827,
-    "aiScore": 9.9,
-    "funScore": 9.7,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 55,
@@ -2213,14 +2267,15 @@
     "coverUrl": "/images/placeholders/strategy.jpg",
     "hasLocalCover": false,
     "screenshots": [],
-    "viewCount": 32942,
-    "likeCount": 1682,
-    "bookmarkCount": 841,
-    "aiScore": 9.4,
-    "funScore": 9.3,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 56,
@@ -2255,14 +2310,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3522640/9c260ad3a3674720faa4d4023f2ecf8a1458a506/ss_9c260ad3a3674720faa4d4023f2ecf8a1458a506.1920x1080.jpg?t=1781512784",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3522640/cbd23f99b9e6aeb5cd8ddab9103324e5e7f17d11/ss_cbd23f99b9e6aeb5cd8ddab9103324e5e7f17d11.1920x1080.jpg?t=1781512784"
     ],
-    "viewCount": 33515,
-    "likeCount": 1710,
-    "bookmarkCount": 855,
-    "aiScore": 8.9,
-    "funScore": 8.9,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 57,
@@ -2297,14 +2353,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4249890/2c873ad118d39ea83afa23b82043f0e1046b2b9b/ss_2c873ad118d39ea83afa23b82043f0e1046b2b9b.1920x1080.jpg?t=1771083211",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4249890/cdcad8e7a60c707cca5d2fd31c33323a42f53691/ss_cdcad8e7a60c707cca5d2fd31c33323a42f53691.1920x1080.jpg?t=1771083211"
     ],
-    "viewCount": 34088,
-    "likeCount": 1739,
-    "bookmarkCount": 870,
-    "aiScore": 9.6,
-    "funScore": 8.5,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 58,
@@ -2339,14 +2396,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4285970/feec05cbd403cc9d3be06542f3d43f814998a3e0/ss_feec05cbd403cc9d3be06542f3d43f814998a3e0.1920x1080.jpg?t=1781548016",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4285970/5cb7855869976e9245f09a2c27aa4de74a3450bc/ss_5cb7855869976e9245f09a2c27aa4de74a3450bc.1920x1080.jpg?t=1781548016"
     ],
-    "viewCount": 34661,
-    "likeCount": 1768,
-    "bookmarkCount": 884,
-    "aiScore": 9.1,
-    "funScore": 9.6,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 59,
@@ -2381,14 +2439,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3380580/ss_43193c00e6fa37dcd1f879553183a678c6c01b16.1920x1080.jpg?t=1777996784",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3380580/6b16f7f9218e821f69b4e02f4b2e438d456c8ac5/ss_6b16f7f9218e821f69b4e02f4b2e438d456c8ac5.1920x1080.jpg?t=1777996784"
     ],
-    "viewCount": 35234,
-    "likeCount": 1796,
-    "bookmarkCount": 898,
-    "aiScore": 9.8,
-    "funScore": 9.2,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 60,
@@ -2423,14 +2482,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2919500/ss_48648942cd28f2205d91aed38b20ebbe2acf0c23.1920x1080.jpg?t=1725891738",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2919500/ss_407936115d948de67b0064569229307905bfd923.1920x1080.jpg?t=1725891738"
     ],
-    "viewCount": 35807,
-    "likeCount": 1825,
-    "bookmarkCount": 913,
-    "aiScore": 9.3,
-    "funScore": 8.8,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 61,
@@ -2465,14 +2525,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3886140/ab3776915b1ccc8bae41cb0a36019dbd4b54f0f1/ss_ab3776915b1ccc8bae41cb0a36019dbd4b54f0f1.1920x1080.jpg?t=1785694964",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3886140/5c75a98ca50319cf5da10e2e57e6df4e9ebcb5d6/ss_5c75a98ca50319cf5da10e2e57e6df4e9ebcb5d6.1920x1080.jpg?t=1785694964"
     ],
-    "viewCount": 36380,
-    "likeCount": 1854,
-    "bookmarkCount": 927,
-    "aiScore": 8.8,
-    "funScore": 8.4,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 62,
@@ -2507,14 +2568,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4513270/6eb1d22a67825acce796ef4b296164433093fe49/ss_6eb1d22a67825acce796ef4b296164433093fe49.1920x1080.jpg?t=1783553071",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4513270/5e2d8561c407a011db8e124598e76228764c0398/ss_5e2d8561c407a011db8e124598e76228764c0398.1920x1080.jpg?t=1783553071"
     ],
-    "viewCount": 36953,
-    "likeCount": 1882,
-    "bookmarkCount": 941,
-    "aiScore": 9.5,
-    "funScore": 9.5,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 63,
@@ -2549,14 +2611,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/710810/c85119ed6e0f29b862845193e28557ce0c2746c4/ss_c85119ed6e0f29b862845193e28557ce0c2746c4.1920x1080.jpg?t=1771518693",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/710810/e5fb83d8d0f93f2ed02fcb18d7b4d03404565071/ss_e5fb83d8d0f93f2ed02fcb18d7b4d03404565071.1920x1080.jpg?t=1771518693"
     ],
-    "viewCount": 37526,
-    "likeCount": 1911,
-    "bookmarkCount": 956,
-    "aiScore": 9.0,
-    "funScore": 9.1,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 64,
@@ -2591,14 +2654,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4660010/1b4b08a0ccbdaccda6321f759c16254a639ff02f/ss_1b4b08a0ccbdaccda6321f759c16254a639ff02f.1920x1080.jpg?t=1777664351",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4660010/0178aebfd5ab53e89f6fea607c1e7ce87ed40db2/ss_0178aebfd5ab53e89f6fea607c1e7ce87ed40db2.1920x1080.jpg?t=1777664351"
     ],
-    "viewCount": 38099,
-    "likeCount": 1939,
-    "bookmarkCount": 970,
-    "aiScore": 9.7,
-    "funScore": 8.7,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 65,
@@ -2633,14 +2697,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4443950/739f92e74caa2a51fb2a8d049c83ba824fd411fb/ss_739f92e74caa2a51fb2a8d049c83ba824fd411fb.1920x1080.jpg?t=1783926366",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4443950/4de44e4da17e94577b474b4a72d07f7e53737030/ss_4de44e4da17e94577b474b4a72d07f7e53737030.1920x1080.jpg?t=1783926366"
     ],
-    "viewCount": 38672,
-    "likeCount": 1968,
-    "bookmarkCount": 984,
-    "aiScore": 9.2,
-    "funScore": 9.8,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 66,
@@ -2675,14 +2740,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4437020/b1029d055b14d57eff9fd3c1978b0b97650e556c/ss_b1029d055b14d57eff9fd3c1978b0b97650e556c.1920x1080.jpg?t=1786609101",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4437020/7794cff7a0f8ef55fd199eb11fc2a7d482f8aeb4/ss_7794cff7a0f8ef55fd199eb11fc2a7d482f8aeb4.1920x1080.jpg?t=1786609101"
     ],
-    "viewCount": 39245,
-    "likeCount": 1997,
-    "bookmarkCount": 999,
-    "aiScore": 9.9,
-    "funScore": 9.4,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 67,
@@ -2717,14 +2783,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3029600/ss_0b6627fae3a928e77e8bbee8bb940cc7a7c0b05b.1920x1080.jpg?t=1732131075",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3029600/ss_de377dce3784320dc5017509a9e28042d632ef21.1920x1080.jpg?t=1732131075"
     ],
-    "viewCount": 39818,
-    "likeCount": 2025,
-    "bookmarkCount": 1013,
-    "aiScore": 9.4,
-    "funScore": 9.0,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 68,
@@ -2759,14 +2826,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3858330/6636d2490f52d75c859579d19c536ea4d399826a/ss_6636d2490f52d75c859579d19c536ea4d399826a.1920x1080.jpg?t=1766774817",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3858330/624cfb6a0c7f35ff548f2ec23706bc34ca896e93/ss_624cfb6a0c7f35ff548f2ec23706bc34ca896e93.1920x1080.jpg?t=1766774817"
     ],
-    "viewCount": 40391,
-    "likeCount": 2054,
-    "bookmarkCount": 1027,
-    "aiScore": 8.9,
-    "funScore": 8.6,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 69,
@@ -2801,14 +2869,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3583750/cec4640ee61f1d8f379ae78ceef4824bec433a9a/ss_cec4640ee61f1d8f379ae78ceef4824bec433a9a.1920x1080.jpg?t=1742956613",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3583750/464ff2b9ed2a250218f157c419448829309910d4/ss_464ff2b9ed2a250218f157c419448829309910d4.1920x1080.jpg?t=1742956613"
     ],
-    "viewCount": 40964,
-    "likeCount": 2083,
-    "bookmarkCount": 1042,
-    "aiScore": 9.6,
-    "funScore": 9.7,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 70,
@@ -2843,14 +2912,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2667830/ss_481c587f43ca142357017e685a8653b19aa41a0d.1920x1080.jpg?t=1747620341",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2667830/ss_d59ab69f673c96d20606a001324da1625a4c5043.1920x1080.jpg?t=1747620341"
     ],
-    "viewCount": 41537,
-    "likeCount": 2111,
-    "bookmarkCount": 1056,
-    "aiScore": 9.1,
-    "funScore": 9.3,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 71,
@@ -2885,14 +2955,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3082970/ss_5b5ebabd3a47846fc7fb7d26006674e6ebbc457d.1920x1080.jpg?t=1733550475",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3082970/ss_b0b1dec36b42045d8d3b52a6cb3fbb21e4c81d39.1920x1080.jpg?t=1733550475"
     ],
-    "viewCount": 42110,
-    "likeCount": 2140,
-    "bookmarkCount": 1070,
-    "aiScore": 9.8,
-    "funScore": 8.9,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 72,
@@ -2927,14 +2998,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3502320/ss_99848500f6342c22d1857c6effa5c739b65c06b2.1920x1080.jpg?t=1744721070",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3502320/ss_77856552aef5ebe0bebd374206abef316b9128ac.1920x1080.jpg?t=1744721070"
     ],
-    "viewCount": 42683,
-    "likeCount": 2169,
-    "bookmarkCount": 1085,
-    "aiScore": 9.3,
-    "funScore": 8.5,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 73,
@@ -2969,14 +3041,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3902630/ceefda18fa64a1d90c7c81970993d092ba4d4793/ss_ceefda18fa64a1d90c7c81970993d092ba4d4793.1920x1080.jpg?t=1754236790",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3902630/3bfff3b11a97d95c17ac8a16b378488715fe4ee6/ss_3bfff3b11a97d95c17ac8a16b378488715fe4ee6.1920x1080.jpg?t=1754236790"
     ],
-    "viewCount": 43256,
-    "likeCount": 2197,
-    "bookmarkCount": 1099,
-    "aiScore": 8.8,
-    "funScore": 9.6,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 74,
@@ -3006,14 +3079,15 @@
     "coverUrl": "/images/placeholders/strategy.jpg",
     "hasLocalCover": false,
     "screenshots": [],
-    "viewCount": 43829,
-    "likeCount": 2226,
-    "bookmarkCount": 1113,
-    "aiScore": 9.5,
-    "funScore": 9.2,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 75,
@@ -3048,14 +3122,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3337540/ss_0fb745734f217a0cfa12c441195fc58ef2851d1a.1920x1080.jpg?t=1760284523",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3337540/ss_f85f6af572840c9663fb34f18d12e752822f6ddd.1920x1080.jpg?t=1760284523"
     ],
-    "viewCount": 44402,
-    "likeCount": 2255,
-    "bookmarkCount": 1128,
-    "aiScore": 9.0,
-    "funScore": 8.8,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": true,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 76,
@@ -3090,14 +3165,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3325660/ss_448a3729d57e6e7d23e4f804814367627242e71d.1920x1080.jpg?t=1732298256",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3325660/ss_37cb141ba3a2b74254b383e94cc88a5fc297844a.1920x1080.jpg?t=1732298256"
     ],
-    "viewCount": 44975,
-    "likeCount": 2283,
-    "bookmarkCount": 1142,
-    "aiScore": 9.7,
-    "funScore": 8.4,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 77,
@@ -3127,14 +3203,15 @@
     "coverUrl": "/images/placeholders/experimental.jpg",
     "hasLocalCover": false,
     "screenshots": [],
-    "viewCount": 45548,
-    "likeCount": 2312,
-    "bookmarkCount": 1156,
-    "aiScore": 9.2,
-    "funScore": 9.5,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 78,
@@ -3164,14 +3241,15 @@
     "coverUrl": "/images/placeholders/narrative-adventure.jpg",
     "hasLocalCover": false,
     "screenshots": [],
-    "viewCount": 46121,
-    "likeCount": 2341,
-    "bookmarkCount": 1171,
-    "aiScore": 9.9,
-    "funScore": 9.1,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 79,
@@ -3200,14 +3278,15 @@
     "coverUrl": "/images/placeholders/strategy.jpg",
     "hasLocalCover": false,
     "screenshots": [],
-    "viewCount": 46694,
-    "likeCount": 2369,
-    "bookmarkCount": 1185,
-    "aiScore": 9.4,
-    "funScore": 8.7,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 80,
@@ -3242,14 +3321,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2990190/7cf4fed8cfc7d9f7136a044980d34f9878a4d28b/ss_7cf4fed8cfc7d9f7136a044980d34f9878a4d28b.1920x1080.jpg?t=1785288969",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2990190/f620b0114545d797cc6f2da7e58b7447f113c8e8/ss_f620b0114545d797cc6f2da7e58b7447f113c8e8.1920x1080.jpg?t=1785288969"
     ],
-    "viewCount": 2267,
-    "likeCount": 148,
-    "bookmarkCount": 74,
-    "aiScore": 8.9,
-    "funScore": 9.8,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 81,
@@ -3284,14 +3364,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3705720/5cc7ec77e12e3c15c411851f1348f74107d92ed6/ss_5cc7ec77e12e3c15c411851f1348f74107d92ed6.1920x1080.jpg?t=1749624069",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3705720/19640cdaabbdeee62c44be4a012bda2e5d28c206/ss_19640cdaabbdeee62c44be4a012bda2e5d28c206.1920x1080.jpg?t=1749624069"
     ],
-    "viewCount": 2840,
-    "likeCount": 177,
-    "bookmarkCount": 89,
-    "aiScore": 9.6,
-    "funScore": 9.4,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 82,
@@ -3323,14 +3404,15 @@
     "screenshots": [
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3803130/72bd1cbe0f2a5394477b9fcaf118bfb10277c567/ss_72bd1cbe0f2a5394477b9fcaf118bfb10277c567.1920x1080.jpg?t=1749656936"
     ],
-    "viewCount": 3413,
-    "likeCount": 205,
-    "bookmarkCount": 103,
-    "aiScore": 9.1,
-    "funScore": 9.0,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 83,
@@ -3365,14 +3447,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2376080/ss_25d97b8f1b66437713415aed97fdcf83c25df128.1920x1080.jpg?t=1706173773",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2376080/ss_bcbd2592849b8c98c0ac1013e7c5ce0945dba749.1920x1080.jpg?t=1706173773"
     ],
-    "viewCount": 3986,
-    "likeCount": 234,
-    "bookmarkCount": 117,
-    "aiScore": 9.8,
-    "funScore": 8.6,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 84,
@@ -3407,14 +3490,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4586780/ee3928cb10d3d2fdc16613f4ad1a7f3a8a6c88f8/ss_ee3928cb10d3d2fdc16613f4ad1a7f3a8a6c88f8.1920x1080.jpg?t=1775932265",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4586780/66c3dbc089d89cbb046fc22b196139c63e4c12cc/ss_66c3dbc089d89cbb046fc22b196139c63e4c12cc.1920x1080.jpg?t=1775932265"
     ],
-    "viewCount": 4559,
-    "likeCount": 262,
-    "bookmarkCount": 131,
-    "aiScore": 9.3,
-    "funScore": 9.7,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 85,
@@ -3449,14 +3533,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3368390/7990fb39ec0a7157b83a0530493e9f1f9c124b98/ss_7990fb39ec0a7157b83a0530493e9f1f9c124b98.1920x1080.jpg?t=1752693555",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3368390/e55dd94e5c2ad9a26d8e32da0957636abdd12b23/ss_e55dd94e5c2ad9a26d8e32da0957636abdd12b23.1920x1080.jpg?t=1752693555"
     ],
-    "viewCount": 5132,
-    "likeCount": 291,
-    "bookmarkCount": 146,
-    "aiScore": 8.8,
-    "funScore": 9.3,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": true,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 86,
@@ -3491,14 +3576,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2772070/777f9a249eba144fd9a8f5b24999030a1d313344/ss_777f9a249eba144fd9a8f5b24999030a1d313344.1920x1080.jpg?t=1772669317",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2772070/21a7a1d5868de69de4692409de4575b74f07a469/ss_21a7a1d5868de69de4692409de4575b74f07a469.1920x1080.jpg?t=1772669317"
     ],
-    "viewCount": 5705,
-    "likeCount": 320,
-    "bookmarkCount": 160,
-    "aiScore": 9.5,
-    "funScore": 8.9,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 87,
@@ -3527,14 +3613,15 @@
     "coverUrl": "/uploads/games/ai-dungeon.jpg",
     "hasLocalCover": true,
     "screenshots": [],
-    "viewCount": 6278,
-    "likeCount": 348,
-    "bookmarkCount": 174,
-    "aiScore": 9.0,
-    "funScore": 8.5,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 88,
@@ -3569,14 +3656,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2114790/ss_95cb299b48517e7b1d9623815daca1564589fb74.1920x1080.jpg?t=1723626071",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/2114790/ss_ab446199265c5031c226c00c62933b6fa885d04e.1920x1080.jpg?t=1723626071"
     ],
-    "viewCount": 6851,
-    "likeCount": 377,
-    "bookmarkCount": 189,
-    "aiScore": 9.7,
-    "funScore": 9.6,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 89,
@@ -3605,14 +3693,15 @@
     "coverUrl": "/images/placeholders/experimental.jpg",
     "hasLocalCover": false,
     "screenshots": [],
-    "viewCount": 7424,
-    "likeCount": 406,
-    "bookmarkCount": 203,
-    "aiScore": 9.2,
-    "funScore": 9.2,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 90,
@@ -3641,14 +3730,15 @@
     "coverUrl": "/uploads/games/closer-worlds.jpg",
     "hasLocalCover": true,
     "screenshots": [],
-    "viewCount": 7997,
-    "likeCount": 434,
-    "bookmarkCount": 217,
-    "aiScore": 9.9,
-    "funScore": 8.8,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 91,
@@ -3677,14 +3767,15 @@
     "coverUrl": "/images/placeholders/simulation.jpg",
     "hasLocalCover": false,
     "screenshots": [],
-    "viewCount": 8570,
-    "likeCount": 463,
-    "bookmarkCount": 232,
-    "aiScore": 9.4,
-    "funScore": 8.4,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 92,
@@ -3719,14 +3810,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4099310/e02fdc3c69cbf6c2ffb64c8b76e136d3b37835a0/ss_e02fdc3c69cbf6c2ffb64c8b76e136d3b37835a0.1920x1080.jpg?t=1787194651",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4099310/14d3e5d7c90e14acbfd6cad9e1944d930dbf45ed/ss_14d3e5d7c90e14acbfd6cad9e1944d930dbf45ed.1920x1080.jpg?t=1787194651"
     ],
-    "viewCount": 9143,
-    "likeCount": 492,
-    "bookmarkCount": 246,
-    "aiScore": 8.9,
-    "funScore": 9.5,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 93,
@@ -3761,14 +3853,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4426310/de6dd325019dc5b9881394039c18fe7a40fc91cd/ss_de6dd325019dc5b9881394039c18fe7a40fc91cd.1920x1080.jpg?t=1774445476",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4426310/e56013fc4f12c7e7c3c6e6fa50400d4d04e485d0/ss_e56013fc4f12c7e7c3c6e6fa50400d4d04e485d0.1920x1080.jpg?t=1774445476"
     ],
-    "viewCount": 9716,
-    "likeCount": 520,
-    "bookmarkCount": 260,
-    "aiScore": 9.6,
-    "funScore": 9.1,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 94,
@@ -3798,14 +3891,15 @@
     "coverUrl": "/images/placeholders/romance-companion.jpg",
     "hasLocalCover": false,
     "screenshots": [],
-    "viewCount": 10289,
-    "likeCount": 549,
-    "bookmarkCount": 275,
-    "aiScore": 9.1,
-    "funScore": 8.7,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 95,
@@ -3840,14 +3934,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4736920/4d99811bcc53458ccab09812aa23a5505b0561a7/ss_4d99811bcc53458ccab09812aa23a5505b0561a7.1920x1080.jpg?t=1781913954",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4736920/78d325833b7da0ad4ae2b129cf20a6f33569d610/ss_78d325833b7da0ad4ae2b129cf20a6f33569d610.1920x1080.jpg?t=1781913954"
     ],
-    "viewCount": 10862,
-    "likeCount": 578,
-    "bookmarkCount": 289,
-    "aiScore": 9.8,
-    "funScore": 9.8,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 96,
@@ -3882,14 +3977,15 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3848530/a85b1778a3d8e0db1268a6f2cd9ef5429cd8fdb6/ss_a85b1778a3d8e0db1268a6f2cd9ef5429cd8fdb6.1920x1080.jpg?t=1777438489",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/3848530/7e9d4ccacd154e8ed3ba2470604c4048800ac657/ss_7e9d4ccacd154e8ed3ba2470604c4048800ac657.1920x1080.jpg?t=1777438489"
     ],
-    "viewCount": 11435,
-    "likeCount": 606,
-    "bookmarkCount": 303,
-    "aiScore": 9.3,
-    "funScore": 9.4,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": true,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   },
   {
     "id": 97,
@@ -3924,13 +4020,14 @@
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4124130/2f923524500da6d8f01db96dfc4b0a85dda98bfe/ss_2f923524500da6d8f01db96dfc4b0a85dda98bfe.1920x1080.jpg?t=1765382887",
       "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4124130/b3916ec4e27ea65935aa848e785d2b3c22e95ae7/ss_b3916ec4e27ea65935aa848e785d2b3c22e95ae7.1920x1080.jpg?t=1765382887"
     ],
-    "viewCount": 12008,
-    "likeCount": 635,
-    "bookmarkCount": 318,
-    "aiScore": 8.8,
-    "funScore": 9.0,
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
     "isFeatured": false,
     "isHot": false,
-    "createdAt": "2026-08-25T00:00:00.000Z"
+    "createdAt": "2026-08-25T00:00:00.000Z",
+    "ratingCount": 0
   }
 ]

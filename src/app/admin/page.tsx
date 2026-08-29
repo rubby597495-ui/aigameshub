@@ -18,7 +18,8 @@ import {
   Calendar,
   BarChart3,
   Activity,
-  Heart
+  Heart,
+  MessageSquare
 } from 'lucide-react';
 import { CATEGORIES, AI_MECHANICS, AI_TYPES } from '@/data/categories';
 import { formatNumber } from '@/lib/utils';
@@ -123,7 +124,14 @@ export default function AdminDashboardPage() {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center gap-3">
+          <Link
+            href="/admin/comments"
+            className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2.5 text-xs font-semibold text-stone-200 hover:bg-white/10 transition"
+          >
+            <MessageSquare className="h-4 w-4 text-blue-400" />
+            <span>Moderate Comments</span>
+          </Link>
           <Link
             href="/admin/games/new"
             className="inline-flex items-center gap-2 rounded-xl bg-[#8FAFA3] px-4 py-2.5 text-xs font-bold text-[#101715] shadow-lg hover:bg-[#A2BDB3] transition"

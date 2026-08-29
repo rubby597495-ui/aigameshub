@@ -9,6 +9,7 @@ import {
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { VotingWidget } from '@/components/game/VotingWidget';
 import { PlayTrackerWidget } from '@/components/game/PlayTrackerWidget';
+import { GameComments } from '@/components/game/GameComments';
 import { GameCard } from '@/components/game/GameCard';
 import { GameGallery } from '@/components/game/GameGallery';
 import { 
@@ -286,6 +287,9 @@ export default async function GameDetailPage({ params }: GameDetailPageProps) {
 
           {/* Interactive Community Voting Widget */}
           <VotingWidget game={game} />
+
+          {/* Real User Community Comments & Reviews */}
+          <GameComments game={game} />
         </div>
 
         {/* Sidebar Info & Related Games (4 cols) */}

@@ -15,7 +15,9 @@ import {
   ShieldCheck, 
   FileText,
   X,
-  Sparkles
+  Sparkles,
+  Heart,
+  User
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -39,6 +41,8 @@ export function MobileNav({ isOpen, onClose, stats }: MobileNavProps) {
     { href: '/', label: 'Home', icon: Home, highlight: pathname === '/' },
     { href: '/games', label: 'Game Library', icon: Gamepad2, highlight: pathname.startsWith('/games') },
     { href: '/leaderboards', label: 'Leaderboards', icon: Trophy, highlight: pathname.startsWith('/leaderboards') },
+    { href: '/bookmarks', label: 'My Bookmarks', icon: Heart, highlight: pathname === '/bookmarks' },
+    { href: '/profile', label: 'Player Profile', icon: User, highlight: pathname === '/profile' },
     { href: '/news', label: 'News', icon: Newspaper, highlight: pathname.startsWith('/news') },
     { href: '/articles', label: 'Articles', icon: BookOpen, highlight: pathname.startsWith('/articles') },
     { href: '/submit', label: 'Submit Game', icon: PlusCircle, highlight: pathname === '/submit', isSpecial: true },

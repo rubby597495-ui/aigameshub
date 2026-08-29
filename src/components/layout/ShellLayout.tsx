@@ -6,6 +6,8 @@ import { Topbar } from '@/components/layout/Topbar';
 import { MobileNav } from '@/components/layout/MobileNav';
 import { Footer } from '@/components/layout/Footer';
 import { SearchGameItem } from '@/types/game';
+import { UserAuthProvider, useUserAuth } from '@/contexts/UserAuthContext';
+import { AuthModal } from '@/components/game/AuthModal';
 
 interface ShellLayoutProps {
   children: React.ReactNode;
@@ -18,12 +20,13 @@ interface ShellLayoutProps {
   };
 }
 
-export function ShellLayout({
+function ShellLayoutInner({
   children,
   searchGames,
   stats
 }: ShellLayoutProps) {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const { isAuthModalOpen, closeAuthModal } = useUserAuth();
 
   return (
     <div className="min-h-screen bg-[#101314] soft-grid flex">
@@ -50,6 +53,17 @@ export function ShellLayout({
 
         <Footer />
       </div>
+
+      {/* Global Auth Modal */}
+      <AuthModal isOpen={isAuthModalOpen} onClose={closeAuthModal} />
     </div>
+  );
+}
+
+export function ShellLayout(props: ShellLayoutProps) {
+  return (
+    <UserAuthProvider>
+      <ShellLayoutInner {...props} />
+    </UserAuthProvider>
   );
 }

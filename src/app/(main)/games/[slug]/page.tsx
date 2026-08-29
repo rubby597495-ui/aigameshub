@@ -8,6 +8,7 @@ import {
 } from '@/lib/data';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { VotingWidget } from '@/components/game/VotingWidget';
+import { PlayTrackerWidget } from '@/components/game/PlayTrackerWidget';
 import { GameCard } from '@/components/game/GameCard';
 import { GameGallery } from '@/components/game/GameGallery';
 import { 
@@ -279,6 +280,9 @@ export default async function GameDetailPage({ params }: GameDetailPageProps) {
               })}
             </div>
           </section>
+
+          {/* User Personal Play Tracker & Rating */}
+          <PlayTrackerWidget game={game} />
 
           {/* Interactive Community Voting Widget */}
           <VotingWidget game={game} />

@@ -6,6 +6,7 @@ import Image from 'next/image';
 import { Heart, Flame, ExternalLink, Sparkles, Eye, ThumbsUp } from 'lucide-react';
 import { Game } from '@/types/game';
 import { formatNumber, cn, getTierBadgeStyle } from '@/lib/utils';
+import { useUserAuth } from '@/contexts/UserAuthContext';
 
 interface GameCardProps {
   game: Game;
@@ -14,14 +15,15 @@ interface GameCardProps {
 }
 
 export function GameCard({ game, priority = false, compact = false }: GameCardProps) {
-  const [isBookmarked, setIsBookmarked] = useState(false);
+  const { isBookmarked, toggleBookmark: toggleUserBookmark } = useUserAuth();
+  const bookmarked = isBookmarked(game.id);
   const [likes, setLikes] = useState(game.likeCount);
   const [hasLiked, setHasLiked] = useState(false);
 
-  const toggleBookmark = (e: React.MouseEvent) => {
+  const handleToggleBookmark = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setIsBookmarked(!isBookmarked);
+    toggleUserBookmark(game.id);
   };
 
   const toggleLike = (e: React.MouseEvent) => {
@@ -57,16 +59,16 @@ export function GameCard({ game, priority = false, compact = false }: GameCardPr
       <div className="absolute right-2.5 top-2.5 z-20">
         <button
           type="button"
-          onClick={toggleBookmark}
-          aria-label={isBookmarked ? "Remove from bookmarks" : "Add to bookmarks"}
+          onClick={handleToggleBookmark}
+          aria-label={bookmarked ? "Remove from bookmarks" : "Add to bookmarks"}
           className={cn(
             "grid h-8 w-8 place-items-center rounded-full border text-xs shadow-lg backdrop-blur-md transition duration-150",
-            isBookmarked
+            bookmarked
               ? "border-rose-500/50 bg-rose-500/30 text-rose-300"
               : "border-white/15 bg-black/50 text-stone-300 hover:bg-black/80 hover:text-white"
           )}
         >
-          <Heart className={cn("h-4 w-4", isBookmarked && "fill-rose-400 text-rose-400")} />
+          <Heart className={cn("h-4 w-4", bookmarked && "fill-rose-400 text-rose-400")} />
         </button>
       </div>
 

@@ -199,7 +199,7 @@ export default async function LeaderboardsPage({ searchParams }: LeaderboardsPag
                 <Link href={`/games/${game.slug}`} className="shrink-0">
                   <img
                     src={game.coverUrl}
-                    alt={game.title}
+                    alt={`${game.title} - Leaderboard Ranking Cover`}
                     className="h-14 w-20 sm:h-16 sm:w-24 rounded-lg object-cover bg-stone-900 border border-white/10"
                   />
                 </Link>

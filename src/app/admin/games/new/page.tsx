@@ -396,7 +396,7 @@ export default function AdminNewGamePage() {
               <div className="relative aspect-[16/9] w-full rounded-lg overflow-hidden bg-stone-900 border border-white/10">
                 <img
                   src={formData.coverUrl || `/images/placeholders/${formData.genreSlug}.jpg`}
-                  alt="Preview"
+                  alt={`${formData.title || 'New AI Game'} - Cover Preview`}
                   className="h-full w-full object-cover"
                 />
                 <span className="absolute left-2 top-2 rounded-full border border-emerald-400/30 bg-emerald-950/70 px-2 py-0.5 text-[9px] font-bold text-emerald-300">

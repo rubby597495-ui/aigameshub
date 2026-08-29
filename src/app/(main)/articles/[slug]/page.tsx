@@ -107,7 +107,7 @@ export default async function ArticleDetailPage({ params }: ArticlePageProps) {
         <div className="flex items-center gap-3 pt-2">
           <img
             src={article.authorAvatar}
-            alt={article.author}
+            alt={`${article.author} - Author Profile`}
             className="h-10 w-10 rounded-full border border-white/10 object-cover"
           />
           <div>

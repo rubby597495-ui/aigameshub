@@ -44,7 +44,7 @@ export default function ArticlesPage() {
             <div className="aspect-[16/9] w-full overflow-hidden bg-stone-900">
               <img
                 src={article.coverUrl}
-                alt={article.title}
+                alt={`${article.title} - AI Gaming Article Cover`}
                 className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
               />
             </div>

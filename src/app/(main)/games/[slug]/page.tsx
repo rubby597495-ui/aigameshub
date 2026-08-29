@@ -364,7 +364,7 @@ export default async function GameDetailPage({ params }: GameDetailPageProps) {
                 >
                   <img
                     src={relGame.coverUrl}
-                    alt={relGame.title}
+                    alt={`${relGame.title} - AI Game Thumbnail`}
                     className="h-12 w-16 rounded-lg object-cover bg-stone-900 border border-white/10 shrink-0"
                   />
                   <div className="min-w-0 flex-1">

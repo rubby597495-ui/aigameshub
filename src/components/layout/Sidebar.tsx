@@ -87,7 +87,7 @@ export function Sidebar({ stats }: SidebarProps) {
           <Link href="/" className="grid place-items-center group" title="AiGamesHub Home">
             <Image
               src="/logo.svg"
-              alt="AiGamesHub"
+              alt="AiGamesHub AI Gaming Directory Logo"
               width={40}
               height={40}
               priority

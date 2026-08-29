@@ -70,7 +70,7 @@ export function Topbar({ games, onOpenMobileNav }: TopbarProps) {
           <Link href="/" className="flex items-center gap-2.5 lg:hidden">
             <Image
               src="/logo.svg"
-              alt="AiGamesHub"
+              alt="AiGamesHub - AI Games Catalog Logo"
               width={34}
               height={34}
               className="h-8 w-8 rounded-lg shadow-sm"

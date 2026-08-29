@@ -152,7 +152,7 @@ export function SearchModal({ isOpen, onClose, games }: SearchModalProps) {
                   <div className="flex items-center gap-3 min-w-0">
                     <img
                       src={game.coverUrl}
-                      alt={game.title}
+                      alt={`${game.title} - Search Preview`}
                       className="h-10 w-14 rounded-lg object-cover bg-stone-900 border border-white/10 shrink-0"
                     />
                     <div className="min-w-0">

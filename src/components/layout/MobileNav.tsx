@@ -67,7 +67,7 @@ export function MobileNav({ isOpen, onClose, stats }: MobileNavProps) {
             <Link href="/" onClick={onClose} className="flex items-center gap-3">
               <Image
                 src="/logo.svg"
-                alt="AiGamesHub"
+                alt="AiGamesHub - AI Gaming Directory Logo"
                 width={36}
                 height={36}
                 className="h-9 w-9 rounded-xl shadow-sm"

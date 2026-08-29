@@ -254,7 +254,11 @@ export function GameGallery({
                   selectedIndex === idx ? 'border-emerald-400 ring-2 ring-emerald-400' : 'border-white/20 opacity-50 hover:opacity-100'
                 }`}
               >
-                <img src={shot} alt="" className="h-full w-full object-cover" />
+                <img
+                  src={shot}
+                  alt={`${title} Gallery Thumbnail ${idx + 1}`}
+                  className="h-full w-full object-cover"
+                />
               </button>
             ))}
           </div>

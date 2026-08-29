@@ -16,7 +16,8 @@ import {
   Menu,
   X,
   ShieldAlert,
-  Users
+  Users,
+  MessageSquare
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -44,6 +45,7 @@ export default function AdminLayout({
     { href: '/admin/games', label: 'Game Management', icon: Gamepad2 },
     { href: '/admin/games/new', label: 'Add New Game', icon: PlusCircle, exact: true },
     { href: '/admin/submissions', label: 'Submission Queue', icon: Inbox, badge: '2' },
+    { href: '/admin/comments', label: 'Comment Moderation', icon: MessageSquare },
     { href: '/admin/users', label: 'User & Permissions', icon: Users },
     { href: '/admin/articles', label: 'News & Articles', icon: FileText },
   ];

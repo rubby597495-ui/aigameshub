@@ -206,7 +206,7 @@ export default function AdminGamesPage() {
                     <div className="flex items-center gap-3">
                       <img
                         src={game.coverUrl}
-                        alt={game.title}
+                        alt={`${game.title} - Catalog Cover`}
                         className="h-10 w-16 rounded-lg object-cover bg-stone-900 border border-white/10 shrink-0"
                       />
                       <div className="min-w-0">

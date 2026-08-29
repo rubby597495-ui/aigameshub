@@ -319,19 +319,21 @@ export default function SubmitGamePage() {
             </div>
           </div>
 
-          {/* 3. Cover Art & Screenshots Management (Cloudflare R2 Direct Upload) */}
+          {/* 3. 图片与截图管理 (最多5张，第1张为封面，支持拖拽排序) */}
           <div className="space-y-4 border-t border-white/10 pt-6">
-            <h2 className="text-sm font-bold text-emerald-300 uppercase tracking-wider flex items-center gap-2">
-              <ImageIcon className="h-4 w-4" />
-              <span>3. 封面与截图画廊 (Cloudflare R2 直传)</span>
-            </h2>
-
             <ImageUploadManager
-              coverUrl={formData.coverUrl}
-              onCoverChange={(url) => setFormData((prev) => ({ ...prev, coverUrl: url }))}
-              screenshots={formData.screenshots}
-              onScreenshotsChange={(urls) => setFormData((prev) => ({ ...prev, screenshots: urls }))}
-              maxScreenshots={5}
+              images={[
+                formData.coverUrl,
+                ...(formData.screenshots || []).filter((s) => s !== formData.coverUrl)
+              ].filter(Boolean)}
+              onImagesChange={(newImgs) =>
+                setFormData((prev) => ({
+                  ...prev,
+                  coverUrl: newImgs[0] || '',
+                  screenshots: newImgs
+                }))
+              }
+              maxImages={5}
               maxFileSizeMB={3}
             />
           </div>

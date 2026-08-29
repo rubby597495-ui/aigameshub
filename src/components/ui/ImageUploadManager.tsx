@@ -10,35 +10,35 @@ import {
   AlertCircle, 
   CheckCircle2, 
   Plus,
-  Eye
+  GripVertical,
+  Star,
+  ChevronLeft,
+  ChevronRight
 } from 'lucide-react';
 import { uploadToR2 } from '@/lib/api-client';
 
 interface ImageUploadManagerProps {
-  coverUrl: string;
-  onCoverChange: (url: string) => void;
-  screenshots: string[];
-  onScreenshotsChange: (urls: string[]) => void;
-  maxScreenshots?: number;
+  images: string[];
+  onImagesChange: (images: string[]) => void;
+  maxImages?: number;
   maxFileSizeMB?: number;
 }
 
 export function ImageUploadManager({
-  coverUrl,
-  onCoverChange,
-  screenshots = [],
-  onScreenshotsChange,
-  maxScreenshots = 5,
+  images = [],
+  onImagesChange,
+  maxImages = 5,
   maxFileSizeMB = 3
 }: ImageUploadManagerProps) {
-  const [isUploadingCover, setIsUploadingCover] = useState(false);
-  const [isUploadingScreenshots, setIsUploadingScreenshots] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
-  const coverInputRef = useRef<HTMLInputElement>(null);
-  const screenshotsInputRef = useRef<HTMLInputElement>(null);
+  // Drag and drop state
+  const [draggedIndex, setDraggedIndex] = useState<number | null>(null);
+  const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
 
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const maxSizeBytes = maxFileSizeMB * 1024 * 1024;
 
   const showNotification = (type: 'error' | 'success', msg: string) => {
@@ -51,68 +51,40 @@ export function ImageUploadManager({
     }
   };
 
-  // Handle Cover Image Upload
-  const handleCoverUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    if (!file.type.startsWith('image/')) {
-      showNotification('error', '请上传有效的图片文件 (PNG, JPG, WEBP)');
-      return;
-    }
-
-    if (file.size > maxSizeBytes) {
-      showNotification('error', `封面图片过大 (${(file.size / 1024 / 1024).toFixed(1)}MB)，单张图片最大支持 ${maxFileSizeMB}MB`);
-      return;
-    }
-
-    try {
-      setIsUploadingCover(true);
-      const res = await uploadToR2(file, 'covers');
-      if (res.success && res.url) {
-        onCoverChange(res.url);
-        showNotification('success', '主封面图片已成功上传至 Cloudflare R2！');
-      } else {
-        showNotification('error', res.error || '上传到 R2 失败，请检查网络或后端服务');
-      }
-    } catch (err: any) {
-      showNotification('error', err.message || '上传异常，请稍后重试');
-    } finally {
-      setIsUploadingCover(false);
-      if (coverInputRef.current) coverInputRef.current.value = '';
-    }
-  };
-
-  // Handle Screenshots Batch Upload (Max 5)
-  const handleScreenshotsUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+  // Handle batch file upload
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);
     if (files.length === 0) return;
 
-    const remainingSlots = maxScreenshots - screenshots.length;
+    const remainingSlots = maxImages - images.length;
     if (remainingSlots <= 0) {
-      showNotification('error', `已达到最大截图数量限制 (最多 ${maxScreenshots} 张)`);
+      showNotification('error', `已达到最大图片数量限制 (最多 ${maxImages} 张)`);
       return;
     }
 
     const filesToUpload = files.slice(0, remainingSlots);
     if (files.length > remainingSlots) {
-      showNotification('error', `已自动截取前 ${remainingSlots} 张图片，最多允许上传 ${maxScreenshots} 张截图`);
+      showNotification('error', `已自动选取前 ${remainingSlots} 张，最多允许上传 ${maxImages} 张图片`);
     }
 
-    // Validate sizes
+    // Validate size & type
     for (const f of filesToUpload) {
+      if (!f.type.startsWith('image/')) {
+        showNotification('error', `文件 "${f.name}" 不是支持的图片格式`);
+        return;
+      }
       if (f.size > maxSizeBytes) {
-        showNotification('error', `图片 "${f.name}" 超过 ${maxFileSizeMB}MB 限制，请压缩后重试`);
+        showNotification('error', `图片 "${f.name}" 超过 ${maxFileSizeMB}MB 限制 (${(f.size / 1024 / 1024).toFixed(1)}MB)，请压缩后上传`);
         return;
       }
     }
 
     try {
-      setIsUploadingScreenshots(true);
+      setIsUploading(true);
       const uploadedUrls: string[] = [];
 
       for (const file of filesToUpload) {
-        const res = await uploadToR2(file, 'screenshots');
+        const res = await uploadToR2(file, 'game-media');
         if (res.success && res.url) {
           uploadedUrls.push(res.url);
         } else {
@@ -121,25 +93,71 @@ export function ImageUploadManager({
       }
 
       if (uploadedUrls.length > 0) {
-        onScreenshotsChange([...screenshots, ...uploadedUrls]);
-        showNotification('success', `成功上传 ${uploadedUrls.length} 张截图至 Cloudflare R2！`);
+        const updated = [...images, ...uploadedUrls];
+        onImagesChange(updated);
+        showNotification('success', `成功上传 ${uploadedUrls.length} 张图片至 Cloudflare R2！`);
       }
     } catch (err: any) {
-      showNotification('error', err.message || '截图上传失败');
+      showNotification('error', err.message || '图片上传异常，请稍后重试');
     } finally {
-      setIsUploadingScreenshots(false);
-      if (screenshotsInputRef.current) screenshotsInputRef.current.value = '';
+      setIsUploading(false);
+      if (fileInputRef.current) fileInputRef.current.value = '';
     }
   };
 
-  // Remove Screenshot
-  const handleRemoveScreenshot = (indexToRemove: number) => {
-    const updated = screenshots.filter((_, idx) => idx !== indexToRemove);
-    onScreenshotsChange(updated);
+  // Remove an image
+  const handleRemoveImage = (indexToRemove: number) => {
+    const updated = images.filter((_, idx) => idx !== indexToRemove);
+    onImagesChange(updated);
+  };
+
+  // Set an image directly as Cover (moves to index 0)
+  const handleSetAsCover = (index: number) => {
+    if (index === 0) return;
+    const updated = [...images];
+    const [selected] = updated.splice(index, 1);
+    updated.unshift(selected);
+    onImagesChange(updated);
+    showNotification('success', '已将该图片设为主封面！');
+  };
+
+  // Move left / right
+  const handleMove = (fromIndex: number, toIndex: number) => {
+    if (toIndex < 0 || toIndex >= images.length) return;
+    const updated = [...images];
+    const [moved] = updated.splice(fromIndex, 1);
+    updated.splice(toIndex, 0, moved);
+    onImagesChange(updated);
+  };
+
+  // Drag and drop handlers
+  const handleDragStart = (index: number) => {
+    setDraggedIndex(index);
+  };
+
+  const handleDragOver = (e: React.DragEvent, index: number) => {
+    e.preventDefault();
+    if (dragOverIndex !== index) {
+      setDragOverIndex(index);
+    }
+  };
+
+  const handleDrop = (index: number) => {
+    if (draggedIndex === null || draggedIndex === index) {
+      setDraggedIndex(null);
+      setDragOverIndex(null);
+      return;
+    }
+    const updated = [...images];
+    const [moved] = updated.splice(draggedIndex, 1);
+    updated.splice(index, 0, moved);
+    onImagesChange(updated);
+    setDraggedIndex(null);
+    setDragOverIndex(null);
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4">
       {/* Toast Alert */}
       {errorMessage && (
         <div className="flex items-center gap-2 rounded-xl border border-rose-500/30 bg-rose-500/10 p-3 text-xs text-rose-300 animate-fadeIn">
@@ -155,79 +173,165 @@ export function ImageUploadManager({
         </div>
       )}
 
-      {/* 1. Main Cover Art Upload Section */}
-      <div className="space-y-3">
-        <div className="flex items-center justify-between">
-          <label className="block text-xs font-semibold text-stone-200">
-            1. 游戏主封面图 (Game Cover Art) <span className="text-emerald-400">*</span>
+      {/* Header Info */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-white/10 pb-3">
+        <div className="flex items-center gap-2">
+          <label className="text-xs font-bold text-stone-200 uppercase tracking-wider flex items-center gap-2">
+            <ImageIcon className="h-4 w-4 text-emerald-400" />
+            <span>游戏图片管理 (Media Management)</span>
           </label>
-          <span className="text-[10px] text-stone-400 font-mono">
-            单张最大 {maxFileSizeMB}MB · 推荐 16:9 (1280×720)
+          <span className="rounded-full bg-emerald-400/10 border border-emerald-400/30 px-2 py-0.5 text-[10px] font-bold text-emerald-300">
+            {images.length} / {maxImages} 张
           </span>
         </div>
+        <div className="flex items-center gap-2 text-[11px] text-stone-400">
+          <span className="text-emerald-400 font-semibold">★ 最左侧第 1 张自动作为主封面</span>
+          <span>·</span>
+          <span>支持拖放排序</span>
+          <span>·</span>
+          <span>最大 {maxFileSizeMB}MB/张</span>
+        </div>
+      </div>
 
-        <input
-          ref={coverInputRef}
-          type="file"
-          accept="image/png,image/jpeg,image/webp,image/gif"
-          onChange={handleCoverUpload}
-          className="hidden"
-          id="cover-file-input"
-        />
+      <input
+        ref={fileInputRef}
+        type="file"
+        multiple
+        accept="image/png,image/jpeg,image/webp,image/gif"
+        onChange={handleFileUpload}
+        className="hidden"
+        id="unified-image-upload-input"
+      />
 
-        {coverUrl ? (
-          <div className="relative group aspect-[16/9] w-full max-w-md overflow-hidden rounded-2xl border border-emerald-400/30 bg-[#0d1012] shadow-xl">
-            <img
-              src={coverUrl}
-              alt="Game Cover Preview"
-              className="h-full w-full object-cover transition group-hover:scale-105 duration-300"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition flex items-end justify-between p-3.5">
-              <span className="rounded bg-black/70 px-2 py-0.5 text-[10px] font-medium text-emerald-300 backdrop-blur">
-                Cloudflare R2 CDN 已就绪
-              </span>
-              <div className="flex items-center gap-2">
+      {/* Main Image Grid (Draggable) */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5">
+        {images.map((imgUrl, idx) => {
+          const isCover = idx === 0;
+          const isDraggingThis = draggedIndex === idx;
+          const isDragOverThis = dragOverIndex === idx;
+
+          return (
+            <div
+              key={`${imgUrl}-${idx}`}
+              draggable
+              onDragStart={() => handleDragStart(idx)}
+              onDragOver={(e) => handleDragOver(e, idx)}
+              onDrop={() => handleDrop(idx)}
+              onDragEnd={() => {
+                setDraggedIndex(null);
+                setDragOverIndex(null);
+              }}
+              className={`group relative flex flex-col overflow-hidden rounded-2xl border transition duration-200 cursor-grab active:cursor-grabbing shadow-lg select-none ${
+                isCover
+                  ? 'border-emerald-400/60 ring-2 ring-emerald-400/30 bg-emerald-950/20'
+                  : 'border-white/10 bg-[#0d1012] hover:border-white/20'
+              } ${isDraggingThis ? 'opacity-40 scale-95 border-dashed border-emerald-400' : ''} ${
+                isDragOverThis ? 'border-2 border-emerald-300 ring-4 ring-emerald-400/40 scale-102' : ''
+              }`}
+            >
+              {/* Image Preview */}
+              <div className="relative aspect-[16/9] w-full overflow-hidden bg-black/40">
+                <img
+                  src={imgUrl}
+                  alt={isCover ? 'Game Cover Art' : `Game Screenshot ${idx}`}
+                  className="h-full w-full object-cover transition group-hover:scale-105"
+                />
+
+                {/* Top Badge: Cover vs Screenshot Index */}
+                <div className="absolute left-2 top-2 z-10 flex items-center gap-1">
+                  {isCover ? (
+                    <span className="flex items-center gap-1 rounded-lg bg-emerald-500 px-2 py-0.5 text-[10px] font-extrabold text-black shadow-md backdrop-blur">
+                      <Star className="h-3 w-3 fill-black" />
+                      <span>主封面 (Cover)</span>
+                    </span>
+                  ) : (
+                    <span className="rounded-md bg-black/75 px-1.5 py-0.5 text-[9px] font-bold text-stone-300 backdrop-blur">
+                      #{idx + 1} 截图
+                    </span>
+                  )}
+                </div>
+
+                {/* Drag Grip Handle */}
+                <div className="absolute right-2 top-2 z-10 rounded-md bg-black/70 p-1 text-stone-300 backdrop-blur opacity-70 group-hover:opacity-100 transition">
+                  <GripVertical className="h-3.5 w-3.5" />
+                </div>
+
+                {/* Delete Button */}
                 <button
                   type="button"
-                  onClick={() => coverInputRef.current?.click()}
-                  disabled={isUploadingCover}
-                  className="rounded-lg bg-white/20 px-2.5 py-1 text-xs font-semibold text-white hover:bg-white/30 backdrop-blur transition"
-                >
-                  {isUploadingCover ? '上传中...' : '更换封面'}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => onCoverChange('')}
-                  className="grid h-7 w-7 place-items-center rounded-lg bg-rose-500/70 text-white hover:bg-rose-600 transition"
-                  title="删除封面"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleRemoveImage(idx);
+                  }}
+                  className="absolute right-2 bottom-2 z-10 grid h-7 w-7 place-items-center rounded-lg bg-rose-600/90 text-white shadow hover:bg-rose-700 transition opacity-0 group-hover:opacity-100"
+                  title="删除图片"
                 >
                   <Trash2 className="h-3.5 w-3.5" />
                 </button>
               </div>
+
+              {/* Bottom Quick Controls (Order & Set As Cover) */}
+              <div className="flex items-center justify-between border-t border-white/10 bg-white/[0.03] px-2 py-1.5 text-[10px]">
+                {!isCover ? (
+                  <button
+                    type="button"
+                    onClick={() => handleSetAsCover(idx)}
+                    className="text-emerald-400 hover:text-emerald-300 font-semibold hover:underline"
+                  >
+                    ★ 设为主封面
+                  </button>
+                ) : (
+                  <span className="text-emerald-300 font-bold">默认展示封面</span>
+                )}
+
+                <div className="flex items-center gap-1">
+                  <button
+                    type="button"
+                    disabled={idx === 0}
+                    onClick={() => handleMove(idx, idx - 1)}
+                    className="grid h-5 w-5 place-items-center rounded bg-white/10 text-stone-300 hover:bg-white/20 disabled:opacity-30 disabled:pointer-events-none transition"
+                    title="左移"
+                  >
+                    <ChevronLeft className="h-3 w-3" />
+                  </button>
+                  <button
+                    type="button"
+                    disabled={idx === images.length - 1}
+                    onClick={() => handleMove(idx, idx + 1)}
+                    className="grid h-5 w-5 place-items-center rounded bg-white/10 text-stone-300 hover:bg-white/20 disabled:opacity-30 disabled:pointer-events-none transition"
+                    title="右移"
+                  >
+                    <ChevronRight className="h-3 w-3" />
+                  </button>
+                </div>
+              </div>
             </div>
-          </div>
-        ) : (
+          );
+        })}
+
+        {/* Upload Card Box (if under max limit) */}
+        {images.length < maxImages && (
           <div
-            onClick={() => coverInputRef.current?.click()}
-            className={`group relative flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-white/15 bg-white/[0.02] p-8 text-center cursor-pointer transition hover:border-emerald-400/50 hover:bg-white/[0.04] ${
-              isUploadingCover ? 'pointer-events-none opacity-60' : ''
+            onClick={() => fileInputRef.current?.click()}
+            className={`aspect-[16/9] sm:aspect-auto sm:min-h-[140px] flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-white/15 bg-white/[0.02] cursor-pointer transition hover:border-emerald-400/50 hover:bg-white/[0.04] text-center p-4 group ${
+              isUploading ? 'pointer-events-none opacity-60' : ''
             }`}
           >
-            {isUploadingCover ? (
+            {isUploading ? (
               <div className="flex flex-col items-center gap-2">
-                <Loader2 className="h-8 w-8 text-emerald-400 animate-spin" />
-                <span className="text-xs text-emerald-300 font-medium">正在直传至 Cloudflare R2 存储桶...</span>
+                <Loader2 className="h-6 w-6 text-emerald-400 animate-spin" />
+                <span className="text-xs text-emerald-300 font-medium">直传 R2 中...</span>
               </div>
             ) : (
               <>
-                <div className="grid h-12 w-12 place-items-center rounded-2xl bg-emerald-400/10 border border-emerald-400/20 text-emerald-400 mb-3 group-hover:scale-110 transition">
-                  <Upload className="h-6 w-6" />
+                <div className="grid h-10 w-10 place-items-center rounded-xl bg-emerald-400/10 border border-emerald-400/20 text-emerald-400 group-hover:scale-110 transition mb-2 shadow-inner">
+                  <Plus className="h-5 w-5" />
                 </div>
                 <p className="text-xs font-bold text-stone-200">
-                  点击或拖拽上传游戏主封面
+                  {images.length === 0 ? '上传封面与截图' : '添加更多图片'}
                 </p>
                 <p className="text-[10px] text-stone-400 mt-1">
-                  自动上传至 R2 并回传全球 CDN 高速链接 (PNG / JPG / WEBP，最大 {maxFileSizeMB}MB)
+                  支持多选 · 还可传 {maxImages - images.length} 张
                 </p>
               </>
             )}
@@ -235,86 +339,11 @@ export function ImageUploadManager({
         )}
       </div>
 
-      {/* 2. Screenshots Gallery Upload Section (Max 5) */}
-      <div className="space-y-3 pt-2">
-        <div className="flex items-center justify-between">
-          <label className="block text-xs font-semibold text-stone-200 flex items-center gap-2">
-            <span>2. 游戏实机截图画廊 (Screenshots Gallery)</span>
-            <span className="rounded-full bg-emerald-400/10 border border-emerald-400/20 px-2 py-0.2 text-[10px] font-bold text-emerald-300">
-              {screenshots.length} / {maxScreenshots} 张
-            </span>
-          </label>
-          <span className="text-[10px] text-stone-400 font-mono">
-            最多 {maxScreenshots} 张 · 每张最大 {maxFileSizeMB}MB
-          </span>
-        </div>
-
-        <input
-          ref={screenshotsInputRef}
-          type="file"
-          multiple
-          accept="image/png,image/jpeg,image/webp"
-          onChange={handleScreenshotsUpload}
-          className="hidden"
-          id="screenshots-file-input"
-        />
-
-        {/* Thumbnails Grid & Upload Box */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
-          {screenshots.map((shotUrl, idx) => (
-            <div
-              key={idx}
-              className="group relative aspect-[16/9] w-full overflow-hidden rounded-xl border border-white/10 bg-[#0d1012] shadow-md"
-            >
-              <img
-                src={shotUrl}
-                alt={`Screenshot ${idx + 1}`}
-                className="h-full w-full object-cover transition group-hover:scale-105"
-              />
-              <span className="absolute left-1.5 top-1.5 rounded bg-black/70 px-1.5 py-0.2 text-[8px] font-bold text-stone-300 backdrop-blur">
-                #{idx + 1}
-              </span>
-              <button
-                type="button"
-                onClick={() => handleRemoveScreenshot(idx)}
-                className="absolute right-1.5 top-1.5 grid h-6 w-6 place-items-center rounded-lg bg-rose-500/80 text-white opacity-0 group-hover:opacity-100 hover:bg-rose-600 transition shadow"
-                title="删除截图"
-              >
-                <Trash2 className="h-3 w-3" />
-              </button>
-            </div>
-          ))}
-
-          {/* Add Screenshot Card (if below max limit) */}
-          {screenshots.length < maxScreenshots && (
-            <div
-              onClick={() => screenshotsInputRef.current?.click()}
-              className={`aspect-[16/9] w-full flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-white/15 bg-white/[0.02] cursor-pointer transition hover:border-emerald-400/50 hover:bg-white/[0.04] text-center p-2 group ${
-                isUploadingScreenshots ? 'pointer-events-none opacity-60' : ''
-              }`}
-            >
-              {isUploadingScreenshots ? (
-                <div className="flex flex-col items-center gap-1">
-                  <Loader2 className="h-5 w-5 text-emerald-400 animate-spin" />
-                  <span className="text-[9px] text-emerald-300">上传中...</span>
-                </div>
-              ) : (
-                <>
-                  <div className="grid h-7 w-7 place-items-center rounded-lg bg-white/[0.05] border border-white/10 text-stone-400 group-hover:text-emerald-300 group-hover:scale-110 transition mb-1">
-                    <Plus className="h-4 w-4" />
-                  </div>
-                  <span className="text-[10px] font-medium text-stone-300">
-                    添加截图
-                  </span>
-                  <span className="text-[8px] text-stone-500">
-                    还可添加 {maxScreenshots - screenshots.length} 张
-                  </span>
-                </>
-              )}
-            </div>
-          )}
-        </div>
-      </div>
+      {images.length === 0 && (
+        <p className="text-[11px] text-amber-300/90 bg-amber-500/10 border border-amber-500/20 rounded-xl p-2.5">
+          💡 提示：请至少上传 1 张图片，第 1 张图片将作为游戏在首页、分类列表和详情页的主封面展示。
+        </p>
+      )}
     </div>
   );
 }

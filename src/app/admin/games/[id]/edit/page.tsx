@@ -290,18 +290,25 @@ export default function AdminEditGamePage() {
           </div>
         </div>
 
-        {/* Cover Art & Screenshots Management (Cloudflare R2) */}
+        {/* 3. 图片与截图管理 (最多5张，第1张为封面，支持拖拽排序) */}
         <div className="rounded-2xl border border-white/10 bg-[#161B1E] p-6 space-y-4">
-          <h2 className="text-sm font-bold text-stone-100 uppercase tracking-wider border-b border-white/10 pb-3">
-            图片与截图管理 (Cloudflare R2 直传)
-          </h2>
-
           <ImageUploadManager
-            coverUrl={formData.coverUrl}
-            onCoverChange={(url) => setFormData((prev) => prev ? ({ ...prev, coverUrl: url }) : null)}
-            screenshots={formData.screenshots || []}
-            onScreenshotsChange={(urls) => setFormData((prev) => prev ? ({ ...prev, screenshots: urls }) : null)}
-            maxScreenshots={5}
+            images={[
+              formData.coverUrl,
+              ...(formData.screenshots || []).filter((s) => s !== formData.coverUrl)
+            ].filter(Boolean)}
+            onImagesChange={(newImgs) =>
+              setFormData((prev) =>
+                prev
+                  ? {
+                      ...prev,
+                      coverUrl: newImgs[0] || '',
+                      screenshots: newImgs
+                    }
+                  : null
+              )
+            }
+            maxImages={5}
             maxFileSizeMB={3}
           />
         </div>

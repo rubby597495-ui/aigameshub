@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import React from 'react';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { GameFilter } from '@/components/game/GameFilter';

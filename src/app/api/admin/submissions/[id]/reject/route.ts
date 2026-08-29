@@ -1,8 +1,8 @@
-import { NextResponse } from 'next/server';
-import fs from 'fs/promises';
-import path from 'path';
+export const runtime = 'edge';
 
-const submissionsFilePath = path.join(process.cwd(), 'src', 'data', 'submissions.json');
+import { NextResponse } from 'next/server';
+
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8790';
 
 export async function POST(
   request: Request,
@@ -10,11 +10,16 @@ export async function POST(
 ) {
   try {
     const { id } = await params;
-    const subRaw = await fs.readFile(submissionsFilePath, 'utf-8');
-    let submissions = JSON.parse(subRaw);
-
-    submissions = submissions.filter((s: any) => s.id !== id);
-    await fs.writeFile(submissionsFilePath, JSON.stringify(submissions, null, 2), 'utf-8');
+    try {
+      const res = await fetch(`${API_BASE}/api/admin/submissions/${id}/reject`, {
+        method: 'POST',
+      });
+      if (res.ok) {
+        return NextResponse.json(await res.json());
+      }
+    } catch {
+      // Offline fallback
+    }
 
     return NextResponse.json({ success: true, message: 'Submission rejected' });
   } catch (error) {

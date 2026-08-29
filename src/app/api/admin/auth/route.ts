@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import { ADMIN_COOKIE_NAME, DEFAULT_ADMIN_PASSWORD } from '@/lib/admin-auth';

@@ -1,3 +1,5 @@
+export const runtime = 'edge';
+
 import { NextResponse } from 'next/server';
 import { filterGames } from '@/lib/data';
 import { FilterOptions } from '@/types/game';

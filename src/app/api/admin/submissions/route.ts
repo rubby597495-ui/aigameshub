@@ -1,19 +1,18 @@
+export const runtime = 'edge';
+
 import { NextResponse } from 'next/server';
-import fs from 'fs/promises';
-import path from 'path';
 
-const submissionsFilePath = path.join(process.cwd(), 'src', 'data', 'submissions.json');
-
-async function readSubmissions() {
-  try {
-    const raw = await fs.readFile(submissionsFilePath, 'utf-8');
-    return JSON.parse(raw);
-  } catch {
-    return [];
-  }
-}
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8790';
 
 export async function GET() {
-  const submissions = await readSubmissions();
-  return NextResponse.json({ success: true, submissions });
+  try {
+    const res = await fetch(`${API_BASE}/api/admin/submissions`, { cache: 'no-store' });
+    if (res.ok) {
+      const data = await res.json();
+      return NextResponse.json({ success: true, submissions: data.submissions || data.data || [] });
+    }
+  } catch {
+    // Offline fallback
+  }
+  return NextResponse.json({ success: true, submissions: [] });
 }

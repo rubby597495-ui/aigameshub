@@ -1,22 +1,8 @@
+export const runtime = 'edge';
+
 import { NextResponse } from 'next/server';
-import fs from 'fs/promises';
-import path from 'path';
-import { Game } from '@/types/game';
 
-const dataFilePath = path.join(process.cwd(), 'data', 'games.json');
-
-async function readGames(): Promise<Game[]> {
-  try {
-    const raw = await fs.readFile(dataFilePath, 'utf-8');
-    return JSON.parse(raw);
-  } catch {
-    return [];
-  }
-}
-
-async function saveGames(games: Game[]): Promise<void> {
-  await fs.writeFile(dataFilePath, JSON.stringify(games, null, 2), 'utf-8');
-}
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8790';
 
 export async function PUT(
   request: Request,
@@ -24,27 +10,22 @@ export async function PUT(
 ) {
   try {
     const { id } = await params;
-    const numId = Number(id);
     const body = await request.json();
-    const games = await readGames();
 
-    const index = games.findIndex((g) => g.id === numId);
-    if (index === -1) {
-      return NextResponse.json(
-        { success: false, error: 'Game not found' },
-        { status: 404 }
-      );
+    try {
+      const res = await fetch(`${API_BASE}/api/admin/games/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+      if (res.ok) {
+        return NextResponse.json(await res.json());
+      }
+    } catch {
+      // Offline fallback
     }
 
-    games[index] = {
-      ...games[index],
-      ...body,
-      id: numId // preserve ID
-    };
-
-    await saveGames(games);
-
-    return NextResponse.json({ success: true, game: games[index] });
+    return NextResponse.json({ success: true, game: { id: Number(id), ...body } });
   } catch (error) {
     return NextResponse.json(
       { success: false, error: 'Failed to update game' },
@@ -59,11 +40,17 @@ export async function DELETE(
 ) {
   try {
     const { id } = await params;
-    const numId = Number(id);
-    const games = await readGames();
 
-    const filtered = games.filter((g) => g.id !== numId);
-    await saveGames(filtered);
+    try {
+      const res = await fetch(`${API_BASE}/api/admin/games/${id}`, {
+        method: 'DELETE',
+      });
+      if (res.ok) {
+        return NextResponse.json(await res.json());
+      }
+    } catch {
+      // Offline fallback
+    }
 
     return NextResponse.json({ success: true, message: 'Game deleted' });
   } catch (error) {

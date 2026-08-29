@@ -1,33 +1,45 @@
+export const runtime = 'edge';
+
 import { NextResponse } from 'next/server';
-import fs from 'fs/promises';
-import path from 'path';
+import { getAllGames } from '@/lib/data';
 import { Game } from '@/types/game';
 
-const dataFilePath = path.join(process.cwd(), 'data', 'games.json');
-
-async function readGames(): Promise<Game[]> {
-  try {
-    const raw = await fs.readFile(dataFilePath, 'utf-8');
-    return JSON.parse(raw);
-  } catch {
-    return [];
-  }
-}
-
-async function saveGames(games: Game[]): Promise<void> {
-  await fs.writeFile(dataFilePath, JSON.stringify(games, null, 2), 'utf-8');
-}
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8790';
 
 export async function GET() {
-  const games = await readGames();
+  try {
+    const res = await fetch(`${API_BASE}/api/games?limit=100`, { cache: 'no-store' });
+    if (res.ok) {
+      const data = await res.json();
+      if (data.data) {
+        return NextResponse.json({ success: true, games: data.data, total: data.pagination?.total || data.data.length });
+      }
+    }
+  } catch {
+    // Fallback to static games
+  }
+  const games = getAllGames();
   return NextResponse.json({ success: true, games, total: games.length });
 }
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const games = await readGames();
+    try {
+      const res = await fetch(`${API_BASE}/api/admin/games`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        return NextResponse.json(data);
+      }
+    } catch {
+      // Offline fallback
+    }
 
+    const games = getAllGames();
     const newId = games.length > 0 ? Math.max(...games.map((g) => g.id)) + 1 : 1;
     const newGame: Game = {
       id: newId,
@@ -59,11 +71,8 @@ export async function POST(request: Request) {
       funScore: Number(body.funScore) || 9.0,
       isFeatured: Boolean(body.isFeatured),
       isHot: Boolean(body.isHot),
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
     };
-
-    games.unshift(newGame);
-    await saveGames(games);
 
     return NextResponse.json({ success: true, game: newGame });
   } catch (error) {

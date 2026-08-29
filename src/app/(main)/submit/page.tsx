@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { CATEGORIES, AI_MECHANICS, AI_TYPES, PLATFORMS } from '@/data/categories';
-import { PlusCircle, Sparkles, CheckCircle2, Upload, Link as LinkIcon, Gamepad2 } from 'lucide-react';
-import { constructMetadata } from '@/lib/seo';
+import { PlusCircle, Sparkles, CheckCircle2, Link as LinkIcon, Gamepad2, ImageIcon } from 'lucide-react';
+import { ImageUploadManager } from '@/components/ui/ImageUploadManager';
 
 export default function SubmitGamePage() {
   const [formData, setFormData] = useState({
@@ -16,17 +16,45 @@ export default function SubmitGamePage() {
     platforms: ['Browser'],
     developer: '',
     releaseYear: '2026',
+    coverUrl: '',
+    screenshots: [] as string[],
     tagline: '',
     description: '',
     aiRoleDescription: '',
     contactEmail: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
+    setSubmitError(null);
+
+    if (!formData.coverUrl) {
+      setSubmitError('请上传游戏主封面图后再提交。');
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+      const res = await fetch('/api/submissions', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      const data = await res.json();
+      if (data.success) {
+        setIsSubmitted(true);
+      } else {
+        setSubmitError(data.error || '提交失败，请检查输入后重试。');
+      }
+    } catch (err: any) {
+      setSubmitError(err.message || '网络连接异常，请重试。');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handlePlatformChange = (plat: string) => {
@@ -70,7 +98,25 @@ export default function SubmitGamePage() {
           </p>
           <button
             type="button"
-            onClick={() => setIsSubmitted(false)}
+            onClick={() => {
+              setIsSubmitted(false);
+              setFormData({
+                title: '',
+                websiteUrl: '',
+                tier: 'AI-Native',
+                genre: 'narrative-adventure',
+                mechanic: 'ai-npc-interrogation',
+                platforms: ['Browser'],
+                developer: '',
+                releaseYear: '2026',
+                coverUrl: '',
+                screenshots: [],
+                tagline: '',
+                description: '',
+                aiRoleDescription: '',
+                contactEmail: ''
+              });
+            }}
             className="rounded-xl bg-[#8FAFA3] px-6 py-2.5 text-xs font-bold text-[#101715] hover:bg-[#A2BDB3] transition"
           >
             Submit Another Game
@@ -78,6 +124,12 @@ export default function SubmitGamePage() {
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="archive-surface rounded-3xl p-6 sm:p-8 border border-white/10 space-y-6">
+          {submitError && (
+            <div className="rounded-xl border border-rose-500/30 bg-rose-500/10 p-3 text-xs text-rose-300">
+              {submitError}
+            </div>
+          )}
+
           {/* Basic Info */}
           <div className="space-y-4">
             <h2 className="text-sm font-bold text-emerald-300 uppercase tracking-wider flex items-center gap-2">
@@ -128,7 +180,7 @@ export default function SubmitGamePage() {
               </div>
 
               <div>
-                <label className="block text-xs text-stone-300 mb-1 font-medium">Contact Email (for verification)</label>
+                <label className="block text-xs text-stone-300 mb-1 font-medium">Contact Email (for verification) *</label>
                 <input
                   type="email"
                   required
@@ -150,20 +202,20 @@ export default function SubmitGamePage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
-                <label className="block text-xs text-stone-300 mb-1 font-medium">AI Type</label>
+                <label className="block text-xs text-stone-300 mb-1 font-medium">AI Integration Tier *</label>
                 <select
                   value={formData.tier}
                   onChange={(e) => setFormData({ ...formData, tier: e.target.value })}
                   className="h-10 w-full rounded-xl border border-white/10 bg-[#161B1E] px-3 text-xs text-stone-200 focus:border-emerald-400/50 focus:outline-none"
                 >
-                  <option value="AI-Native">AI-Native (Generative AI is Core Loop)</option>
-                  <option value="AI-Augmented">AI-Augmented (AI Enriches Content)</option>
-                  <option value="AI-Boundary">AI-Boundary (Experimental / Companion)</option>
+                  <option value="AI-Native">AI-Native (Core Gameplay is AI)</option>
+                  <option value="AI-Augmented">AI-Augmented (Enhanced by AI)</option>
+                  <option value="AI-Boundary">AI-Boundary (Experimental)</option>
                 </select>
               </div>
 
               <div>
-                <label className="block text-xs text-stone-300 mb-1 font-medium">Primary Genre</label>
+                <label className="block text-xs text-stone-300 mb-1 font-medium">Primary Genre *</label>
                 <select
                   value={formData.genre}
                   onChange={(e) => setFormData({ ...formData, genre: e.target.value })}
@@ -176,7 +228,7 @@ export default function SubmitGamePage() {
               </div>
 
               <div>
-                <label className="block text-xs text-stone-300 mb-1 font-medium">AI Play Mechanic</label>
+                <label className="block text-xs text-stone-300 mb-1 font-medium">Primary AI Mechanic *</label>
                 <select
                   value={formData.mechanic}
                   onChange={(e) => setFormData({ ...formData, mechanic: e.target.value })}
@@ -189,9 +241,9 @@ export default function SubmitGamePage() {
               </div>
             </div>
 
-            {/* Platforms Selector */}
+            {/* Platforms */}
             <div>
-              <label className="block text-xs text-stone-300 mb-1.5 font-medium">Supported Platforms</label>
+              <label className="block text-xs text-stone-300 mb-1.5 font-medium">Supported Platforms *</label>
               <div className="flex flex-wrap gap-2">
                 {PLATFORMS.filter((p) => p.slug !== 'all').map((p) => {
                   const selected = formData.platforms.includes(p.name);
@@ -214,10 +266,27 @@ export default function SubmitGamePage() {
             </div>
           </div>
 
+          {/* 3. Cover Art & Screenshots Management (Cloudflare R2 Direct Upload) */}
+          <div className="space-y-4 border-t border-white/10 pt-6">
+            <h2 className="text-sm font-bold text-emerald-300 uppercase tracking-wider flex items-center gap-2">
+              <ImageIcon className="h-4 w-4" />
+              <span>3. Cover Art & Screenshots (Cloudflare R2 Direct Upload)</span>
+            </h2>
+
+            <ImageUploadManager
+              coverUrl={formData.coverUrl}
+              onCoverChange={(url) => setFormData((prev) => ({ ...prev, coverUrl: url }))}
+              screenshots={formData.screenshots}
+              onScreenshotsChange={(urls) => setFormData((prev) => ({ ...prev, screenshots: urls }))}
+              maxScreenshots={5}
+              maxFileSizeMB={3}
+            />
+          </div>
+
           {/* Descriptions */}
           <div className="space-y-4 border-t border-white/10 pt-6">
             <h2 className="text-sm font-bold text-emerald-300 uppercase tracking-wider">
-              3. Description & AI Mechanism Breakdown
+              4. Description & AI Mechanism Breakdown
             </h2>
 
             <div>
@@ -261,9 +330,10 @@ export default function SubmitGamePage() {
           <div className="pt-4 border-t border-white/10 flex justify-end">
             <button
               type="submit"
-              className="rounded-xl bg-[#8FAFA3] px-8 py-3 text-xs font-bold text-[#101715] shadow-lg shadow-black/30 hover:bg-[#A2BDB3] transition"
+              disabled={isSubmitting}
+              className="rounded-xl bg-[#8FAFA3] px-8 py-3 text-xs font-bold text-[#101715] shadow-lg shadow-black/30 hover:bg-[#A2BDB3] transition disabled:opacity-50"
             >
-              Submit Game for Indexing
+              {isSubmitting ? 'Submitting to Editorial...' : 'Submit Game for Indexing'}
             </button>
           </div>
         </form>

@@ -13,7 +13,7 @@ import {
   Layers
 } from 'lucide-react';
 import { CATEGORIES, AI_MECHANICS, PLATFORMS } from '@/data/categories';
-import { uploadToR2 } from '@/lib/api-client';
+import { ImageUploadManager } from '@/components/ui/ImageUploadManager';
 
 export default function AdminNewGamePage() {
   const router = useRouter();
@@ -35,6 +35,7 @@ export default function AdminNewGamePage() {
     status: 'Released',
     platforms: ['Browser'],
     coverUrl: '',
+    screenshots: [] as string[],
     tagline: '',
     aiRoleDescription: '',
     description: '',
@@ -45,29 +46,6 @@ export default function AdminNewGamePage() {
   });
 
   const [saving, setSaving] = useState(false);
-  const [isUploadingCover, setIsUploadingCover] = useState(false);
-  const [uploadSuccess, setUploadSuccess] = useState(false);
-
-  const handleCoverUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
-
-    try {
-      setIsUploadingCover(true);
-      setUploadSuccess(false);
-      const json = await uploadToR2(file, 'covers');
-      if (json.success && json.url) {
-        setFormData((prev) => ({ ...prev, coverUrl: json.url! }));
-        setUploadSuccess(true);
-      } else {
-        alert(json.error || 'Failed to upload image to R2');
-      }
-    } catch (err) {
-      console.error('R2 upload failed:', err);
-    } finally {
-      setIsUploadingCover(false);
-    }
-  };
 
   const handleTitleChange = (val: string) => {
     const slug = val
@@ -327,78 +305,21 @@ export default function AdminNewGamePage() {
             </div>
           </div>
 
-          {/* 3. Cover Art & Media (Cloudflare R2) */}
+          {/* 3. Cover Art & Screenshots Management (Cloudflare R2 Direct Upload) */}
           <div className="rounded-2xl border border-white/10 bg-[#161B1E] p-6 space-y-4">
-            <div className="flex items-center justify-between border-b border-white/10 pb-3">
-              <h2 className="text-sm font-bold text-stone-100 uppercase tracking-wider flex items-center gap-2">
-                <ImageIcon className="h-4 w-4 text-emerald-400" />
-                <span>3. Cover Art & Media (Cloudflare R2)</span>
-              </h2>
-              {uploadSuccess && (
-                <span className="flex items-center gap-1 text-[11px] font-bold text-emerald-400 animate-fadeIn">
-                  <CheckCircle2 className="h-3.5 w-3.5" /> Uploaded to R2
-                </span>
-              )}
-            </div>
+            <h2 className="text-sm font-bold text-stone-100 uppercase tracking-wider flex items-center gap-2 border-b border-white/10 pb-3">
+              <ImageIcon className="h-4 w-4 text-emerald-400" />
+              <span>3. 图片与截图管理 (Cloudflare R2 直传)</span>
+            </h2>
 
-            <div className="space-y-3">
-              <div>
-                <label className="block text-xs text-stone-300 mb-1 font-medium">Cover Image URL (Direct CDN Link or Upload below)</label>
-                <input
-                  type="text"
-                  placeholder="https://cdn.aigameshub.io/covers/... or Steam Header URL"
-                  value={formData.coverUrl}
-                  onChange={(e) => setFormData({ ...formData, coverUrl: e.target.value })}
-                  className="h-10 w-full rounded-xl border border-white/10 bg-[#121619] px-3.5 text-xs text-stone-200 placeholder:text-stone-500 focus:border-emerald-400/50 focus:outline-none"
-                />
-              </div>
-
-              {/* R2 Direct Upload Box */}
-              <div className="rounded-xl border border-dashed border-white/15 bg-white/[0.02] p-4 text-center">
-                <input
-                  type="file"
-                  id="cover-upload"
-                  accept="image/png,image/jpeg,image/webp"
-                  onChange={handleCoverUpload}
-                  className="hidden"
-                  disabled={isUploadingCover}
-                />
-                <label
-                  htmlFor="cover-upload"
-                  className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-white/[0.06] border border-white/10 px-4 py-2 text-xs font-semibold text-stone-200 hover:bg-white/10 transition"
-                >
-                  <ImageIcon className="h-4 w-4 text-emerald-400" />
-                  <span>{isUploadingCover ? 'Uploading to Cloudflare R2...' : 'Upload Image to Cloudflare R2'}</span>
-                </label>
-                <p className="text-[10px] text-stone-500 mt-2">
-                  Supports PNG, JPG, WebP. Automatically stores to Cloudflare R2 Object Storage with global CDN acceleration.
-                </p>
-              </div>
-
-              {/* Preset Placeholders */}
-              <div>
-                <span className="block text-[11px] text-stone-400 mb-1.5">Or choose a high-res category preset:</span>
-                <div className="flex flex-wrap gap-2">
-                  {[
-                    { label: 'Narrative Adventure', url: '/images/placeholders/narrative-adventure.jpg' },
-                    { label: 'RPG', url: '/images/placeholders/rpg.jpg' },
-                    { label: 'Puzzle & Mystery', url: '/images/placeholders/puzzle.jpg' },
-                    { label: 'Simulation', url: '/images/placeholders/simulation.jpg' },
-                    { label: 'Strategy', url: '/images/placeholders/strategy.jpg' },
-                    { label: 'Sandbox', url: '/images/placeholders/sandbox.jpg' },
-                  ].map((p) => (
-                    <button
-                      key={p.label}
-                      type="button"
-                      onClick={() => setFormData({ ...formData, coverUrl: p.url })}
-                      className="rounded-lg border border-white/10 bg-white/[0.03] px-2.5 py-1 text-[11px] text-stone-400 hover:text-emerald-300 hover:border-emerald-500/30 transition"
-                    >
-                      {p.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            </div>
+            <ImageUploadManager
+              coverUrl={formData.coverUrl}
+              onCoverChange={(url) => setFormData((prev) => ({ ...prev, coverUrl: url }))}
+              screenshots={formData.screenshots || []}
+              onScreenshotsChange={(urls) => setFormData((prev) => ({ ...prev, screenshots: urls }))}
+              maxScreenshots={5}
+              maxFileSizeMB={3}
+            />
           </div>
 
           {/* Descriptions & AI Mechanism Breakdown */}

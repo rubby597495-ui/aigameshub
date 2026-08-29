@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 import { CATEGORIES, AI_MECHANICS, PLATFORMS } from '@/data/categories';
 import { Game } from '@/types/game';
-import { uploadToR2 } from '@/lib/api-client';
+import { ImageUploadManager } from '@/components/ui/ImageUploadManager';
 
 export default function AdminEditGamePage() {
   const router = useRouter();
@@ -290,52 +290,20 @@ export default function AdminEditGamePage() {
           </div>
         </div>
 
-        {/* Cover Art & Media (Cloudflare R2) */}
+        {/* Cover Art & Screenshots Management (Cloudflare R2) */}
         <div className="rounded-2xl border border-white/10 bg-[#161B1E] p-6 space-y-4">
           <h2 className="text-sm font-bold text-stone-100 uppercase tracking-wider border-b border-white/10 pb-3">
-            Cover Art & Media (Cloudflare R2)
+            图片与截图管理 (Cloudflare R2 直传)
           </h2>
 
-          <div className="space-y-3">
-            <div>
-              <label className="block text-xs text-stone-300 mb-1 font-medium">Cover Image URL</label>
-              <input
-                type="text"
-                value={formData.coverUrl}
-                onChange={(e) => setFormData({ ...formData, coverUrl: e.target.value })}
-                className="h-10 w-full rounded-xl border border-white/10 bg-[#121619] px-3.5 text-xs text-stone-200 focus:border-emerald-400/50 focus:outline-none"
-              />
-            </div>
-
-            {/* Direct R2 Upload Button */}
-            <div className="rounded-xl border border-dashed border-white/15 bg-white/[0.02] p-4 text-center">
-              <input
-                type="file"
-                id="edit-cover-upload"
-                accept="image/png,image/jpeg,image/webp"
-                onChange={async (e) => {
-                  const file = e.target.files?.[0];
-                  if (!file) return;
-                  const json = await uploadToR2(file, 'covers');
-                  if (json.success && json.url) {
-                    setFormData({ ...formData, coverUrl: json.url });
-                  } else {
-                    alert(json.error || 'Failed to upload image to R2');
-                  }
-                }}
-                className="hidden"
-              />
-              <label
-                htmlFor="edit-cover-upload"
-                className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-white/[0.06] border border-white/10 px-4 py-2 text-xs font-semibold text-stone-200 hover:bg-white/10 transition"
-              >
-                <span>Upload New Cover to Cloudflare R2</span>
-              </label>
-              <p className="text-[10px] text-stone-500 mt-2">
-                Replaces current cover with high-performance Cloudflare R2 CDN storage.
-              </p>
-            </div>
-          </div>
+          <ImageUploadManager
+            coverUrl={formData.coverUrl}
+            onCoverChange={(url) => setFormData((prev) => prev ? ({ ...prev, coverUrl: url }) : null)}
+            screenshots={formData.screenshots || []}
+            onScreenshotsChange={(urls) => setFormData((prev) => prev ? ({ ...prev, screenshots: urls }) : null)}
+            maxScreenshots={5}
+            maxFileSizeMB={3}
+          />
         </div>
 
         {/* Descriptions */}

@@ -25,6 +25,7 @@ interface UserAuthContextType {
   playActivities: Record<number, PlayActivity>;
   guestLikes: number[];
   guestRatings: Record<number, number>;
+  gameViews: Record<number, number>;
   isAuthModalOpen: boolean;
   authModalMode: 'login' | 'register';
   openAuthModal: (mode?: 'login' | 'register') => void;
@@ -37,6 +38,9 @@ interface UserAuthContextType {
   isBookmarked: (gameId: number) => boolean;
   toggleLike: (gameId: number) => boolean;
   hasLiked: (gameId: number) => boolean;
+  recordGameView: (gameId: number) => number;
+  getGameViews: (gameId: number, baseViewCount?: number) => number;
+  getGameLikes: (gameId: number, baseLikeCount?: number) => number;
   rateGame: (gameId: number, rating: number) => { currentScore: number; ratingCount: number };
   getUserRating: (gameId: number) => number | undefined;
   setPlayStatus: (gameId: number, status: 'want_to_play' | 'playing' | 'played', rating?: number) => boolean;
@@ -75,13 +79,14 @@ export function UserAuthProvider({ children }: { children: React.ReactNode }) {
   const [playActivities, setPlayActivities] = useState<Record<number, PlayActivity>>({});
   const [guestLikes, setGuestLikes] = useState<number[]>([]);
   const [guestRatings, setGuestRatings] = useState<Record<number, number>>({});
+  const [gameViews, setGameViews] = useState<Record<number, number>>({});
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [authModalMode, setAuthModalMode] = useState<'login' | 'register'>('login');
 
-  // Load session, bookmarks, guest votes & ratings
+  // Load session, bookmarks, guest votes, ratings & views
   useEffect(() => {
     try {
-      // 1. Guest Likes & Ratings
+      // 1. Guest Likes, Ratings & Views
       const savedGuestLikes = localStorage.getItem('aigames_guest_likes');
       if (savedGuestLikes) {
         setGuestLikes(JSON.parse(savedGuestLikes));
@@ -89,6 +94,10 @@ export function UserAuthProvider({ children }: { children: React.ReactNode }) {
       const savedGuestRatings = localStorage.getItem('aigames_guest_ratings');
       if (savedGuestRatings) {
         setGuestRatings(JSON.parse(savedGuestRatings));
+      }
+      const savedViews = localStorage.getItem('aigames_game_views');
+      if (savedViews) {
+        setGameViews(JSON.parse(savedViews));
       }
 
       // 2. User Session
@@ -157,8 +166,6 @@ export function UserAuthProvider({ children }: { children: React.ReactNode }) {
     try {
       setIsLoading(true);
 
-      // Construct verified OAuth profile
-      const providerName = provider === 'google' ? 'Google' : 'GitHub';
       const randomSuffix = Math.random().toString(36).substring(2, 7);
       
       const oauthUser: UserProfile = {
@@ -355,6 +362,27 @@ export function UserAuthProvider({ children }: { children: React.ReactNode }) {
     return guestLikes.includes(gameId);
   };
 
+  const recordGameView = (gameId: number): number => {
+    const nextCount = (gameViews[gameId] || 0) + 1;
+    const nextViews = { ...gameViews, [gameId]: nextCount };
+    setGameViews(nextViews);
+
+    try {
+      localStorage.setItem('aigames_game_views', JSON.stringify(nextViews));
+      fetch(`/api/games/${gameId}/view`, { method: 'POST' }).catch(() => {});
+    } catch (e) {}
+
+    return nextCount;
+  };
+
+  const getGameViews = (gameId: number, baseViewCount: number = 0): number => {
+    return baseViewCount + (gameViews[gameId] || 0);
+  };
+
+  const getGameLikes = (gameId: number, baseLikeCount: number = 0): number => {
+    return baseLikeCount + (guestLikes.includes(gameId) ? 1 : 0);
+  };
+
   const rateGame = (gameId: number, rating: number): { currentScore: number; ratingCount: number } => {
     const nextRatings = { ...guestRatings, [gameId]: rating };
     setGuestRatings(nextRatings);
@@ -426,6 +454,7 @@ export function UserAuthProvider({ children }: { children: React.ReactNode }) {
         playActivities,
         guestLikes,
         guestRatings,
+        gameViews,
         isAuthModalOpen,
         authModalMode,
         openAuthModal,
@@ -438,6 +467,9 @@ export function UserAuthProvider({ children }: { children: React.ReactNode }) {
         isBookmarked,
         toggleLike,
         hasLiked,
+        recordGameView,
+        getGameViews,
+        getGameLikes,
         rateGame,
         getUserRating,
         setPlayStatus,

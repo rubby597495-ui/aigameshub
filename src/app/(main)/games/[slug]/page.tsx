@@ -10,6 +10,7 @@ import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { VotingWidget } from '@/components/game/VotingWidget';
 import { PlayTrackerWidget } from '@/components/game/PlayTrackerWidget';
 import { GameComments } from '@/components/game/GameComments';
+import { GameLiveStats } from '@/components/game/GameLiveStats';
 import { GameCard } from '@/components/game/GameCard';
 import { GameGallery } from '@/components/game/GameGallery';
 import { 
@@ -202,17 +203,12 @@ export default async function GameDetailPage({ params }: GameDetailPageProps) {
                 </button>
               )}
 
-              <div className="flex items-center gap-2 text-xs text-stone-400 pl-2">
-                <span className="flex items-center gap-1">
-                  <Flame className="h-3.5 w-3.5 text-amber-400" />
-                  <strong>{formatNumber(game.viewCount)}</strong> Views
-                </span>
-                <span>•</span>
-                <span className="flex items-center gap-1">
-                  <Heart className="h-3.5 w-3.5 text-rose-400" />
-                  <strong>{formatNumber(game.likeCount)}</strong> Likes
-                </span>
-              </div>
+              <GameLiveStats
+                gameId={game.id}
+                initialViews={game.viewCount}
+                initialLikes={game.likeCount}
+                className="pl-2"
+              />
             </div>
           </div>
         </div>

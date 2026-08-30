@@ -20,12 +20,14 @@ export function GameCard({ game, priority = false, compact = false }: GameCardPr
     toggleBookmark: toggleUserBookmark,
     hasLiked: checkHasLiked,
     toggleLike: triggerUserLike,
-    getUserRating
+    getUserRating,
+    getGameViews
   } = useUserAuth();
 
   const bookmarked = isBookmarked(game.id);
   const isLiked = checkHasLiked(game.id);
   const userScore = getUserRating(game.id);
+  const liveViews = getGameViews(game.id, game.viewCount);
 
   // Compute live like count with local interaction
   const [localLikeOffset, setLocalLikeOffset] = useState(0);
@@ -151,9 +153,9 @@ export function GameCard({ game, priority = false, compact = false }: GameCardPr
         {/* Card Footer: Metrics & Details CTA (Anchored to bottom) */}
         <div className="mt-auto flex items-center justify-between border-t border-white/5 pt-2.5 text-xs text-stone-400">
           <div className="flex items-center gap-3 text-[11px]">
-            <span className="inline-flex items-center gap-1" title={`${game.viewCount} views`}>
+            <span className="inline-flex items-center gap-1" title={`${liveViews} views`}>
               <Flame className="h-3 w-3 text-amber-400" />
-              <span>{formatNumber(game.viewCount)}</span>
+              <span>{formatNumber(liveViews)}</span>
             </span>
             <button
               type="button"

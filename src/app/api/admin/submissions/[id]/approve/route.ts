@@ -1,31 +1,33 @@
 export const runtime = 'edge';
 
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+import { updateSubmissionStatus } from '@/lib/submissions-store';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8790';
 
 export async function POST(
-  request: Request,
+  req: NextRequest,
   { params }: { params: Promise<{ id: string }> }
 ) {
-  try {
-    const { id } = await params;
-    try {
-      const res = await fetch(`${API_BASE}/api/admin/submissions/${id}/approve`, {
-        method: 'POST',
-      });
-      if (res.ok) {
-        return NextResponse.json(await res.json());
-      }
-    } catch {
-      // Offline fallback
-    }
+  const { id } = await params;
 
-    return NextResponse.json({ success: true, message: 'Game approved and published!' });
-  } catch (error) {
-    return NextResponse.json(
-      { success: false, error: 'Failed to approve submission' },
-      { status: 500 }
-    );
+  try {
+    const res = await fetch(`${API_BASE}/api/admin/submissions/${id}/approve`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+    });
+    if (res.ok) {
+      const data = await res.json();
+      return NextResponse.json(data);
+    }
+  } catch {
+    // Fallback to memory store update
   }
+
+  updateSubmissionStatus(id, 'APPROVED');
+
+  return NextResponse.json({
+    success: true,
+    message: `Submission ${id} approved successfully`,
+  });
 }

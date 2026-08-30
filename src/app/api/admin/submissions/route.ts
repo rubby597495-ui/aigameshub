@@ -1,6 +1,7 @@
 export const runtime = 'edge';
 
 import { NextResponse } from 'next/server';
+import { getSubmissionsStore } from '@/lib/submissions-store';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8790';
 
@@ -9,10 +10,14 @@ export async function GET() {
     const res = await fetch(`${API_BASE}/api/admin/submissions`, { cache: 'no-store' });
     if (res.ok) {
       const data = await res.json();
-      return NextResponse.json({ success: true, submissions: data.submissions || data.data || [] });
+      if (data.submissions && data.submissions.length > 0) {
+        return NextResponse.json({ success: true, submissions: data.submissions });
+      }
     }
   } catch {
-    // Offline fallback
+    // Fallback to local edge memory store
   }
-  return NextResponse.json({ success: true, submissions: [] });
+
+  const submissions = getSubmissionsStore().filter(s => s.status === 'PENDING');
+  return NextResponse.json({ success: true, submissions });
 }

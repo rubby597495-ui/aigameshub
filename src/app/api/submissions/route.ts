@@ -1,8 +1,9 @@
 export const runtime = 'edge';
 
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+import { addSubmissionToStore } from '@/lib/submissions-store';
 
-export async function POST(request: Request) {
+export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
 
@@ -13,17 +14,17 @@ export async function POST(request: Request) {
       );
     }
 
-    // In production with PostgreSQL, insert into submission table
-    console.log('[+] Received game submission:', body.title);
+    const newSub = addSubmissionToStore(body);
 
     return NextResponse.json({
       success: true,
       message: 'Game submission received successfully.',
-      submissionId: `sub-${Date.now()}`
+      submissionId: newSub.id,
+      data: newSub
     });
-  } catch (error) {
+  } catch (error: any) {
     return NextResponse.json(
-      { success: false, error: 'Invalid submission data.' },
+      { success: false, error: error.message || 'Invalid submission data.' },
       { status: 500 }
     );
   }

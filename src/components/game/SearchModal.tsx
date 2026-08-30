@@ -30,11 +30,15 @@ export function SearchModal({ isOpen, onClose, games }: SearchModalProps) {
     const timer = setTimeout(async () => {
       setIsFtsSearching(true);
       try {
-        const res = await fetch(`http://127.0.0.1:8790/api/search?q=${encodeURIComponent(query)}&limit=10`);
+        const apiBase = process.env.NEXT_PUBLIC_API_URL || '';
+        const searchEndpoint = apiBase ? `${apiBase}/api/search?q=${encodeURIComponent(query)}&limit=10` : `/api/games?search=${encodeURIComponent(query)}`;
+        const res = await fetch(searchEndpoint);
         if (res.ok) {
           const json = await res.json();
           if (json.success && json.results && json.results.length > 0) {
             setFtsResults(json.results);
+          } else if (json.data && json.data.length > 0) {
+            setFtsResults(json.data);
           } else {
             setFtsResults([]);
           }

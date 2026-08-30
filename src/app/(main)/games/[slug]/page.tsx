@@ -7,7 +7,6 @@ import {
   getRelatedGames 
 } from '@/lib/data';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
-import { VotingWidget } from '@/components/game/VotingWidget';
 import { PlayTrackerWidget } from '@/components/game/PlayTrackerWidget';
 import { GameComments } from '@/components/game/GameComments';
 import { GameLiveStats } from '@/components/game/GameLiveStats';
@@ -278,11 +277,8 @@ export default async function GameDetailPage({ params }: GameDetailPageProps) {
             </div>
           </section>
 
-          {/* User Personal Play Tracker & Rating */}
+          {/* Unified Community Evaluation & Play Tracker Widget */}
           <PlayTrackerWidget game={game} />
-
-          {/* Interactive Community Voting Widget */}
-          <VotingWidget game={game} />
 
           {/* Real User Community Comments & Reviews */}
           <GameComments game={game} />

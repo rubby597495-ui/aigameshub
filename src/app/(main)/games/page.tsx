@@ -4,6 +4,7 @@ import React from 'react';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { GameFilter } from '@/components/game/GameFilter';
 import { GameCard } from '@/components/game/GameCard';
+import { Pagination } from '@/components/ui/Pagination';
 import { filterGames } from '@/lib/data';
 import { constructMetadata, generateCollectionJsonLd } from '@/lib/seo';
 import { FilterOptions } from '@/types/game';
@@ -32,11 +33,14 @@ interface GamesPageProps {
     platform?: string;
     status?: string;
     sort?: 'hot' | 'latest' | 'top_rated' | 'most_liked' | 'most_bookmarked' | 'random';
+    page?: string;
   }>;
 }
 
 export default async function GamesPage({ searchParams }: GamesPageProps) {
   const params = await searchParams;
+  const currentPage = params.page ? Math.max(1, parseInt(params.page, 10) || 1) : 1;
+  const PAGE_SIZE = 24;
 
   const filterOptions: FilterOptions = {
     search: params.search,
@@ -45,10 +49,12 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
     mechanic: params.mechanic,
     platform: params.platform,
     status: params.status,
-    sort: params.sort || 'hot'
+    sort: params.sort || 'hot',
+    page: currentPage,
+    pageSize: PAGE_SIZE,
   };
 
-  const { items: filteredGames, total } = filterGames(filterOptions);
+  const { items: filteredGames, total, totalPages } = filterGames(filterOptions);
 
   const collectionJsonLd = generateCollectionJsonLd(
     'AI Video Games Catalog',
@@ -95,10 +101,22 @@ export default async function GamesPage({ searchParams }: GamesPageProps) {
 
       {/* Games Grid */}
       {filteredGames.length > 0 ? (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {filteredGames.map((game) => (
-            <GameCard key={game.id} game={game} />
-          ))}
+        <div className="space-y-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {filteredGames.map((game) => (
+              <GameCard key={game.id} game={game} />
+            ))}
+          </div>
+
+          {/* Pagination Controls */}
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            totalItems={total}
+            pageSize={PAGE_SIZE}
+            baseUrl="/games"
+            searchParams={params}
+          />
         </div>
       ) : (
         <div className="archive-surface rounded-2xl p-12 text-center space-y-3">

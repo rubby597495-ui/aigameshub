@@ -110,6 +110,8 @@ export interface FilterOptions {
   platform?: string;
   status?: string;
   sort?: 'hot' | 'latest' | 'top_rated' | 'most_liked' | 'most_bookmarked' | 'random';
+  page?: number;
+  pageSize?: number;
 }
 
 export interface Review {

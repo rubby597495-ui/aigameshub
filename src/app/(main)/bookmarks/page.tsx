@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
 import { GameCard } from '@/components/game/GameCard';
+import { Pagination } from '@/components/ui/Pagination';
 import { getAllGames } from '@/lib/data';
 import { useUserAuth } from '@/contexts/UserAuthContext';
 import { 
@@ -22,6 +23,12 @@ export default function BookmarksPage() {
   const { user, bookmarks, openAuthModal } = useUserAuth();
   const [selectedTier, setSelectedTier] = useState('ALL');
   const [selectedGenre, setSelectedGenre] = useState('ALL');
+  const [page, setPage] = useState(1);
+  const PAGE_SIZE = 16;
+
+  useEffect(() => {
+    setPage(1);
+  }, [selectedTier, selectedGenre]);
 
   const allGames = getAllGames();
   const bookmarkedGames = allGames.filter((g) => bookmarks.includes(g.id));
@@ -32,6 +39,9 @@ export default function BookmarksPage() {
     const matchesGenre = selectedGenre === 'ALL' || g.genreSlug === selectedGenre;
     return matchesTier && matchesGenre;
   });
+
+  const totalPages = Math.max(1, Math.ceil(filteredGames.length / PAGE_SIZE));
+  const paginatedGames = filteredGames.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   return (
     <div className="space-y-8 max-w-7xl mx-auto">
@@ -69,53 +79,30 @@ export default function BookmarksPage() {
         )}
       </div>
 
-      {!user ? (
-        <div className="archive-surface rounded-3xl p-10 sm:p-12 text-center border border-white/10 bg-white/[0.02] space-y-4 max-w-md mx-auto">
-          <div className="grid h-16 w-16 place-items-center rounded-2xl bg-pink-500/10 border border-pink-500/20 text-pink-400 mx-auto">
-            <Heart className="h-8 w-8" />
+      {/* Empty State */}
+      {bookmarks.length === 0 ? (
+        <div className="archive-surface rounded-3xl border border-white/10 p-12 text-center space-y-4">
+          <div className="grid h-16 w-16 mx-auto place-items-center rounded-2xl bg-white/[0.03] border border-white/10 text-stone-500">
+            <Bookmark className="h-8 w-8 text-stone-500" />
           </div>
-          <h2 className="text-lg font-bold text-stone-100">
-            Sign in to Enable Cloud Sync
-          </h2>
-          <p className="text-xs text-stone-400 leading-relaxed">
-            Create an account or sign in to save your favorite AI games and access them seamlessly from any browser or device.
-          </p>
-          <button
-            type="button"
-            onClick={() => openAuthModal('login')}
-            className="w-full rounded-xl bg-[#8FAFA3] py-2.5 text-xs font-bold text-[#101715] hover:bg-[#A2BDB3] transition shadow-md"
-          >
-            Sign In / Create Account
-          </button>
-        </div>
-      ) : bookmarkedGames.length === 0 ? (
-        <div className="archive-surface rounded-3xl p-10 sm:p-14 text-center border border-white/10 bg-white/[0.02] space-y-4 max-w-md mx-auto">
-          <div className="grid h-16 w-16 place-items-center rounded-2xl bg-white/[0.05] border border-white/10 text-stone-400 mx-auto">
-            <Bookmark className="h-8 w-8" />
+          <div className="space-y-1">
+            <h3 className="text-lg font-bold text-stone-100">No Bookmarks Saved Yet</h3>
+            <p className="text-xs text-stone-400 max-w-md mx-auto">
+              Explore our library of 90+ verified AI-native games and click the bookmark button (🔖) on any title to save it here.
+            </p>
           </div>
-          <h2 className="text-lg font-bold text-stone-100">
-            Your Bookmarks List is Empty
-          </h2>
-          <p className="text-xs text-stone-400 leading-relaxed">
-            Browse our curated catalog and tap the heart icon ❤️ on any game card to add it to your personal watchlist!
-          </p>
           <Link
             href="/games"
-            className="inline-flex items-center gap-2 rounded-xl bg-[#8FAFA3] px-6 py-2.5 text-xs font-bold text-[#101715] hover:bg-[#A2BDB3] transition shadow-md"
+            className="inline-flex items-center gap-2 rounded-xl bg-[#8FAFA3] px-5 py-2.5 text-xs font-bold text-[#101715] hover:bg-[#A2BDB3] transition shadow"
           >
-            <span>Explore 90+ AI Games</span>
-            <ArrowRight className="h-4 w-4" />
+            <Gamepad2 className="h-4 w-4" />
+            <span>Explore AI Game Library</span>
           </Link>
         </div>
       ) : (
         <>
-          {/* Filters */}
-          <div className="flex flex-wrap items-center gap-3 rounded-2xl border border-white/10 bg-[#161B1E] p-4 text-xs">
-            <div className="flex items-center gap-1.5 text-stone-400 mr-2">
-              <SlidersHorizontal className="h-3.5 w-3.5" />
-              <span>Filter:</span>
-            </div>
-
+          {/* Quick Filters */}
+          <div className="flex flex-wrap items-center gap-3">
             <select
               value={selectedTier}
               onChange={(e) => setSelectedTier(e.target.value)}
@@ -140,10 +127,23 @@ export default function BookmarksPage() {
           </div>
 
           {/* Games Grid */}
-          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-            {filteredGames.map((game) => (
-              <GameCard key={game.id} game={game} />
-            ))}
+          <div className="space-y-6">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {paginatedGames.map((game) => (
+                <GameCard key={game.id} game={game} />
+              ))}
+            </div>
+
+            {/* Pagination Controls */}
+            {filteredGames.length > PAGE_SIZE && (
+              <Pagination
+                currentPage={page}
+                totalPages={totalPages}
+                totalItems={filteredGames.length}
+                pageSize={PAGE_SIZE}
+                onPageChange={setPage}
+              />
+            )}
           </div>
         </>
       )}

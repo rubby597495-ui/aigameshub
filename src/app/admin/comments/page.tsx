@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { GameComment, CommentStatus } from '@/types/comment';
 import { formatDate, cn } from '@/lib/utils';
+import { Pagination } from '@/components/ui/Pagination';
 
 export default function AdminCommentsPage() {
   const [comments, setComments] = useState<GameComment[]>([]);
@@ -27,6 +28,9 @@ export default function AdminCommentsPage() {
   const [statusFilter, setStatusFilter] = useState<string>('ALL');
   const [searchTerm, setSearchTerm] = useState('');
   const [feedback, setFeedback] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+
+  const [page, setPage] = useState(1);
+  const PAGE_SIZE = 10;
 
   const fetchComments = async () => {
     try {
@@ -48,8 +52,12 @@ export default function AdminCommentsPage() {
   };
 
   useEffect(() => {
+    setPage(1);
     fetchComments();
   }, [statusFilter, searchTerm]);
+
+  const totalPages = Math.max(1, Math.ceil(comments.length / PAGE_SIZE));
+  const paginatedComments = comments.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   const showToast = (type: 'success' | 'error', text: string) => {
     setFeedback({ type, text });
@@ -207,7 +215,7 @@ export default function AdminCommentsPage() {
             </p>
           </div>
         ) : (
-          comments.map((comment) => {
+          paginatedComments.map((comment) => {
             const isApproved = comment.status === 'APPROVED';
             const isFlagged = comment.status === 'FLAGGED' || comment.status === 'SPAM';
 
@@ -329,6 +337,19 @@ export default function AdminCommentsPage() {
               </div>
             );
           })
+        )}
+
+        {/* Pagination */}
+        {comments.length > PAGE_SIZE && (
+          <div className="pt-2">
+            <Pagination
+              currentPage={page}
+              totalPages={totalPages}
+              totalItems={comments.length}
+              pageSize={PAGE_SIZE}
+              onPageChange={setPage}
+            />
+          </div>
         )}
       </div>
     </div>

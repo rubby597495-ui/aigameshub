@@ -82,6 +82,9 @@ export function getRelatedGames(currentGame: Game, limit = 6): Game[] {
 export function filterGames(options: FilterOptions): {
   items: Game[];
   total: number;
+  page: number;
+  pageSize: number;
+  totalPages: number;
 } {
   let result = [...games];
 
@@ -152,9 +155,23 @@ export function filterGames(options: FilterOptions): {
       break;
   }
 
+  const total = result.length;
+  const page = Math.max(1, Number(options.page) || 1);
+  const pageSize = Math.max(1, Number(options.pageSize) || 24);
+  const totalPages = Math.max(1, Math.ceil(total / pageSize));
+
+  // If page is specified or default paginated
+  const startIndex = (page - 1) * pageSize;
+  const paginatedItems = options.page !== undefined || options.pageSize !== undefined
+    ? result.slice(startIndex, startIndex + pageSize)
+    : result;
+
   return {
-    items: result,
-    total: result.length
+    items: paginatedItems,
+    total,
+    page,
+    pageSize,
+    totalPages
   };
 }
 

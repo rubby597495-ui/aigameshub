@@ -18,6 +18,7 @@ import {
 import { CATEGORIES, AI_TYPES } from '@/data/categories';
 import { Game } from '@/types/game';
 import { formatNumber, getTierBadgeStyle } from '@/lib/utils';
+import { Pagination } from '@/components/ui/Pagination';
 
 export default function AdminGamesPage() {
   const [games, setGames] = useState<Game[]>([]);
@@ -92,6 +93,13 @@ export default function AdminGamesPage() {
     }
   };
 
+  const [page, setPage] = useState(1);
+  const PAGE_SIZE = 15;
+
+  useEffect(() => {
+    setPage(1);
+  }, [search, aiTypeFilter, genreFilter]);
+
   const filteredGames = games.filter((g) => {
     const matchesSearch =
       !search ||
@@ -106,6 +114,9 @@ export default function AdminGamesPage() {
 
     return matchesSearch && matchesType && matchesGenre;
   });
+
+  const totalPages = Math.max(1, Math.ceil(filteredGames.length / PAGE_SIZE));
+  const paginatedGames = filteredGames.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
   return (
     <div className="space-y-6">
@@ -199,7 +210,7 @@ export default function AdminGamesPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-white/5 text-stone-300">
-              {filteredGames.map((game) => (
+              {paginatedGames.map((game) => (
                 <tr key={game.id} className="hover:bg-white/[0.02] transition">
                   {/* Game & Cover */}
                   <td className="p-3.5">
@@ -314,6 +325,17 @@ export default function AdminGamesPage() {
               ))}
             </tbody>
           </table>
+        </div>
+
+        {/* Pagination */}
+        <div className="p-4 bg-[#14181B] border-t border-white/10">
+          <Pagination
+            currentPage={page}
+            totalPages={totalPages}
+            totalItems={filteredGames.length}
+            pageSize={PAGE_SIZE}
+            onPageChange={setPage}
+          />
         </div>
       </div>
     </div>

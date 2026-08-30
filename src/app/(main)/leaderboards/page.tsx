@@ -3,6 +3,7 @@ export const runtime = 'edge';
 import React from 'react';
 import Link from 'next/link';
 import { Breadcrumbs } from '@/components/layout/Breadcrumbs';
+import { Pagination } from '@/components/ui/Pagination';
 import { 
   getTrendingGames, 
   getTopRatedGames, 
@@ -30,12 +31,15 @@ export const metadata = constructMetadata({
 interface LeaderboardsPageProps {
   searchParams: Promise<{
     tab?: 'recommended' | 'hot' | 'liked' | 'saved' | 'innovation';
+    page?: string;
   }>;
 }
 
 export default async function LeaderboardsPage({ searchParams }: LeaderboardsPageProps) {
   const params = await searchParams;
   const currentTab = params.tab || 'recommended';
+  const currentPage = params.page ? Math.max(1, parseInt(params.page, 10) || 1) : 1;
+  const PAGE_SIZE = 15;
 
   let gamesList = [];
   let tabTitle = 'All-Round Recommended AI Games';
@@ -43,33 +47,38 @@ export default async function LeaderboardsPage({ searchParams }: LeaderboardsPag
 
   switch (currentTab) {
     case 'hot':
-      gamesList = getTrendingGames(25);
+      gamesList = getTrendingGames(50);
       tabTitle = 'Trending & Most Played AI Games';
       tabDesc = 'Ranked by total community player sessions and traffic volume in the last 30 days.';
       break;
     case 'liked':
-      gamesList = getMostLikedGames(25);
+      gamesList = getMostLikedGames(50);
       tabTitle = 'Most Upvoted Community Favorites';
       tabDesc = 'Ranked by verified positive player upvotes and feedback.';
       break;
     case 'saved':
-      gamesList = getMostBookmarkedGames(25);
+      gamesList = getMostBookmarkedGames(50);
       tabTitle = 'Most Bookmarked & Saved for Later';
       tabDesc = 'Titles added to player bookmarks the most for ongoing playthroughs.';
       break;
     case 'innovation':
-      gamesList = getTopRatedGames(25);
+      gamesList = getTopRatedGames(50);
       tabTitle = 'Highest AI Innovation & Mechanic Depth';
       tabDesc = 'Ranked by AI autonomy score, prompt responsiveness, and unscripted generative loops.';
       break;
     case 'recommended':
     default:
       gamesList = getFeaturedGames();
-      if (gamesList.length < 15) {
-        gamesList = [...gamesList, ...getTrendingGames(15)].slice(0, 20);
+      if (gamesList.length < 25) {
+        gamesList = [...gamesList, ...getTrendingGames(25)].slice(0, 40);
       }
       break;
   }
+
+  const totalItems = gamesList.length;
+  const totalPages = Math.max(1, Math.ceil(totalItems / PAGE_SIZE));
+  const startIndex = (currentPage - 1) * PAGE_SIZE;
+  const paginatedGames = gamesList.slice(startIndex, startIndex + PAGE_SIZE);
 
   const collectionJsonLd = generateCollectionJsonLd(
     tabTitle,
@@ -78,31 +87,28 @@ export default async function LeaderboardsPage({ searchParams }: LeaderboardsPag
   );
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 max-w-7xl mx-auto">
+      {/* Schema.org CollectionPage */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionJsonLd) }}
       />
 
-      <Breadcrumbs
-        items={[
-          { name: 'Leaderboards', url: '/leaderboards' }
-        ]}
-      />
+      <Breadcrumbs items={[{ name: 'Leaderboards', url: '/leaderboards' }]} />
 
-      {/* Header */}
+      {/* Page Header */}
       <div className="border-b border-white/10 pb-6">
         <h1 className="text-2xl sm:text-3xl font-extrabold text-stone-100 flex items-center gap-2.5">
           <Trophy className="h-7 w-7 text-amber-400" />
-          <span>AI Games Leaderboards</span>
+          <span>AI Gaming Leaderboards & Verified Rankings</span>
         </h1>
         <p className="mt-2 text-xs sm:text-sm text-stone-400 max-w-3xl leading-relaxed">
-          Explore top-performing generative AI titles ranked across multiple dimensions including community popularity, unscripted AI depth, and verified player upvotes.
+          Real-time community rankings benchmarking generative capability, gameplay innovation, player reception, and LLM autonomy depth.
         </p>
       </div>
 
       {/* Leaderboard Tabs */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar">
+      <div className="flex items-center gap-2 overflow-x-auto pb-2 [scrollbar-width:none]">
         <Link
           href="/leaderboards?tab=recommended"
           className={`flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-semibold whitespace-nowrap transition ${
@@ -111,20 +117,8 @@ export default async function LeaderboardsPage({ searchParams }: LeaderboardsPag
               : 'border border-white/5 bg-white/[0.03] text-stone-400 hover:text-stone-200'
           }`}
         >
-          <Sparkles className="h-3.5 w-3.5 text-emerald-400" />
-          <span>⭐ Recommended</span>
-        </Link>
-
-        <Link
-          href="/leaderboards?tab=hot"
-          className={`flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-semibold whitespace-nowrap transition ${
-            currentTab === 'hot'
-              ? 'bg-[#2A3442] text-[#D8E1EA] shadow-md border border-white/10'
-              : 'border border-white/5 bg-white/[0.03] text-stone-400 hover:text-stone-200'
-          }`}
-        >
-          <Flame className="h-3.5 w-3.5 text-amber-400" />
-          <span>🔥 Trending Hot</span>
+          <Sparkles className="h-3.5 w-3.5 text-amber-400" />
+          <span>Editor Recommended</span>
         </Link>
 
         <Link
@@ -136,7 +130,19 @@ export default async function LeaderboardsPage({ searchParams }: LeaderboardsPag
           }`}
         >
           <Trophy className="h-3.5 w-3.5 text-emerald-400" />
-          <span>🧠 AI Innovation</span>
+          <span>AI Innovation</span>
+        </Link>
+
+        <Link
+          href="/leaderboards?tab=hot"
+          className={`flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-xs font-semibold whitespace-nowrap transition ${
+            currentTab === 'hot'
+              ? 'bg-[#2A3442] text-[#D8E1EA] shadow-md border border-white/10'
+              : 'border border-white/5 bg-white/[0.03] text-stone-400 hover:text-stone-200'
+          }`}
+        >
+          <Flame className="h-3.5 w-3.5 text-orange-400" />
+          <span>🔥 Trending Now</span>
         </Link>
 
         <Link
@@ -172,8 +178,8 @@ export default async function LeaderboardsPage({ searchParams }: LeaderboardsPag
 
       {/* Ranking List Table */}
       <div className="space-y-2.5">
-        {gamesList.map((game, index) => {
-          const rank = index + 1;
+        {paginatedGames.map((game, index) => {
+          const rank = startIndex + index + 1;
           const rankBadge =
             rank === 1 ? '🥇 #1' : rank === 2 ? '🥈 #2' : rank === 3 ? '🥉 #3' : `#${rank}`;
           const rankColor =
@@ -246,6 +252,18 @@ export default async function LeaderboardsPage({ searchParams }: LeaderboardsPag
           );
         })}
       </div>
+
+      {/* Pagination Controls */}
+      {totalItems > PAGE_SIZE && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          totalItems={totalItems}
+          pageSize={PAGE_SIZE}
+          baseUrl="/leaderboards"
+          searchParams={params}
+        />
+      )}
     </div>
   );
 }

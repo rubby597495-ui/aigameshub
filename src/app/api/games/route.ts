@@ -14,7 +14,9 @@ export async function GET(request: Request) {
     mechanic: searchParams.get('mechanic') || undefined,
     platform: searchParams.get('platform') || undefined,
     status: searchParams.get('status') || undefined,
-    sort: (searchParams.get('sort') as FilterOptions['sort']) || 'hot'
+    sort: (searchParams.get('sort') as FilterOptions['sort']) || 'hot',
+    page: searchParams.get('page') ? parseInt(searchParams.get('page')!, 10) : undefined,
+    pageSize: searchParams.get('pageSize') ? parseInt(searchParams.get('pageSize')!, 10) : undefined,
   };
 
   const result = filterGames(options);
@@ -22,6 +24,9 @@ export async function GET(request: Request) {
   return NextResponse.json({
     success: true,
     total: result.total,
+    page: result.page,
+    pageSize: result.pageSize,
+    totalPages: result.totalPages,
     games: result.items
   });
 }

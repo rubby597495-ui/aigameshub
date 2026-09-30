@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import './globals.css';
 import { SITE_CONFIG, generateWebsiteJsonLd } from '@/lib/seo';
 
@@ -73,6 +74,18 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-[#101314] text-stone-100 antialiased selection:bg-emerald-400/30 selection:text-emerald-200">
         {children}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-4HGZJEDN3T"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-4HGZJEDN3T');
+          `}
+        </Script>
       </body>
     </html>
   );

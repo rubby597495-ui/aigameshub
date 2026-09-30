@@ -1,8 +1,8 @@
-import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+export const runtime = 'edge';
 
-export const runtime = 'nodejs';
+import { NextRequest, NextResponse } from 'next/server';
+
+const API_BASE = process.env.NEXT_PUBLIC_API_URL;
 
 export async function POST(req: NextRequest) {
   try {
@@ -14,47 +14,56 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ success: false, error: 'No file provided' }, { status: 400 });
     }
 
-    // Limit check (5MB)
+    // 5MB limit
     const MAX_SIZE = 5 * 1024 * 1024;
     if (file.size > MAX_SIZE) {
       return NextResponse.json({ success: false, error: 'File size exceeds 5MB limit' }, { status: 400 });
     }
 
-    const bytes = await file.arrayBuffer();
-    const buffer = Buffer.from(bytes);
+    // 1. If Cloudflare Worker API is configured, forward to R2 upload endpoint
+    if (API_BASE) {
+      try {
+        const workerFormData = new FormData();
+        workerFormData.append('file', file);
+        workerFormData.append('folder', folder);
 
-    // Generate safe filename
-    const ext = path.extname(file.name) || '.jpg';
-    const cleanName = path.basename(file.name, ext).replace(/[^a-zA-Z0-9_-]/g, '') || 'upload';
-    const fileName = `${Date.now()}_${cleanName}${ext}`;
+        const upstreamRes = await fetch(`${API_BASE}/api/upload`, {
+          method: 'POST',
+          body: workerFormData,
+        });
 
-    try {
-      const publicUploadsDir = path.join(process.cwd(), 'public', 'uploads', folder);
-      if (!fs.existsSync(publicUploadsDir)) {
-        fs.mkdirSync(publicUploadsDir, { recursive: true });
+        if (upstreamRes.ok) {
+          const upstreamData = await upstreamRes.json();
+          return NextResponse.json(upstreamData);
+        }
+      } catch (upstreamErr) {
+        console.error('Failed to proxy upload to Cloudflare Worker, falling back to Base64:', upstreamErr);
       }
-
-      const filePath = path.join(publicUploadsDir, fileName);
-      fs.writeFileSync(filePath, buffer);
-
-      const publicUrl = `/uploads/${folder}/${fileName}`;
-      return NextResponse.json({
-        success: true,
-        url: publicUrl,
-        fileName,
-        size: file.size,
-      });
-    } catch (fsErr) {
-      // In read-only or serverless filesystem, fallback to Base64 data URL
-      const mimeType = file.type || 'image/jpeg';
-      const base64Url = `data:${mimeType};base64,${buffer.toString('base64')}`;
-      return NextResponse.json({
-        success: true,
-        url: base64Url,
-        fileName,
-        size: file.size,
-      });
     }
+
+    // 2. Edge-compatible Base64 fallback (works in all serverless/edge environments)
+    const arrayBuffer = await file.arrayBuffer();
+    const uint8Array = new Uint8Array(arrayBuffer);
+    
+    // Chunked Base64 encoding to prevent stack overflow on large buffers
+    let binary = '';
+    const chunkSize = 8192;
+    for (let i = 0; i < uint8Array.length; i += chunkSize) {
+      binary += String.fromCharCode.apply(
+        null,
+        uint8Array.subarray(i, i + chunkSize) as unknown as number[]
+      );
+    }
+    const base64 = btoa(binary);
+    const mimeType = file.type || 'image/jpeg';
+    const dataUrl = `data:${mimeType};base64,${base64}`;
+
+    return NextResponse.json({
+      success: true,
+      url: dataUrl,
+      fileName: file.name,
+      size: file.size,
+    });
   } catch (err: any) {
     return NextResponse.json(
       { success: false, error: err.message || 'File upload failed' },

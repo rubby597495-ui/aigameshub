@@ -36,6 +36,7 @@ export function GameFilter({
 
   const updateParam = (key: string, value: string) => {
     const params = new URLSearchParams(searchParams.toString());
+    params.delete('page');
     if (value && value !== 'all' && value !== 'ALL') {
       params.set(key, value);
     } else {

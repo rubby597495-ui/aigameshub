@@ -40,11 +40,17 @@ export default function AdminLayout({
     router.push('/admin/login');
   };
 
-  const navLinks = [
+  const navLinks: {
+    href: string;
+    label: string;
+    icon: React.ComponentType<{ className?: string }>;
+    exact?: boolean;
+    badge?: string;
+  }[] = [
     { href: '/admin', label: 'Dashboard Overview', icon: LayoutDashboard, exact: true },
     { href: '/admin/games', label: 'Game Management', icon: Gamepad2 },
     { href: '/admin/games/new', label: 'Add New Game', icon: PlusCircle, exact: true },
-    { href: '/admin/submissions', label: 'Submission Queue', icon: Inbox, badge: '2' },
+    { href: '/admin/submissions', label: 'Submission Queue', icon: Inbox },
     { href: '/admin/comments', label: 'Comment Moderation', icon: MessageSquare },
     { href: '/admin/users', label: 'User & Permissions', icon: Users },
     { href: '/admin/articles', label: 'News & Articles', icon: FileText },
@@ -163,7 +169,7 @@ export default function AdminLayout({
 
           <div className="flex items-center gap-2 text-xs text-stone-400">
             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span>Database Status: <strong>Operational (PostgreSQL / JSON Synced)</strong></span>
+            <span>System Status: <strong>Operational (Catalog & Store Active)</strong></span>
           </div>
 
           <div className="flex items-center gap-3">

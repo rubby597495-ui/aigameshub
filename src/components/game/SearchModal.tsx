@@ -35,10 +35,9 @@ export function SearchModal({ isOpen, onClose, games }: SearchModalProps) {
         const res = await fetch(searchEndpoint);
         if (res.ok) {
           const json = await res.json();
-          if (json.success && json.results && json.results.length > 0) {
-            setFtsResults(json.results);
-          } else if (json.data && json.data.length > 0) {
-            setFtsResults(json.data);
+          const list = json.results || json.data || json.games || [];
+          if (Array.isArray(list) && list.length > 0) {
+            setFtsResults(list);
           } else {
             setFtsResults([]);
           }

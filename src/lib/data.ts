@@ -3,10 +3,33 @@ import { Game, FilterOptions, SearchGameItem } from '@/types/game';
 import { CATEGORIES, AI_MECHANICS, AI_TYPES } from '@/data/categories';
 import { ARTICLES } from '@/data/articles';
 
-const games: Game[] = gamesData as unknown as Game[];
+let games: Game[] = [...(gamesData as unknown as Game[])];
 
 export function getAllGames(): Game[] {
   return games;
+}
+
+export function addGame(game: Game): Game {
+  const existingIdx = games.findIndex((g) => g.id === game.id || g.slug === game.slug);
+  if (existingIdx >= 0) {
+    games[existingIdx] = { ...games[existingIdx], ...game };
+    return games[existingIdx];
+  }
+  games.unshift(game);
+  return game;
+}
+
+export function updateGame(id: number, updates: Partial<Game>): Game | null {
+  const idx = games.findIndex((g) => g.id === id);
+  if (idx === -1) return null;
+  games[idx] = { ...games[idx], ...updates };
+  return games[idx];
+}
+
+export function deleteGame(id: number): boolean {
+  const prevLen = games.length;
+  games = games.filter((g) => g.id !== id);
+  return games.length < prevLen;
 }
 
 export function getSearchIndex(): SearchGameItem[] {
@@ -120,9 +143,13 @@ export function filterGames(options: FilterOptions): {
   }
 
   if (options.platform && options.platform !== 'all') {
-    const p = options.platform.toLowerCase();
+    const rawP = options.platform.toLowerCase();
+    const p = rawP === 'itch-io' ? 'itch.io' : rawP;
     result = result.filter((g) =>
-      g.platforms.some((plat) => plat.toLowerCase().includes(p))
+      g.platforms.some((plat) => {
+        const platLower = plat.toLowerCase();
+        return platLower.includes(p) || (p === 'itch.io' && platLower.includes('itch'));
+      })
     );
   }
 

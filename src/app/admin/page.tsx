@@ -55,7 +55,9 @@ export default function AdminDashboardPage() {
     const data = await res.json();
     if (data.success) {
       setSubmissions(submissions.filter((s) => s.id !== subId));
-      setGames([data.game, ...games]);
+      if (data.game) {
+        setGames([data.game, ...games]);
+      }
     }
   };
 

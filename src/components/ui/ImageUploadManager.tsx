@@ -95,7 +95,7 @@ export function ImageUploadManager({
       if (uploadedUrls.length > 0) {
         const updated = [...images, ...uploadedUrls];
         onImagesChange(updated);
-        showNotification('success', `Successfully uploaded ${uploadedUrls.length} image(s) to Cloudflare R2!`);
+        showNotification('success', `Successfully uploaded ${uploadedUrls.length} image(s)!`);
       }
     } catch (err: any) {
       showNotification('error', err.message || 'Image upload error. Please try again.');

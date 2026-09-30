@@ -10,7 +10,7 @@ export interface GameSubmission {
   mechanicSlug: string;
   mechanicName: string;
   aiRoleDescription: string;
-  tier: 'AI-Native' | 'AI-Augmented' | 'AI-Assisted';
+  tier: 'AI-Native' | 'AI-Augmented' | 'AI-Boundary';
   aiType: string;
   platforms: string[];
   status: 'PENDING' | 'APPROVED' | 'REJECTED';

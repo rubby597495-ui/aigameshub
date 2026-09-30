@@ -1,8 +1,9 @@
 export const runtime = 'edge';
 
 import { NextResponse } from 'next/server';
+import { updateGame, deleteGame } from '@/lib/data';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8790';
+const API_BASE = process.env.NEXT_PUBLIC_API_URL;
 
 export async function PUT(
   request: Request,
@@ -12,20 +13,27 @@ export async function PUT(
     const { id } = await params;
     const body = await request.json();
 
-    try {
-      const res = await fetch(`${API_BASE}/api/admin/games/${id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-      });
-      if (res.ok) {
-        return NextResponse.json(await res.json());
+    if (API_BASE) {
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/games/${id}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        });
+        if (res.ok) {
+          return NextResponse.json(await res.json());
+        }
+      } catch {
+        // Fallback to internal store
       }
-    } catch {
-      // Offline fallback
     }
 
-    return NextResponse.json({ success: true, game: { id: Number(id), ...body } });
+    const updated = updateGame(Number(id), body);
+    return NextResponse.json({
+      success: true,
+      game: updated || { id: Number(id), ...body },
+      message: 'Game updated successfully',
+    });
   } catch (error) {
     return NextResponse.json(
       { success: false, error: 'Failed to update game' },
@@ -41,18 +49,25 @@ export async function DELETE(
   try {
     const { id } = await params;
 
-    try {
-      const res = await fetch(`${API_BASE}/api/admin/games/${id}`, {
-        method: 'DELETE',
-      });
-      if (res.ok) {
-        return NextResponse.json(await res.json());
+    if (API_BASE) {
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/games/${id}`, {
+          method: 'DELETE',
+        });
+        if (res.ok) {
+          return NextResponse.json(await res.json());
+        }
+      } catch {
+        // Fallback to internal store
       }
-    } catch {
-      // Offline fallback
     }
 
-    return NextResponse.json({ success: true, message: 'Game deleted' });
+    const deleted = deleteGame(Number(id));
+    return NextResponse.json({
+      success: true,
+      deleted,
+      message: deleted ? 'Game deleted successfully' : 'Game not found',
+    });
   } catch (error) {
     return NextResponse.json(
       { success: false, error: 'Failed to delete game' },

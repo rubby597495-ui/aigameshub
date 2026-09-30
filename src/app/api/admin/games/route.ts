@@ -1,22 +1,24 @@
 export const runtime = 'edge';
 
 import { NextResponse } from 'next/server';
-import { getAllGames } from '@/lib/data';
+import { getAllGames, addGame } from '@/lib/data';
 import { Game } from '@/types/game';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8790';
+const API_BASE = process.env.NEXT_PUBLIC_API_URL;
 
 export async function GET() {
-  try {
-    const res = await fetch(`${API_BASE}/api/games?limit=100`, { cache: 'no-store' });
-    if (res.ok) {
-      const data = await res.json();
-      if (data.data) {
-        return NextResponse.json({ success: true, games: data.data, total: data.pagination?.total || data.data.length });
+  if (API_BASE) {
+    try {
+      const res = await fetch(`${API_BASE}/api/games?limit=100`, { cache: 'no-store' });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.data) {
+          return NextResponse.json({ success: true, games: data.data, total: data.pagination?.total || data.data.length });
+        }
       }
+    } catch {
+      // Fallback to internal games
     }
-  } catch {
-    // Fallback to static games
   }
   const games = getAllGames();
   return NextResponse.json({ success: true, games, total: games.length });
@@ -25,26 +27,30 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    try {
-      const res = await fetch(`${API_BASE}/api/admin/games`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body),
-      });
-      if (res.ok) {
-        const data = await res.json();
-        return NextResponse.json(data);
+    if (API_BASE) {
+      try {
+        const res = await fetch(`${API_BASE}/api/admin/games`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        });
+        if (res.ok) {
+          const data = await res.json();
+          return NextResponse.json(data);
+        }
+      } catch {
+        // Fallback to internal store
       }
-    } catch {
-      // Offline fallback
     }
 
     const games = getAllGames();
     const newId = games.length > 0 ? Math.max(...games.map((g) => g.id)) + 1 : 1;
+    const cleanSlug = body.slug || (body.title ? body.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '') : `ai-game-${newId}`);
+
     const newGame: Game = {
       id: newId,
-      slug: body.slug || `ai-game-${newId}`,
-      title: body.title,
+      slug: cleanSlug,
+      title: body.title || 'Untitled AI Game',
       tagline: body.tagline || '',
       description: body.description || '',
       aiRoleDescription: body.aiRoleDescription || '',
@@ -73,6 +79,8 @@ export async function POST(request: Request) {
       isHot: Boolean(body.isHot),
       createdAt: new Date().toISOString(),
     };
+
+    addGame(newGame);
 
     return NextResponse.json({ success: true, game: newGame });
   } catch (error) {

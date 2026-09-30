@@ -1,6 +1,6 @@
 import { Game, FilterOptions } from '@/types/game';
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8790';
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || '';
 
 export interface FtsSearchResult {
   id: number;
@@ -38,13 +38,24 @@ export async function searchGamesFts(query: string, limit = 20): Promise<FtsSear
   }
 
   try {
-    const res = await fetch(`${API_BASE}/api/search?q=${encodeURIComponent(query)}&limit=${limit}`, {
+    const url = API_BASE 
+      ? `${API_BASE}/api/search?q=${encodeURIComponent(query)}&limit=${limit}`
+      : `/api/games?search=${encodeURIComponent(query)}&pageSize=${limit}`;
+    const res = await fetch(url, {
       next: { revalidate: 60 },
     });
     if (!res.ok) throw new Error('Search failed');
-    return await res.json();
+    const data = await res.json();
+    const results = data.results || data.data || data.games || [];
+    return {
+      success: true,
+      query,
+      engine: data.engine || 'local',
+      total: data.total || results.length,
+      results,
+    };
   } catch (err) {
-    console.error('FTS5 Search API error:', err);
+    console.error('Search API error:', err);
     return { success: false, query, engine: 'error', total: 0, results: [] };
   }
 }
@@ -79,10 +90,15 @@ export async function uploadToR2(file: File, folder = 'covers'): Promise<{ succe
     formData.append('file', file);
     formData.append('folder', folder);
 
-    const res = await fetch(`${API_BASE}/api/upload`, {
+    const url = API_BASE ? `${API_BASE}/api/upload` : '/api/upload';
+    const res = await fetch(url, {
       method: 'POST',
       body: formData,
     });
+    if (!res.ok) {
+      const errData = await res.json().catch(() => null);
+      throw new Error(errData?.error || `Upload failed with status ${res.status}`);
+    }
     return await res.json();
   } catch (err: any) {
     return { success: false, error: err.message };

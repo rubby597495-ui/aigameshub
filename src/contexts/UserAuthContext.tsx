@@ -49,7 +49,7 @@ interface UserAuthContextType {
 
 const UserAuthContext = createContext<UserAuthContextType | undefined>(undefined);
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8790';
+const API_BASE = process.env.NEXT_PUBLIC_API_URL;
 
 // Helper to sync user with backend admin store
 async function syncUserToAdmin(user: UserProfile) {
@@ -200,33 +200,35 @@ export function UserAuthProvider({ children }: { children: React.ReactNode }) {
     }
 
     try {
-      try {
-        const res = await fetch(`${API_BASE}/api/auth/sign-in/email`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, password: password || 'AiGamesHub2026!' }),
-        });
-        if (res.ok) {
-          const data = await res.json();
-          if (data.user) {
-            const loggedUser: UserProfile = {
-              id: data.user.id,
-              name: data.user.name || email.split('@')[0],
-              email: data.user.email,
-              image: data.user.image,
-              provider: 'email',
-              role: data.user.role || 'user',
-              createdAt: data.user.createdAt,
-            };
-            setUser(loggedUser);
-            localStorage.setItem('aigames_user_session', JSON.stringify(loggedUser));
-            loadUserData(loggedUser.id);
-            await syncUserToAdmin(loggedUser);
-            return { success: true };
+      if (API_BASE) {
+        try {
+          const res = await fetch(`${API_BASE}/api/auth/sign-in/email`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password: password || 'AiGamesHub2026!' }),
+          });
+          if (res.ok) {
+            const data = await res.json();
+            if (data.user) {
+              const loggedUser: UserProfile = {
+                id: data.user.id,
+                name: data.user.name || email.split('@')[0],
+                email: data.user.email,
+                image: data.user.image,
+                provider: 'email',
+                role: data.user.role || 'user',
+                createdAt: data.user.createdAt,
+              };
+              setUser(loggedUser);
+              localStorage.setItem('aigames_user_session', JSON.stringify(loggedUser));
+              loadUserData(loggedUser.id);
+              await syncUserToAdmin(loggedUser);
+              return { success: true };
+            }
           }
+        } catch {
+          // Fallback to local session
         }
-      } catch {
-        // Fallback to local session
       }
 
       const sanitizedName = email.split('@')[0];
@@ -257,32 +259,34 @@ export function UserAuthProvider({ children }: { children: React.ReactNode }) {
     }
 
     try {
-      try {
-        const res = await fetch(`${API_BASE}/api/auth/sign-up/email`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, password: password || 'AiGamesHub2026!', name: name || email.split('@')[0] }),
-        });
-        if (res.ok) {
-          const data = await res.json();
-          if (data.user) {
-            const newUser: UserProfile = {
-              id: data.user.id,
-              name: data.user.name || name || email.split('@')[0],
-              email: data.user.email,
-              image: data.user.image,
-              provider: 'email',
-              role: 'user',
-              createdAt: new Date().toISOString(),
-            };
-            setUser(newUser);
-            localStorage.setItem('aigames_user_session', JSON.stringify(newUser));
-            await syncUserToAdmin(newUser);
-            return { success: true };
+      if (API_BASE) {
+        try {
+          const res = await fetch(`${API_BASE}/api/auth/sign-up/email`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password: password || 'AiGamesHub2026!', name: name || email.split('@')[0] }),
+          });
+          if (res.ok) {
+            const data = await res.json();
+            if (data.user) {
+              const newUser: UserProfile = {
+                id: data.user.id,
+                name: data.user.name || name || email.split('@')[0],
+                email: data.user.email,
+                image: data.user.image,
+                provider: 'email',
+                role: 'user',
+                createdAt: new Date().toISOString(),
+              };
+              setUser(newUser);
+              localStorage.setItem('aigames_user_session', JSON.stringify(newUser));
+              await syncUserToAdmin(newUser);
+              return { success: true };
+            }
           }
+        } catch {
+          // Fallback to local registration
         }
-      } catch {
-        // Fallback to local registration
       }
 
       const userName = name || email.split('@')[0];

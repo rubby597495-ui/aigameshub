@@ -138,13 +138,17 @@ export function generateGameJsonLd(game: Game) {
       '@type': 'Organization',
       name: game.publisher || 'Independent'
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: (game.aiScore / 2).toFixed(1), // convert 10-scale to 5-scale for schema
-      bestRating: '5',
-      worstRating: '1',
-      ratingCount: game.likeCount + 12
-    },
+    ...(typeof game.aiScore === 'number' && game.aiScore > 0
+      ? {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: Math.min(5, Math.max(1, game.aiScore / 2)).toFixed(1), // convert 10-scale to 5-scale (1.0 - 5.0)
+            bestRating: '5',
+            worstRating: '1',
+            ratingCount: Math.max(1, (game.ratingCount || 0) + (game.likeCount || 0) + 12)
+          }
+        }
+      : {}),
     offers: {
       '@type': 'Offer',
       price: '0.00',

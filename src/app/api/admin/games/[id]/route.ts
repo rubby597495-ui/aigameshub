@@ -15,7 +15,7 @@ export async function PUT(
 
     if (API_BASE) {
       try {
-        const res = await fetch(`${API_BASE}/api/admin/games/${id}`, {
+        const res = await fetch(`${API_BASE}/api/games/${id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(body),
@@ -51,7 +51,7 @@ export async function DELETE(
 
     if (API_BASE) {
       try {
-        const res = await fetch(`${API_BASE}/api/admin/games/${id}`, {
+        const res = await fetch(`${API_BASE}/api/games/${id}`, {
           method: 'DELETE',
         });
         if (res.ok) {

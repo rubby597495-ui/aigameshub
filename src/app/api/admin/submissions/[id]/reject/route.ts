@@ -13,7 +13,7 @@ export async function POST(
 
   if (API_BASE) {
     try {
-      const res = await fetch(`${API_BASE}/api/admin/submissions/${id}/reject`, {
+      const res = await fetch(`${API_BASE}/api/submissions/${id}/reject`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       });

@@ -8,7 +8,7 @@ const API_BASE = process.env.NEXT_PUBLIC_API_URL;
 export async function GET() {
   if (API_BASE) {
     try {
-      const res = await fetch(`${API_BASE}/api/admin/submissions`, { cache: 'no-store' });
+      const res = await fetch(`${API_BASE}/api/submissions`, { cache: 'no-store' });
       if (res.ok) {
         const data = await res.json();
         if (data.submissions && data.submissions.length > 0) {

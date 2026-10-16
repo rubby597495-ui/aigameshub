@@ -15,7 +15,7 @@ export async function POST(
 
   if (API_BASE) {
     try {
-      const res = await fetch(`${API_BASE}/api/admin/submissions/${id}/approve`, {
+      const res = await fetch(`${API_BASE}/api/submissions/${id}/approve`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
       });

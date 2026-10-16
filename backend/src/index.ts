@@ -54,9 +54,11 @@ app.on(['POST', 'GET'], '/api/auth/**', (c) => {
 
 // 5. Mount REST APIs
 app.route('/api/games', gamesRoute);
+app.route('/api/admin/games', gamesRoute);
 app.route('/api/search', searchRoute);
 app.route('/api/upload', uploadRoute);
 app.route('/api/submissions', submissionsRoute);
+app.route('/api/admin/submissions', submissionsRoute);
 app.route('/api/stats', statsRoute);
 app.route('/api/admin/users', usersRoute);
 

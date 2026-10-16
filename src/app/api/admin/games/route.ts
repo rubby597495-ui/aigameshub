@@ -29,7 +29,7 @@ export async function POST(request: Request) {
     const body = await request.json();
     if (API_BASE) {
       try {
-        const res = await fetch(`${API_BASE}/api/admin/games`, {
+        const res = await fetch(`${API_BASE}/api/games`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(body),

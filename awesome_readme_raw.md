@@ -5,8 +5,8 @@
 >
 > **AI 原生游戏精选合集** —— 收录生成式 AI 构成(或逼近)核心机制的游戏,并按"**传统游戏类型 × AI 主玩法机制**"双轴分类。
 
-![games](https://img.shields.io/badge/games-98-1f6feb)
-![native](https://img.shields.io/badge/AI%20Native-74-2ea44f)
+![games](https://img.shields.io/badge/games-99-1f6feb)
+![native](https://img.shields.io/badge/AI%20Native-75-2ea44f)
 ![augmented](https://img.shields.io/badge/AI%20Augmented-13-1f6feb)
 ![boundary](https://img.shields.io/badge/AI%20Boundary-11-d4820a)
 ![updated](https://img.shields.io/badge/updated-2026--07-lightgrey)
@@ -33,9 +33,9 @@
 <a id="about"></a>
 ## 📖 About / 关于
 
-This repository collects **98 games** that use generative AI (LLMs, diffusion models, agents) at runtime, screened and classified. Each title is placed on two independent axes — a **traditional game-type axis (G)** and an **AI play-mechanic axis (N)** — and assigned an **eligibility tier** (Native / Augmented / Boundary). The aim is to explore *which traditional genres naturally host which AI-native mechanics*, while also documenting excellent adjacent designs that use generative AI in different but still meaningful ways.
+This repository collects **99 games** that use generative AI (LLMs, diffusion models, agents) at runtime, screened and classified. Each title is placed on two independent axes — a **traditional game-type axis (G)** and an **AI play-mechanic axis (N)** — and assigned an **eligibility tier** (Native / Augmented / Boundary). The aim is to explore *which traditional genres naturally host which AI-native mechanics*, while also documenting excellent adjacent designs that use generative AI in different but still meaningful ways.
 
-本仓库收录 **98 款**在运行时使用生成式 AI(大语言模型、扩散模型、智能体)的游戏,全部筛选与分类。每款游戏被放在两条独立的轴上 —— **传统游戏类型轴(G)** 与 **AI 主玩法机制轴(N)**,并给出**资格分级**(Native / Augmented / Boundary)。目标是探索"**哪些传统品类天然适合承载哪种 AI 原生机制**",同时记录那些以不同方式精彩使用生成式 AI 的相邻设计。
+本仓库收录 **99 款**在运行时使用生成式 AI(大语言模型、扩散模型、智能体)的游戏,全部筛选与分类。每款游戏被放在两条独立的轴上 —— **传统游戏类型轴(G)** 与 **AI 主玩法机制轴(N)**,并给出**资格分级**(Native / Augmented / Boundary)。目标是探索"**哪些传统品类天然适合承载哪种 AI 原生机制**",同时记录那些以不同方式精彩使用生成式 AI 的相邻设计。
 
 <a id="scope"></a>
 ## 🧩 Scope note / 范围说明
@@ -79,7 +79,7 @@ These categories are **not a quality ranking**. Many Augmented and Boundary titl
 ## 📋 Corpus / 游戏清单
 
 <a id="native"></a>
-### 🟢 AI Native (74)
+### 🟢 AI Native (75)
 
 | # | Game / 游戏 | Year | Type (G) | AI mechanic (N) | Status | Gameplay / 玩法简介 |
 |--:|------|:--:|------|------|------|------|
@@ -157,6 +157,7 @@ These categories are **not a quality ranking**. Many Augmented and Boundary titl
 | 72 | [AI Schoolgirls Murder Mystery](https://store.steampowered.com/app/3082970/AI_Schoolgirls_Murder_Mystery/) | TBA | G1 叙事冒险 | N1 信息获取 | Announced/TBA | 你当新生审问三名 AI 嫌疑人，它们的动态回答帮你推进谋杀案调查。 |
 | 73 | [Murder In Complex](https://store.steampowered.com/app/3502320/Murder_In_Complex/) | TBA | G1 叙事冒险 | N1 信息获取 | Announced/TBA | 每轮随机的小区谋杀案：审问 AI 住户、搜集证据破案。 |
 | 74 | [Microverse In Box 盒中小世界](https://store.steampowered.com/app/3902630/Microverse_In_Box/) | TBA | G5 模拟 | N5 多Agent模拟 | Announced/TBA | 上帝视角社会沙盒：你用卡片设定居民的性格、财富、关系和社会规则，NPC 的想法和行动由 AI 驱动，看剧情自己长出来。 |
+| 75 | [Scam With Your Friends](https://store.steampowered.com/app/4954910/Scam_With_Your_Friends/) | 2026 | G7 社交推理/派对 | N2 社交操纵 | Early Access | 合作搞笑呼叫中心模拟：你和好友在加尔各答诈骗中心工作，用实时麦克风语音或打字忽悠 AI 接线人骗取积蓄以达成业绩，同时黑入电脑并防范反诈高手。 |
 
 <a id="augmented"></a>
 ### 🔵 AI Augmented (13)

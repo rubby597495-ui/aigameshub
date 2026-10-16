@@ -4029,5 +4029,48 @@
     "isHot": false,
     "createdAt": "2026-08-25T00:00:00.000Z",
     "ratingCount": 0
+  },
+  {
+    "id": 98,
+    "slug": "scam-with-your-friends",
+    "title": "Scam With Your Friends",
+    "tagline": "Co-op comedy scam center simulator where you talk, bluff, and trick AI callers out of their life savings.",
+    "description": "### Premise & Narrative Hook\nIn Scam With Your Friends, you and your crew run a chaotic, underground scam call center based in Kolkata under an unforgiving, rageaholic boss. Your objective: survive hectic daily shifts by executing increasingly absurd schemes to trick callers out of their digital life savings and hit demanding financial quotas.\n\n### Core Gameplay Loop\nArmed with microphones or text chat, players engage in real-time unscripted persuasion and manipulation against intelligent AI callers. Each caller features dynamic personality traits, suspicion meters, and cognitive reactions to your pitch. Work together to answer ringing desks, hack victim computers for personal data, avoid disastrous scambaiters, and stave off termination before the clock runs out.\n\n### Key Interactive Features\n- Real-time conversational AI callers that dynamically react to voice and text bluffing\n- Up to 6-player online co-op with proximity voice chat, role division, and shared office mayhem\n- Computer hacking mechanics to extract victim identities and passwords\n- Chaotic office sandbox featuring interactive desk accessories, pranks, and customizable whiteboards\n- Escalating workday roguelite progression with boss performance reviews, viruses, and unexpected hazards",
+    "descCn": "",
+    "aiRoleDescription": "Real-time speech-to-text and LLM-powered caller agents dynamically evaluate player vocal tone, persuasion tactics, and social engineering bluffs to determine suspicion levels and financial capitulation.",
+    "tier": "AI-Native",
+    "aiType": "AI_NATIVE",
+    "genreKey": "G7",
+    "genreName": "Party & Social Deduction",
+    "genreSlug": "party-social",
+    "mechanicKey": "N2",
+    "mechanicName": "Social Influence & Persuasion",
+    "mechanicSlug": "social-persuasion",
+    "releaseYear": "2026",
+    "status": "Early Access",
+    "platforms": [
+      "Steam",
+      "PC"
+    ],
+    "websiteUrl": "https://store.steampowered.com/app/4954910/Scam_With_Your_Friends/",
+    "developer": "JakeHub, Metater",
+    "publisher": "Jatater Worldwide",
+    "coverUrl": "/uploads/games/scam-with-your-friends.jpg",
+    "hasLocalCover": true,
+    "screenshots": [
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4954910/0bad5dd0fa92399a999726f4947095952ad5f963/ss_0bad5dd0fa92399a999726f4947095952ad5f963.1920x1080.jpg",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4954910/9e2a9afcfda31f4c3b1c02120e527e398ee2b6b2/ss_9e2a9afcfda31f4c3b1c02120e527e398ee2b6b2.1920x1080.jpg",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4954910/e3920cbb1c07287096a38574119788763d29967d/ss_e3920cbb1c07287096a38574119788763d29967d.1920x1080.jpg",
+      "https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/4954910/738defc33789ef77be01e7fe0644b7da30afa4bd/ss_738defc33789ef77be01e7fe0644b7da30afa4bd.1920x1080.jpg"
+    ],
+    "viewCount": 0,
+    "likeCount": 0,
+    "bookmarkCount": 0,
+    "aiScore": 0.0,
+    "funScore": 0.0,
+    "isFeatured": true,
+    "isHot": true,
+    "createdAt": "2026-10-16T08:00:00.000Z",
+    "ratingCount": 0
   }
 ]
